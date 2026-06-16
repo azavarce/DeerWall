@@ -1,0 +1,151 @@
+﻿ðŸ¦Œ DeerWall Digital Marketing Plan â€“ 2025
+
+1. ðŸŽ¯ Campaign Goals
+Increase first-time customer acquisition via Google Search.
+Recover abandoned carts via text, email, and (if needed) phone.
+Encourage repeat purchases through proactive follow-up.
+Leverage customer feedback for reviews, social proof, and product optimization.
+Introduce Smart4Growing as a complementary product to increase average order value.
+2. ðŸ“Š Key Metrics to Track
+
+Category
+KPI
+Google Ads
+CTR, CPC, Conv. Rate, ROAS
+Abandoned Cart
+Recovery Rate, Time to Recovery
+Follow-ups
+Reply Rate, Repeat Purchase %
+Repeat Purchases
+% of Returning Customers
+Product Reviews
+Review Count, Avg. Rating
+3. ðŸ”‘ Recommended Google Ads Strategy
+A. Search Campaigns
+Keyword Groups: no
+deer repellent spray
+deer deterrent for garden
+protect plants from deer
+natural deer repellent
+stop deer from eating roses, hostas, flowers
+Ad Assets:
+Sitelinks, callouts, structured snippets, and price assets as already developed
+Seasonal copy variation (e.g. â€œSpring Garden Protectionâ€ vs. â€œFall Crop Defenseâ€)
+Geotargeting by State + ZIP:
+Use the county table (shown below) organized by state
+Group states by deer season timing (e.g. South, Mid, North):
+Southern States (start campaigns early: Janâ€“Apr)
+Mid-states (Marâ€“Jul)
+Northern States (Mayâ€“Sep)
+State
+Counties with Deer Predation Issues
+Alabama
+Wilcox, Dallas, Perry, Hale, Greene
+Florida
+Marion, Alachua, Leon
+Georgia
+Fulton, Forsyth, Columbia
+Tennessee
+Williamson, Rutherford, Knox, Hamilton, Shelby
+Mississippi
+Hinds, Rankin, Madison, Lamar, Pike
+Pennsylvania
+Blair, Union, Delaware
+Michigan
+Kent, Ingham, Oakland
+Wisconsin
+Dane, Marathon, Waukesha
+New York
+Suffolk, Dutchess, Monroe
+Virginia
+Fairfax, Loudoun, Albemarle
+New Jersey
+Cape May, Burlington, Hunterdon
+Ohio
+Cuyahoga, Franklin, Summit
+Texas
+Travis, Williamson, Montgomery
+Budget Strategy:
+Start low: $20â€“$30/day per campaign group:  $1,000/dayt
+Allow for learning period (2 weeks minimum)
+Gradually increase to $50â€“$100/day in peak season based on ROAS
+Allocate more budget to high-conversion counties
+B. Remarketing Campaigns
+Show ads to:
+Visitors who didnâ€™t buy
+Past buyers (introduce Smart4Growing or larger pack)
+Cart abandoners
+Assets: Use video testimonials, UGC, before/after visuals
+4. âœ‰ï¸ Customer Retention & Follow-Up Strategy (Friendlier, Personal Approach)
+Weâ€™ll send follow-ups that feel personal. The sender can introduce themselves by name (e.g. "Hey, this is Alex from DeerWall!") so customers feel like they're talking to a real person, not an automated system.
+
+ðŸ›’ Post Purhcase Flows
+Timing
+Channel
+Message Example
++1 Days
++3 Days
+Text or Email
+â€œHey [First Name], this is Angie from DeerWall! Just wanted to check in â€” have you had a chance to try the spray yet? If you have any questions, Iâ€™m here to help. Hope those deer are staying far away! ðŸ˜„â€
++7 Days
+Text or Email
+â€œHi again! Angie here from DeerWall ðŸŒ± Just curious â€” how did it go? We always love hearing feedback from gardeners and farmers using the spray. Even a sentence or two would mean a lot!â€
++14 Days
+Text or Email
+â€œHey [First Name], itâ€™s Angie again. If you liked the DeerWall spray, would you mind leaving us a quick review? It really helps other folks who are dealing with deer issues find something that works. Hereâ€™s the link ðŸ‘‰ [Review Link]â€
++21 Days
+Text or Email
+â€œHey! Itâ€™s Angie from DeerWall again. Just a heads-up â€” if you're protecting more space, we now have 2.5 gallons of concentrate available! Also, I think youâ€™d love this sister product thatâ€™s getting great feedback from growers: [Smart4Growing link]. Check it out, it is helping farmers and gardeners grow bigger and healthier plants.
+ðŸ›’ Abandoned Cart Recovery Flow
+These are warm, human messages â€” not pushy. Just someone following up to help.
+
+Timing
+Channel
+Message Example
++1 Hour
+Text or Email
+â€œHey [First Name], itâ€™s Angie Angie from DeerWall. Noticed you left something in your cart â€” want help finishing your order? Happy to answer any questions too!â€
++12 Hours
+Text or Email
+â€œHey! Still thinking about protecting your garden? Just wanted to check in â€” the seasonâ€™s heating up, and so is the deer activity. Let me know if you need help choosing the right size bottle.â€
++48 Hours
+Text or Email
+â€œHi [First Name], Angie here again. Still interested in that DeerWall spray? Iâ€™ve got a 10% discount I can send your way if that helps you decide. Just reply YES and Iâ€™ll shoot it over ðŸ‘â€
+5. ðŸ“ž Virtual Assistant Tasks
+Send follow-up texts/emails using templates.
+Call repeat buyers to offer:
+Feedback collection
+Smart4Growing intro
+Help with reorder or product sizing
+Use CRM or spreadsheet to track responses, reviews, and next steps.
+6. ðŸ“… Seasonal Campaign Schedule (Please verify)
+
+Region
+States Covered
+Campaign Run Time
+South
+FL, AL, MS, GA, TX
+Jan â€“ Apr
+Central
+TN, VA, NC, OH, NJ
+Mar â€“ Jul
+North/Northeast
+PA, NY, MI, WI
+May â€“ Sep
+7. ðŸ“¦ Product & Upsell Strategy
+First Purchase: Focus on DeerWall
+Second Purchase: Offer a larger DeerWall product
+Cross-Sell: Introduce Smart4Growing with exclusive offer
+Track what size people buy based on acreage â€” build recommendations
+8. ðŸ’° Budget Recommendation
+Initial Campaigns: ~$400/month per region
+Mid-Season: Scale to ~$1,500/month based on ROAS
+Retargeting: ~$100/month ongoing
+VA cost: Part-time (1â€“2 hrs/day)
+9. âœ… Next Steps
+Finalize state targeting list (seasonal split) (Blair to verified)
+Launch Google Search campaigns by region (Andres)
+Install remarketing tags & set up audiences (Andres)
+Train VA with scripts + CRM tracking sheet (Blair)
+Set up analytics: Google Ads, GA4, and Shopify reports (Andres)
+

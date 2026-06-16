@@ -1,0 +1,743 @@
+/* DeerWall Design System — shared mobile patches
+ * Ride on top of each page's local CSS. Goal: nothing overflows at 360px,
+ * type stays legible, hero "stage" demos either reflow or shrink gracefully.
+ *
+ * Tier breakpoints we use across the system:
+ *   ≤ 1100  — tablet landscape: 2-col → stack-with-context
+ *   ≤  960  — sidebar collapses to drawer (handled in shared.css)
+ *   ≤  720  — phone landscape: 3-col grids → 2, hero stages contract
+ *   ≤  480  — phone portrait: everything 1-col, fixed-aspect frames relax
+ */
+
+/* ─── Global guardrails ─────────────────────────────────────────── */
+@media (max-width: 960px) {
+  /* `overflow: clip` does NOT create a scroll container, so position:sticky
+   * on .ds-topbar still works. `overflow-x: hidden` would break it. */
+  html, body { overflow-x: clip; }
+  .ds-main { overflow-x: clip; min-width: 0; }
+  /* Section heads were 60px-1fr-1fr — already 1fr in shared.css; keep desc tight */
+  .ds-section-desc { font-size: 13px; }
+
+  /* Any rotated / absolutely-positioned demo "stage" should clip cleanly */
+  .ds-section { overflow-x: clip; }
+}
+
+/* ─── Index page ────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .hero { grid-template-columns: 1fr !important; }
+  .hero .stage { min-height: 280px; }
+  .pillars-grid { grid-template-columns: 1fr !important; }
+  .nav-grid { grid-template-columns: 1fr 1fr !important; }
+  .principles { grid-template-columns: 1fr !important; }
+  /* In 2-col mode each tile is ~270–360px wide — the 38px display title
+   * for "Typography"/"Iconography"/"Imagery" overflows. Scale the title,
+   * tighten padding, and reposition the arrow accordingly. */
+  .nav-card { padding: 24px 20px !important; min-height: 0 !important; }
+  .nav-card h3 { font-size: 26px !important; }
+  .nav-card p { font-size: 13px !important; }
+  .nav-card .arrow { top: 20px !important; right: 20px !important; width: 36px !important; height: 36px !important; }
+  /* The orange "Presentation" card is grid-column: span 2 inline — force
+   * to span 1 when the grid drops to a single column. */
+  .nav-card[style*="span 2"] { grid-column: span 1 !important; }
+}
+@media (max-width: 720px) {
+  /* Phone — 2-col cards crammed; collapse to 1-col earlier than 480 */
+  .nav-grid { grid-template-columns: 1fr !important; }
+  /* In 1-col mode there's room for a slightly larger title again */
+  .nav-card h3 { font-size: 32px !important; }
+}
+
+/* ─── Strategy ──────────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .audience-grid, .voice-table, .taglines { grid-template-columns: 1fr !important; }
+  .mission-card { padding: 28px !important; }
+  .mission-card .stmt { font-size: 26px !important; line-height: 1.1 !important; }
+}
+
+/* ─── Logo ──────────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .logo-hero { grid-template-columns: 1fr !important; padding: 36px 24px !important; }
+  .logo-hero h2 { font-size: clamp(36px, 9vw, 48px) !important; }
+  .lockup-grid { grid-template-columns: 1fr !important; }
+  .symbol-grid { grid-template-columns: 1fr 1fr !important; }
+  .clearspace-stage { padding: 32px !important; }
+  /* Symbol row: lead card has body copy and grows tall; siblings use
+   * flex:1 on .art and stretch into orange/sand rectangles. Lock them
+   * to a square so the favicon/embroidery swatches read as their actual
+   * shape. App-icon already has aspect-ratio:1 inline so it's fine. */
+  .symbol-row { grid-template-columns: 1fr 1fr !important; }
+  .symbol-card { min-height: 0 !important; padding: 24px !important; }
+  .symbol-card .art { flex: 0 0 auto !important; aspect-ratio: 1 !important; align-self: center !important; width: 100% !important; max-width: 220px !important; }
+  /* Lead card carries the long body copy — let it span the full row so
+   * the statement has room and doesn't push the row to extreme heights. */
+  .symbol-card.lead { grid-column: span 2 !important; }
+  .symbol-card.lead .art { aspect-ratio: auto !important; max-width: none !important; min-height: 100px !important; }
+}
+@media (max-width: 480px) {
+  .symbol-grid { grid-template-columns: 1fr !important; }
+  .symbol-row { grid-template-columns: 1fr 1fr !important; }
+  .symbol-card.lead { grid-column: span 2 !important; }
+}
+
+/* ─── Color ─────────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .hero-color { grid-template-columns: 1fr !important; padding: 32px !important; }
+  .hero-color h2 { font-size: clamp(36px, 9vw, 48px) !important; }
+  /* .scale-grid is the OUTER stack of ramp cards — stays 1-col so each
+   * ramp gets full width. .scale-row INSIDE .scale-grid (the inner cells)
+   * is the grid that gets recolumned. NOTE: scope this with .scale-grid
+   * because typography.html ALSO uses .scale-row as its own table. */
+  .scale-grid { grid-template-columns: 1fr !important; }
+  .scale-grid .scale-row,
+  .scale-grid .scale-row.short { grid-template-columns: repeat(6, 1fr) !important; height: auto !important; }
+  .scale-grid .scale-cell { min-height: 64px !important; }
+  .scale-head { padding: 18px 20px !important; gap: 12px !important; flex-wrap: wrap !important; }
+  .scale-head h3 { font-size: 18px !important; }
+  .scale-head .meta { font-size: 10px !important; }
+  .pairings { grid-template-columns: 1fr 1fr !important; }
+  /* Accessibility rows: keep swatch + combo on a top line, ratio + badge
+   * + use on a second line. Tighter than full-stack. */
+  .ax-row { grid-template-columns: 56px 1fr auto !important; grid-template-rows: auto auto !important; gap: 6px 14px !important; padding: 16px 18px !important; align-items: center !important; }
+  .ax-row .swatch-pair { grid-row: 1 / span 1 !important; }
+  .ax-row .combo { grid-column: 2 / span 2 !important; grid-row: 1 !important; }
+  .ax-row .ratio { grid-column: 1 / span 2 !important; grid-row: 2 !important; font-size: 13px !important; }
+  .ax-row .badge { grid-column: 3 !important; grid-row: 2 !important; justify-self: end !important; }
+  .ax-row .use { grid-column: 1 / -1 !important; grid-row: 3 !important; font-size: 12px !important; padding-top: 4px !important; border-top: 1px solid rgba(31,26,20,0.06) !important; }
+}
+@media (max-width: 720px) {
+  .scale-grid .scale-row,
+  .scale-grid .scale-row.short { grid-template-columns: repeat(4, 1fr) !important; }
+  .scale-grid .scale-cell { padding: 10px !important; font-size: 9px !important; }
+  .swatch .meta .name { font-size: 11px !important; }
+  .swatch .meta .hex { font-size: 9px !important; }
+  .pairings { grid-template-columns: 1fr !important; }
+  .pair { aspect-ratio: auto !important; min-height: 200px !important; padding: 24px !important; }
+  .pair .stmt { font-size: 22px !important; }
+}
+@media (max-width: 480px) {
+  /* iPhone-class widths (~390px viewport, ~360px after page padding).
+   * Was 3-col but the third cell's hex text kept getting clipped at
+   * the .scale-block rounded-corner edge — we'd reach 7-char hex
+   * widths at ~75px each, leaving zero room for cell padding. Drop
+   * to 2 columns: cleaner, larger swatches read better on a phone,
+   * hex codes never truncate. 11-step ramps fall to 6 rows of 2,
+   * which is fine for a brand-book ramp reference. */
+  .scale-grid .scale-row,
+  .scale-grid .scale-row.short { grid-template-columns: repeat(2, 1fr) !important; }
+  .scale-grid .scale-cell { padding: 12px 14px !important; box-sizing: border-box !important; min-width: 0 !important; min-height: 56px !important; }
+  .scale-grid .scale-cell .hex { font-size: 10px !important; letter-spacing: 0.02em !important; white-space: nowrap !important; }
+  .scale-grid .scale-cell .step { font-size: 11px !important; }
+}
+
+/* ─── Typography ────────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .type-hero { padding: 32px 20px !important; }
+  .type-hero h2 { font-size: clamp(48px, 14vw, 80px) !important; }
+  .scale-grid-type { grid-template-columns: 1fr !important; }
+  .specimen-row { grid-template-columns: 1fr !important; gap: 8px !important; padding: 20px 0 !important; }
+  .specimen-row .meta { padding-bottom: 4px; border-bottom: 1px solid rgba(31,26,20,0.08); }
+  .donts-grid { grid-template-columns: 1fr 1fr !important; }
+  /* Type scale rows: page's local rule stacks ALL 5 spans 1-col, reading
+   * as 5 disjointed rows per specimen. Reflow into 3 grid rows:
+   *   Row 1: specimen (full bleed)
+   *   Row 2: token · size · leading  (inline mono strip)
+   *   Row 3: use note  (full width)
+   */
+  .scale-table .scale-row {
+    display: grid !important;
+    grid-template-columns: auto auto auto 1fr !important;
+    grid-template-rows: auto auto auto !important;
+    gap: 6px 14px !important;
+    padding: 22px 20px !important;
+    align-items: baseline !important;
+  }
+  .scale-table .scale-row .sample { grid-column: 1 / -1 !important; grid-row: 1 !important; margin-bottom: 6px !important; }
+  .scale-table .scale-row .token { grid-row: 2 !important; grid-column: 1 !important; font-size: 11px !important; }
+  .scale-table .scale-row .px { grid-row: 2 !important; grid-column: 2 !important; font-size: 11px !important; }
+  .scale-table .scale-row .lh { grid-row: 2 !important; grid-column: 3 !important; font-size: 11px !important; }
+  .scale-table .scale-row .use { grid-row: 3 !important; grid-column: 1 / -1 !important; font-size: 12px !important; color: var(--dw-stone-600) !important; padding-top: 6px !important; border-top: 1px solid rgba(31,26,20,0.06) !important; }
+  /* Shrink the largest specimens so they don't blow past 360px viewport */
+  .spec-h1 { font-size: 48px !important; line-height: 0.98 !important; }
+  .spec-h2 { font-size: 40px !important; }
+  .spec-h3 { font-size: 32px !important; }
+  .spec-h4 { font-size: 26px !important; }
+  .spec-h5 { font-size: 22px !important; }
+  .spec-h6 { font-size: 18px !important; }
+  .spec-display { font-size: 56px !important; }
+  .spec-sans { font-size: 32px !important; }
+}
+@media (max-width: 480px) {
+  .donts-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ─── Iconography ───────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .icon-hero { grid-template-columns: 1fr !important; padding: 32px !important; }
+  .anatomy { grid-template-columns: 1fr !important; padding: 32px !important; gap: 32px !important; }
+  .anatomy .grid-demo { max-width: 260px !important; }
+  /* The actual tile grid is .icon-cells (not .icon-grid which is the
+   * outer card). Page's local rule sets it to 4-col at ≤1024 — keep
+   * that, but tighten padding so cells don't overflow narrow viewports. */
+  .icon-cells { grid-template-columns: repeat(4, 1fr) !important; }
+  .icon-cells > .icon-cell { padding: 18px 8px !important; }
+  .icon-cells > .icon-cell:nth-child(8n) { border-right: 1px solid rgba(31,26,20,0.06) !important; }
+  .icon-cells > .icon-cell:nth-child(4n) { border-right: 0 !important; }
+  .icon-cat { padding: 16px 20px !important; }
+}
+@media (max-width: 720px) {
+  .icon-cells { grid-template-columns: repeat(3, 1fr) !important; }
+  .icon-cells > .icon-cell:nth-child(4n) { border-right: 1px solid rgba(31,26,20,0.06) !important; }
+  .icon-cells > .icon-cell:nth-child(3n) { border-right: 0 !important; }
+  .sizes { grid-template-columns: 1fr 1fr !important; }
+  .size-row { grid-template-columns: 1fr 1fr !important; }
+  .usage-row { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 480px) {
+  .icon-cells { grid-template-columns: repeat(2, 1fr) !important; }
+  .icon-cells > .icon-cell:nth-child(3n) { border-right: 1px solid rgba(31,26,20,0.06) !important; }
+  .icon-cells > .icon-cell:nth-child(2n) { border-right: 0 !important; }
+  .sizes { grid-template-columns: 1fr !important; }
+}
+
+/* ─── Imagery ───────────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .img-hero { aspect-ratio: auto !important; min-height: 320px !important; }
+  .img-hero h2 { font-size: clamp(28px, 7vw, 40px) !important; }
+  /* Desktop scrim runs left→right (dark on left, where the copy sits in
+   * the wide layout). On mobile the deer fills the frame and the copy
+   * stacks at the bottom — switch the gradient to bottom→top so the
+   * darkest band sits behind the text, not next to it. */
+  .img-hero .scrim {
+    background: linear-gradient(
+      to top,
+      rgba(20,17,13,0.92) 0%,
+      rgba(20,17,13,0.78) 30%,
+      rgba(20,17,13,0.35) 60%,
+      transparent 90%
+    ) !important;
+  }
+  .img-hero .copy { padding: 28px 24px !important; }
+  .moodboard { grid-template-columns: 1fr 1fr !important; grid-auto-rows: 140px !important; }
+  .moodboard .span-2 { grid-column: span 1 !important; }
+  .donts-row { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 480px) {
+  .moodboard { grid-template-columns: 1fr !important; grid-auto-rows: 200px !important; }
+  .moodboard .span-2 { grid-column: span 1 !important; }
+  .donts-row { grid-template-columns: 1fr !important; }
+}
+
+/* ─── Components / UI Library ───────────────────────────────────── */
+@media (max-width: 960px) {
+  /* Grid cells default to min-width: min-content. With nowrap flex
+   * children inside cards, min-content = full row natural width, which
+   * pushes cards past the viewport edge. minmax(0, 1fr) clamps them. */
+  .grid-2, .grid-3 { grid-template-columns: minmax(0, 1fr) !important; }
+  .avatars { flex-wrap: wrap; }
+
+  /* OF4S-style scrollable navigation pattern.
+   * Three components — tabs, breadcrumb, checkout steps — were originally
+   * laid out for desktop width. On mobile we keep them HORIZONTAL (don't
+   * stack/wrap) and let users swipe. A right-edge gradient fade + chevron
+   * tells the user there's more content off-screen. The chevron is on the
+   * card (.ui-card), not on the scroller, so it doesn't move with the
+   * scroll position. */
+
+  /* The card hosts the chevron + fade overlay.
+   * min-width: 0 is critical: cards live in a grid cell whose default
+   * min-size is min-content. With nowrap flex children (.tabs / .row-stack
+   * / .steps), min-content = sum of all children, so the card BLOWS PAST
+   * the viewport edge. Forcing min-width: 0 lets the grid cell shrink and
+   * the inner scroller actually overflow:auto. */
+  .ui-card { position: relative; min-width: 0 !important; }
+  .ui-card.has-scroller::after,
+  .ui-card .tabs ~ ::after { /* fallback noop */ }
+
+  /* Generic scroller affordance — applied via the wrappers below */
+  .mobile-scroll-wrap {
+    position: relative;
+    margin-right: -20px; /* let scroller bleed to card edge for fade */
+  }
+  .mobile-scroll-wrap > .scroller {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-right: 44px; /* room for chevron */
+  }
+  .mobile-scroll-wrap > .scroller::-webkit-scrollbar { display: none; }
+  .mobile-scroll-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 64px;
+    background: linear-gradient(to right, transparent, var(--dw-paper, #FAF7F1) 60%);
+    pointer-events: none;
+  }
+  .mobile-scroll-wrap .chev {
+    position: absolute;
+    top: 50%; right: 6px;
+    transform: translateY(-50%);
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--dw-sand-300, #C9A87C);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 600;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* ── Tabs: horizontal scroll, no wrap ── */
+  .tabs {
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-right: 44px;
+    position: relative;
+    min-width: 0 !important;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    white-space: nowrap !important;
+    flex: 0 0 auto !important;
+    padding: 14px 18px !important;
+  }
+  /* Right-edge fade + chevron on the tabs card */
+  .ui-card:has(> .tabs)::after {
+    content: '';
+    position: absolute;
+    top: 36px; right: 0; bottom: 16px;
+    width: 64px;
+    background: linear-gradient(to right, transparent, white 60%);
+    pointer-events: none;
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+  }
+  .ui-card:has(> .tabs)::before {
+    content: '›';
+    position: absolute;
+    top: 50%; right: 12px;
+    transform: translateY(-50%);
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--dw-sand-300, #B89968);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 600; line-height: 1;
+    pointer-events: none;
+    z-index: 2;
+    font-family: var(--dw-font-sans, sans-serif);
+  }
+
+  /* ── Breadcrumb: also horizontal scroll. The breadcrumb is the only
+   * row-stack that uses mono font — use that as a targeting anchor so
+   * we don't disturb the badges/pills/avatars row-stacks (which should
+   * wrap normally on mobile). */
+  .ui-card > .row-stack[style*="mono"] {
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-right: 44px;
+    flex-wrap: nowrap !important;
+  }
+  .ui-card > .row-stack[style*="mono"]::-webkit-scrollbar { display: none; }
+  /* Chevron + fade for the breadcrumb card (matches tabs / steps).
+   * Scoped to the mono-styled row-stack only — avoids hitting
+   * badges/pills/avatars cards. */
+  .ui-card:has(> .row-stack[style*="mono"])::after {
+    content: '';
+    position: absolute;
+    top: 36px; right: 0; bottom: 16px;
+    width: 64px;
+    background: linear-gradient(to right, transparent, white 60%);
+    pointer-events: none;
+    border-top-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+    z-index: 1;
+  }
+  .ui-card:has(> .row-stack[style*="mono"])::before {
+    content: '›';
+    position: absolute;
+    top: 50%; right: 12px;
+    transform: translateY(-50%);
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--dw-sand-300, #B89968);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 600; line-height: 1;
+    pointer-events: none;
+    z-index: 2;
+    font-family: var(--dw-font-sans, sans-serif);
+  }
+
+  /* ── Checkout steps: switch from grid → horizontal flex scroll. ──
+   * Each step keeps its column-flex content (num · lbl · desc) but the
+   * SET of steps becomes a horizontal row that overflows. The original
+   * connector line (.step::before) was a horizontal hairline at top:30px
+   * — that actually works in this layout, but right:-16px assumed grid
+   * cells. Convert to a fixed-width connector that bridges to the next
+   * step. Hide on the last step. */
+  .steps {
+    display: flex !important;
+    grid-template-columns: none !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-right: 44px !important;
+    padding-left: 4px !important;
+    gap: 0 !important;
+    scroll-snap-type: none !important;
+    scroll-behavior: auto !important;
+  }
+  .steps::-webkit-scrollbar { display: none; }
+  .step {
+    flex: 0 0 auto !important;
+    min-width: 140px !important;
+    padding: 16px 16px 16px 0 !important;
+  }
+  .step:first-child { padding-left: 4px !important; }
+  /* Restore connector — horizontal line from circle to next step */
+  .step::before {
+    display: block !important;
+    content: '' !important;
+    position: absolute !important;
+    top: 18px !important;
+    left: 36px !important;
+    right: -8px !important;
+    height: 1.5px !important;
+    background: rgba(31,26,20,0.12) !important;
+  }
+  .step:last-child::before { display: none !important; }
+
+  /* Chevron + fade for the checkout-steps card */
+  .ui-card:has(> .steps)::after {
+    content: '';
+    position: absolute;
+    top: 50px; right: 0; bottom: 16px;
+    width: 72px;
+    background: linear-gradient(to right, transparent, white 60%);
+    pointer-events: none;
+    border-bottom-right-radius: inherit;
+  }
+  .ui-card:has(> .steps)::before {
+    content: '›';
+    position: absolute;
+    top: calc(50% + 8px); right: 12px;
+    transform: translateY(-50%);
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--dw-sand-300, #B89968);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 600; line-height: 1;
+    pointer-events: none;
+    z-index: 2;
+    font-family: var(--dw-font-sans, sans-serif);
+  }
+}
+
+/* ─── Packaging ─────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .pkg-hero { grid-template-columns: 1fr !important; padding: 32px !important; min-height: 0 !important; }
+  .pkg-hero .copy { padding-bottom: 0 !important; }
+  .pkg-hero h2 { font-size: clamp(36px, 9vw, 48px) !important; }
+  /* Lineup: equal-aligned row. Drop per-bottle max-height variants and
+   * size by row height instead so the three SKUs read as a family. */
+  .pkg-hero .lineup { padding-top: 16px !important; gap: 12px !important; align-items: flex-end !important; }
+  .pkg-hero .lineup img { max-height: 240px !important; height: 240px !important; width: auto !important; flex: 0 1 auto !important; }
+  .pkg-hero .lineup .a,
+  .pkg-hero .lineup .b,
+  .pkg-hero .lineup .c { max-height: 240px !important; }
+  .sku-row { grid-template-columns: 1fr !important; }
+  /* Anatomy: pins are positioned relative to a wide layout. At narrow
+   * widths the bottle shrinks but pins stay in absolute % positions in an
+   * empty container — they end up pointing nowhere. Hide them entirely
+   * and let the numbered rules on the right do the work. */
+  .anat { grid-template-columns: 1fr !important; padding: 32px !important; gap: 24px !important; }
+  .anat .stage { display: flex !important; align-items: center !important; justify-content: center !important; min-height: 360px !important; }
+  .anat .stage img { max-height: 360px !important; }
+  .anat .stage .pin { display: none !important; }
+  .scenarios { grid-template-columns: 1fr !important; }
+  .donts { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 720px) {
+  .pkg-hero .lineup img { max-height: 180px !important; height: 180px !important; }
+  .pkg-hero .lineup .a,
+  .pkg-hero .lineup .b,
+  .pkg-hero .lineup .c { max-height: 180px !important; }
+  .anat .stage img { max-height: 280px !important; }
+  /* Dieline label-art: at desktop it's a complex absolute-positioned
+   * composition (wm + deer silhouette + pitch + badge layered over an
+   * ink/orange split). At narrow widths these elements collide and
+   * read as broken. Simplify on mobile: just show the wordmark cleanly
+   * over the ink/orange split — the bleed/safe-zone dashed lines are
+   * what this section is actually demonstrating, and they read fine. */
+  .dieline { padding: 24px !important; }
+  .dieline-meta { grid-template-columns: 1fr 1fr !important; }
+  .dieline-frame { padding: 32px !important; aspect-ratio: 5/3.2 !important; }
+  .dieline-frame .label-art .wm { top: 50% !important; left: 50% !important; right: auto !important; transform: translate(-50%, -50%) !important; }
+  .dieline-frame .label-art .wm img { width: 60% !important; max-width: 180px !important; }
+  .dieline-frame .label-art .deer-silhouette,
+  .dieline-frame .label-art .pitch,
+  .dieline-frame .label-art .badge { display: none !important; }
+  .dieline-frame .pin-tag { font-size: 8px !important; padding: 2px 6px !important; }
+  /* Shelf: 5 bottles overflow at narrow widths. Allow horizontal scroll
+   * so all SKUs stay visible. The label pill needs to sit BELOW the
+   * bottles (not absolute-overlapping them), and we want a visible
+   * scroll cue so users know to swipe. */
+  .shelf { padding: 24px 16px 56px !important; min-height: 0 !important; overflow-x: auto !important; overflow-y: hidden !important; -webkit-overflow-scrolling: touch !important; scrollbar-width: thin !important; }
+  .shelf::-webkit-scrollbar { height: 4px; }
+  .shelf::-webkit-scrollbar-thumb { background: rgba(31,26,20,0.2); border-radius: 2px; }
+  .shelf .row { flex-wrap: nowrap !important; padding-bottom: 16px !important; }
+  .shelf .row img { max-height: 180px !important; flex: 0 0 auto !important; }
+  /* Move label out of absolute-center; place inside flow at the bottom */
+  .shelf .label { position: static !important; transform: none !important; align-self: center !important; margin-top: 12px !important; padding: 6px 14px !important; background: var(--dw-orange-500) !important; color: var(--dw-ink-900) !important; border-radius: 100px !important; font-size: 9px !important; }
+  .shelf .surface { display: none !important; }
+}
+@media (max-width: 480px) {
+  .pkg-hero .lineup img { max-height: 140px !important; height: 140px !important; }
+  .pkg-hero .lineup .a,
+  .pkg-hero .lineup .b,
+  .pkg-hero .lineup .c { max-height: 140px !important; }
+  .dieline-meta { grid-template-columns: 1fr !important; }
+  .shelf .row { gap: 4px !important; }
+  .shelf .row img { max-height: 130px !important; }
+  .sku .specs { grid-template-columns: 1fr !important; }
+}
+
+/* ─── Collateral ────────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .col-hero { grid-template-columns: 1fr !important; padding: 32px !important; min-height: 0 !important; }
+  .col-hero .copy h2 { font-size: clamp(36px, 9vw, 48px) !important; }
+  .col-hero .stage { min-height: 320px !important; }
+  .bc-grid { grid-template-columns: 1fr !important; }
+  /* Business cards: desktop locks .bc to width:360px; the stage adds
+   * 56px+32px padding which shoves the rotated card off the side of
+   * narrow viewports. Make the card responsive: cap at 360px but
+   * shrink with the stage, and trim the stage padding so the card
+   * has breathing room on a 360px-wide phone. */
+  .bc-stage { padding: 32px 16px !important; min-height: 0 !important; }
+  .bc { width: 100% !important; max-width: 360px !important; transform: rotate(-1.5deg) !important; }
+  .bc.back { transform: rotate(1.5deg) !important; }
+  /* Front split: left panel needs more breathing room on narrow widths;
+   * keep the orange right strip a bit wider so the deer mark stays
+   * a usable size. */
+  .bc.front { grid-template-columns: 1.5fr 1fr !important; }
+  .bc.front .left { padding: 22px 18px 18px !important; }
+  .bc.front .name { font-size: clamp(16px, 4.5vw, 19px) !important; }
+  .bc.front .title { font-size: 8px !important; }
+  .bc.front .lines { font-size: 9px !important; }
+  /* Back: pitch text shrinks fluidly */
+  .bc.back .pitch { font-size: clamp(22px, 6.5vw, 30px) !important; max-width: 88% !important; }
+  .bc.back .corner { font-size: 8px !important; bottom: 10px !important; right: 12px !important; }
+  .bc.back .deer-mark img { height: 22px !important; }
+  .stationery { grid-template-columns: 1fr !important; }
+  .tags-row { grid-template-columns: 1fr 1fr !important; }
+  .door-hanger-grid { grid-template-columns: 1fr !important; }
+  .invoice-frame { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 720px) {
+  .bc-meta { grid-template-columns: 1fr 1fr !important; }
+  .stat-stage { padding: 32px 16px !important; min-height: 380px !important; }
+  .envelope-stage { padding: 32px 16px !important; min-height: 280px !important; }
+  .letterhead { transform: rotate(-1deg) !important; max-width: 280px !important; }
+  .email-thread { padding: 20px 18px !important; }
+  .email-thread .e-subject { font-size: 16px !important; }
+  .email-thread .e-sig { grid-template-columns: 1fr !important; gap: 10px !important; }
+  .invoice { padding: 24px !important; }
+  .invoice-doc { padding: 24px 18px !important; }
+  .invoice-doc .who { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .invoice-doc table { font-size: 10px !important; }
+  .shelf-talker .stage { padding: 32px 16px !important; flex-direction: column !important; gap: 24px !important; overflow: hidden !important; }
+  .shelf-talker .talker { width: min(240px, 80%) !important; }
+  .shelf-talker .bottle-trio { width: 100% !important; justify-content: center !important; flex-wrap: nowrap !important; gap: 4px !important; }
+  .shelf-talker .bottle-trio img { max-height: 180px !important; max-width: 30% !important; height: auto !important; width: auto !important; object-fit: contain !important; }
+  .shelf-talker .meta { flex-direction: column !important; gap: 6px !important; padding: 16px 18px !important; }
+}
+@media (max-width: 480px) {
+  .tags-row { grid-template-columns: 1fr !important; }
+  .bc-meta { grid-template-columns: 1fr !important; }
+  .col-hero .stage { min-height: 380px !important; }
+}
+
+/* ─── Social & web ──────────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .sw-hero { grid-template-columns: 1fr !important; padding: 32px !important; min-height: 0 !important; }
+  .sw-hero .copy h2 { font-size: clamp(36px, 9vw, 48px) !important; }
+  .sw-hero .stage { min-height: 360px !important; }
+  .sw-hero .stage .phone { width: 200px !important; }
+  .sw-hero .stage .browser { width: 280px !important; }
+  .posts-grid { grid-template-columns: 1fr 1fr !important; }
+  /* Stories are 9:16 vertical reels with text content (headlines, body
+   * copy). At 2-col on tablet they're already cramped; on phones they
+   * become unreadable. Stack 1-col so each story gets full width and
+   * the type stays at its proper scale. Force explicit width so the
+   * 9:16 aspect-ratio always resolves to the same height across all 4. */
+  .stories-grid { grid-template-columns: 1fr !important; max-width: 320px !important; margin: 0 auto !important; }
+  .stories-grid .story { width: 100% !important; max-width: 100% !important; }
+  .web-hero { grid-template-columns: 1fr !important; }
+  .web-hero .copy { padding: 32px 24px !important; }
+  .web-hero .copy h1 { font-size: clamp(40px, 9vw, 56px) !important; }
+  .web-hero .deer-stage { min-height: 280px !important; }
+  .web-products { grid-template-columns: 1fr !important; padding: 24px !important; }
+  .banners { grid-template-columns: 1fr !important; }
+  .profile-set .row { grid-template-columns: 1fr 1fr !important; }
+  .profile-banner-row { grid-template-columns: 1fr !important; }
+  /* Profile banners (LinkedIn 4:1, X 3:1-ish): at narrow widths the
+   * 4:1 aspect-ratio collapses the height to ~80px while the headline
+   * stays at 26px, so two-line text overflows and the absolute-positioned
+   * label stamp ends up overlapping the headline. Loosen aspect ratio
+   * to 3.2:1 (still banner-shaped, but tall enough for text), shrink
+   * the headline, tighten padding, and move the label to the corner
+   * with proper spacing so it never collides. */
+  .linkedin-banner { aspect-ratio: 3.2/1 !important; padding: 18px 20px 28px !important; gap: 12px !important; }
+  .linkedin-banner .h { font-size: clamp(15px, 4.2vw, 20px) !important; line-height: 1.05 !important; }
+  .linkedin-banner .h br { display: none !important; }
+  .linkedin-banner .wm img { height: 20px !important; }
+  .linkedin-banner .lbl { bottom: 8px !important; left: 12px !important; font-size: 7.5px !important; letter-spacing: 0.14em !important; }
+}
+@media (max-width: 720px) {
+  .sw-hero .stage .phone { width: 160px !important; }
+  .sw-hero .stage .browser { width: 220px !important; }
+  .post.p1 .h, .post.p2 .h { font-size: 22px !important; }
+  .post.p4 .num { font-size: 56px !important; }
+  .post.p5 .pitch { font-size: 18px !important; }
+  .post.p6 .bot .h { font-size: 16px !important; }
+  /* Nav links wrap and the trust strip should scroll */
+  .web-nav { padding: 12px 16px !important; gap: 12px !important; flex-wrap: wrap; }
+  .web-nav .links { display: none !important; }
+  .web-strip { gap: 24px !important; padding: 8px 16px !important; font-size: 9px !important; overflow-x: auto; flex-wrap: nowrap; white-space: nowrap; }
+  .web-hero .copy h1 { font-size: clamp(32px, 9vw, 44px) !important; }
+  .web-hero .copy .trust { gap: 14px !important; flex-wrap: wrap; }
+  .mail .body { padding: 24px 20px !important; }
+  .mail .img { height: 160px !important; }
+  .mail .img .h { font-size: 22px !important; }
+  .banner-stage { padding: 24px !important; min-height: 240px !important; }
+  .banner-leaderboard { gap: 10px !important; padding: 10px 14px !important; }
+  .banner-leaderboard .copy { font-size: 13px !important; line-height: 1.05 !important; }
+  .banner-leaderboard .wm img { height: 18px !important; }
+  .banner-leaderboard .cta { font-size: 8px !important; padding: 6px 10px !important; }
+}
+@media (max-width: 480px) {
+  .posts-grid { grid-template-columns: 1fr !important; }
+  .profile-set .row { grid-template-columns: 1fr !important; }
+  .web-hero .copy .ctas { flex-direction: column !important; }
+  .web-hero .copy .ctas a { text-align: center; }
+}
+
+/* ─── Presentation / Pitch deck ─────────────────────────────────── */
+@media (max-width: 960px) {
+  .pres-hero { grid-template-columns: 1fr !important; padding: 32px !important; min-height: 0 !important; }
+  .pres-hero .copy h2 { font-size: clamp(36px, 9vw, 48px) !important; }
+  .pres-hero .stage { min-height: 280px !important; }
+  .deck-frame { padding: 20px !important; }
+  .deck-grid { grid-template-columns: 1fr !important; }
+  .arch { padding: 32px 24px !important; }
+  .arch-row { grid-template-columns: 1fr !important; gap: 14px !important; padding: 20px 0 !important; }
+  .rules-row { grid-template-columns: 1fr !important; }
+  .checklist { padding: 32px 24px !important; }
+  .checklist .grid { grid-template-columns: 1fr !important; gap: 0 !important; }
+}
+@media (max-width: 720px) {
+  /* The slides are the hard part — they are 16:9 with type sized for 1920×1080.
+   * On phones the slides become tiny 16:9 cards (~280px wide) so the type
+   * inside them must scale aggressively. We push the inner type down here. */
+  .deck-frame { padding: 14px !important; }
+  .slide { padding: 18px !important; }
+  .slide.s1 h2 { font-size: clamp(20px, 6.4vw, 32px) !important; }
+  .slide.s1 .sub { font-size: 7px !important; letter-spacing: 0.14em !important; }
+  .slide.s1 .deer-mark img { height: 22px !important; }
+  .slide.s2 ol li { font-size: 11px !important; padding: 5px 0 !important; }
+  .slide.s2 ol li::before { font-size: 7px !important; margin-right: 8px !important; }
+  .slide.s2 .eb { font-size: 7px !important; margin-bottom: 6px !important; }
+  .slide.s3 .layer { padding: 18px !important; }
+  .slide.s3 h2 { font-size: clamp(18px, 5.4vw, 26px) !important; }
+  .slide.s3 p { font-size: 7px !important; letter-spacing: 0.1em !important; margin-top: 8px !important; }
+  .slide.s4 h3 { font-size: 14px !important; }
+  .slide.s4 .data { gap: 8px !important; }
+  .slide.s4 .data .stat .num { font-size: 24px !important; }
+  .slide.s4 .data .stat .lbl { font-size: 6px !important; letter-spacing: 0.1em !important; }
+  .slide.s4 .eb { font-size: 7px !important; }
+  .slide.s5 { padding: 28px 22px !important; }
+  .slide.s5 .quote-mark { font-size: 36px !important; top: 12px !important; left: 16px !important; }
+  .slide.s5 blockquote { font-size: 14px !important; line-height: 1.2 !important; }
+  .slide.s5 cite { font-size: 7px !important; letter-spacing: 0.12em !important; }
+  .slide.s6 .left { padding: 18px !important; gap: 8px !important; }
+  .slide.s6 h3 { font-size: clamp(18px, 5vw, 24px) !important; }
+  .slide.s6 .price { font-size: 8px !important; letter-spacing: 0.1em !important; }
+  .slide.s6 .eb { font-size: 7px !important; }
+  .slide.s7 { padding: 18px !important; }
+  .slide.s7 h3 { font-size: 13px !important; margin-bottom: 10px !important; }
+  .slide.s7 .eb { font-size: 7px !important; }
+  .slide.s7 .chart { gap: 4px !important; padding-bottom: 16px !important; }
+  .slide.s7 .chart .col .v { font-size: 7px !important; top: -12px !important; }
+  .slide.s7 .chart .lbl { font-size: 6px !important; letter-spacing: 0.06em !important; }
+  .slide.s8 .end { font-size: clamp(28px, 8vw, 44px) !important; }
+  .slide.s8 .top, .slide.s8 .out { font-size: 7px !important; letter-spacing: 0.14em !important; }
+  .slide .pn { font-size: 7px !important; top: 8px !important; left: 12px !important; }
+  .slide .footer-mark { font-size: 6px !important; bottom: 8px !important; left: 12px !important; right: 12px !important; }
+  .deck-frame .deck-meta { font-size: 9px !important; }
+  .deck-frame .deck-meta .nav { gap: 6px !important; }
+  .deck-frame .deck-meta .nav span { padding: 3px 6px !important; }
+
+  .rule-card { padding: 24px 20px !important; }
+  .rule-card .specimen { padding: 20px !important; }
+  .rule-card .specimen .row { grid-template-columns: 1fr !important; gap: 6px !important; padding: 12px 0 !important; }
+  .rule-card.motion .specimen { grid-template-columns: 1fr !important; }
+}
+
+/* ─── Late patches: targeted polish ─────────────────────────────── */
+
+/* Color: PRIMARY badge collides with step/hex labels in the small cell.
+ * Below 720 the cell is too small to host the centered badge — hide it. */
+@media (max-width: 720px) {
+  .scale-cell.primary-marker::after { display: none !important; }
+  .scale-cell { padding: 10px !important; font-size: 9px !important; }
+}
+
+/* Typography: meta-row at the top of the hero is 5 metadata items in a flex
+ * row — overflows on phones. Wrap and let items fill 50% each. */
+@media (max-width: 720px) {
+  .type-hero .meta-row { flex-wrap: wrap !important; gap: 14px 24px !important; }
+  .type-hero .meta-row .item { flex: 1 1 40% !important; }
+}
+
+/* (Iconography .anatomy responsive rules consolidated above at ≤960) */
+
+/* Imagery: scrim tiles are 16:9 aspect-ratio with 30px display headlines
+ * inside ~36px padding. At narrow widths headlines truncate to one word
+ * per line. Drop to 4:3 below 720 and 1-column below 480 for full breathing. */
+@media (max-width: 720px) {
+  .scrim-tile { aspect-ratio: 4 / 3 !important; }
+  .scrim-tile .copy { padding: 24px !important; }
+  .scrim-tile .copy h4 { font-size: 22px !important; }
+}
+@media (max-width: 480px) {
+  .scrim-grid { grid-template-columns: 1fr !important; }
+  .scrim-tile { aspect-ratio: 16 / 10 !important; }
+}
+
+/* Presentation: slide 06 — the product slide is a 1fr/1fr grid (copy left,
+ * bottle right). At ≤720 the slide thumbnail is so narrow that 2-col makes
+ * both halves illegible. Stack copy over bottle. */
+@media (max-width: 720px) {
+  /* Slide 6 (product hero) is a 2-col grid (copy | bottle on orange).
+   * The base .slide has aspect-ratio: 16/9 + overflow: hidden which
+   * clips the bottle panel when we stack vertically. Free the slide
+   * from the 16/9 cage just for s6 on mobile, so copy AND bottle both
+   * get room. Drop the slide's outer padding so the orange bottle
+   * panel can bleed edge-to-edge — without this it floats with black
+   * gutters on three sides which looks like a layout bug. */
+  .slide.s6 { aspect-ratio: auto !important; height: auto !important; min-height: 380px !important; padding: 0 !important; }
+  .slide.s6 .grid { grid-template-columns: 1fr !important; grid-template-rows: auto 220px !important; height: auto !important; width: 100% !important; }
+  .slide.s6 .left { padding: 32px 24px 24px !important; }
+  .slide.s6 .right { display: flex !important; align-items: center !important; justify-content: center !important; padding: 16px !important; }
+  .slide.s6 .right img { max-height: 180px !important; max-width: 60% !important; height: auto !important; width: auto !important; object-fit: contain !important; }
+  /* Footer mark sits inside .left on this slide; pull it back to slide-bottom. */
+  .slide.s6 .footer-mark { position: static !important; margin-top: 14px !important; }
+}

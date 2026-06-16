@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DeerWall · Brand Book — Collateral</title>
+<link rel="icon" type="image/png" href="source/fav_icon.png"/>
+<link rel="stylesheet" href="tokens.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<link rel="stylesheet" href="mobile.css"/>
+<style>
+/* ── HERO ─────────────────────────────────────── */
+.col-hero { background: var(--dw-sand-100); border-radius: var(--dw-radius-lg); padding: 56px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; min-height: 460px; position: relative; overflow: hidden; }
+.col-hero .copy .label { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dw-orange-700); }
+.col-hero .copy h2 { font-family: var(--dw-font-display); font-weight: 400; font-size: 56px; line-height: 1; letter-spacing: -0.025em; margin: 16px 0; color: var(--dw-ink-900); }
+.col-hero .copy h2 em { font-style: italic; color: var(--dw-orange-600); }
+.col-hero .copy p { font-size: 15px; line-height: 1.65; color: var(--dw-stone-600); margin: 0; max-width: 38ch; }
+.col-hero .stage { position: relative; height: 100%; min-height: 380px; }
+.col-hero .stage .card-1 { position: absolute; top: 8%; left: 4%; width: 64%; transform: rotate(-6deg); box-shadow: var(--dw-shadow-xl); border-radius: 6px; overflow: hidden; aspect-ratio: 7/4; background: var(--dw-ink-900); padding: 18px; display: flex; align-items: flex-end; }
+.col-hero .stage .card-1 img.wm { width: 50%; }
+.col-hero .stage .card-2 { position: absolute; top: 28%; right: 4%; width: 60%; transform: rotate(8deg); box-shadow: var(--dw-shadow-xl); border-radius: 6px; overflow: hidden; aspect-ratio: 7/4; background: var(--dw-orange-500); padding: 18px; }
+.col-hero .stage .card-2 .name { color: var(--dw-ink-900); font-family: var(--dw-font-display); font-weight: 600; font-size: 16px; }
+.col-hero .stage .card-2 .role { color: var(--dw-ink-900); font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 4px; }
+.col-hero .stage .card-2 .url { position: absolute; bottom: 14px; right: 16px; color: var(--dw-ink-900); font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.1em; }
+.col-hero .stage .tag { position: absolute; bottom: 8%; left: 26%; width: 35%; transform: rotate(-3deg); box-shadow: var(--dw-shadow-lg); }
+.col-hero .stage .tag .body { background: var(--dw-sand-50); padding: 16px 14px 24px; border-radius: 4px; aspect-ratio: 3/4; position: relative; }
+.col-hero .stage .tag .hole { width: 14px; height: 14px; border-radius: 50%; background: var(--dw-ink-900); position: absolute; top: 12px; left: 50%; transform: translateX(-50%); }
+.col-hero .stage .tag .text { font-family: var(--dw-font-display); font-weight: 500; font-size: 13px; line-height: 1.15; color: var(--dw-ink-900); margin-top: 28px; }
+.col-hero .stage .tag .text em { color: var(--dw-orange-600); font-style: italic; }
+.col-hero .stage .tag .price { position: absolute; bottom: 12px; left: 14px; font-family: var(--dw-font-mono); font-size: 18px; color: var(--dw-orange-600); }
+
+/* ── BUSINESS CARDS ───────────────────────────── */
+.bc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.bc-stage { background: var(--dw-sand-50); border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 56px 32px; display: flex; align-items: center; justify-content: center; min-height: 360px; perspective: 1200px; }
+.bc { width: 360px; aspect-ratio: 7/4; border-radius: 6px; box-shadow: var(--dw-shadow-lg); position: relative; overflow: hidden; transform: rotate(-2deg); transition: transform var(--dw-dur-base) var(--dw-ease); }
+.bc:hover { transform: rotate(0deg); }
+
+/* FRONT — split panel: ink left (info), orange right (mark).
+ * Override browser auto-blue on tel: links via inline anchor color. */
+.bc.front { background: var(--dw-ink-900); color: var(--dw-sand-50); display: grid; grid-template-columns: 1.7fr 1fr; padding: 0; }
+.bc.front .left { padding: 26px 22px 22px; display: flex; flex-direction: column; }
+.bc.front .name { font-family: var(--dw-font-display); font-weight: 500; font-size: 19px; line-height: 1.05; letter-spacing: -0.012em; margin: 0; }
+.bc.front .title { font-family: var(--dw-font-mono); font-size: 8.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dw-orange-300); margin-top: 5px; }
+.bc.front .rule { width: 28px; height: 1px; background: rgba(250,246,240,0.3); margin: 14px 0 12px; }
+.bc.front .lines { font-family: var(--dw-font-mono); font-size: 9.5px; line-height: 1.65; color: rgba(250,246,240,0.78); letter-spacing: 0.02em; margin-top: auto; }
+.bc.front .lines a, .bc.front .lines span { color: rgba(250,246,240,0.78) !important; text-decoration: none !important; display: block; }
+.bc.front .lines a:hover { color: var(--dw-orange-300) !important; }
+.bc.front .right { background: var(--dw-orange-500); display: flex; align-items: center; justify-content: center; position: relative; }
+.bc.front .right .mark { width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; }
+.bc.front .right .mark img { width: 100%; height: auto; }
+.bc.front .right .est { position: absolute; bottom: 10px; left: 10px; right: 10px; text-align: center; font-family: var(--dw-font-mono); font-size: 7px; letter-spacing: 0.22em; color: rgba(20,17,13,0.55); }
+
+/* BACK — orange pitch */
+.bc.back { background: var(--dw-orange-500); color: var(--dw-ink-900); display: flex; align-items: center; justify-content: center; transform: rotate(2deg); padding: 22px; }
+.bc.back:hover { transform: rotate(0deg); }
+.bc.back .pitch { font-family: var(--dw-font-display); font-weight: 400; font-size: 30px; line-height: 1.02; letter-spacing: -0.02em; max-width: 86%; text-align: center; }
+.bc.back .pitch em { font-style: italic; color: var(--dw-ink-900); border-bottom: 2px solid var(--dw-ink-900); padding-bottom: 1px; }
+.bc.back .corner { position: absolute; bottom: 14px; right: 16px; font-family: var(--dw-font-mono); font-size: 8.5px; letter-spacing: 0.2em; color: rgba(20,17,13,0.65); }
+.bc.back .deer-mark { position: absolute; top: 14px; left: 16px; }
+.bc.back .deer-mark img { height: 26px; }
+
+.bc-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; padding-top: 20px; border-top: var(--dw-border-thin); }
+.bc-meta .item { font-family: var(--dw-font-mono); font-size: 11px; color: var(--dw-stone-500); }
+.bc-meta .item strong { display: block; color: var(--dw-ink-800); font-size: 13px; margin-bottom: 2px; letter-spacing: 0.02em; }
+
+/* ── LETTERHEAD + ENVELOPE ────────────────────── */
+.stationery { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; }
+.stat-stage { background: var(--dw-sand-100); border-radius: var(--dw-radius-lg); padding: 48px; display: flex; align-items: center; justify-content: center; min-height: 480px; }
+.letterhead { width: 100%; max-width: 360px; aspect-ratio: 8.5/11; background: white; box-shadow: var(--dw-shadow-xl); padding: 36px 32px; position: relative; font-size: 9px; line-height: 1.5; transform: rotate(-1.5deg); }
+.letterhead .lh-head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; }
+.letterhead .lh-head img { height: 26px; }
+.letterhead .lh-head .meta { font-family: var(--dw-font-mono); font-size: 7px; line-height: 1.5; color: var(--dw-stone-600); text-align: right; letter-spacing: 0.04em; }
+.letterhead .date { font-family: var(--dw-font-mono); font-size: 7px; color: var(--dw-stone-500); margin-bottom: 18px; letter-spacing: 0.05em; }
+.letterhead .body { font-family: var(--dw-font-display); font-weight: 400; font-size: 9px; line-height: 1.55; color: var(--dw-ink-800); }
+.letterhead .body p { margin: 0 0 8px; }
+.letterhead .body p:first-child { font-size: 10px; }
+.letterhead .body .sig { margin-top: 14px; font-family: var(--dw-font-display); font-weight: 600; font-style: italic; font-size: 11px; color: var(--dw-orange-600); }
+.letterhead .body .sig-name { font-family: var(--dw-font-mono); font-size: 7px; color: var(--dw-stone-500); letter-spacing: 0.06em; }
+.letterhead .lh-foot { position: absolute; bottom: 24px; left: 32px; right: 32px; display: flex; justify-content: space-between; font-family: var(--dw-font-mono); font-size: 6.5px; color: var(--dw-stone-500); letter-spacing: 0.08em; padding-top: 12px; border-top: 1px solid rgba(31,26,20,0.1); }
+.letterhead .accent { position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--dw-orange-500); }
+
+.envelope-stage { background: var(--dw-ink-900); border-radius: var(--dw-radius-lg); padding: 48px; display: flex; align-items: center; justify-content: center; min-height: 480px; position: relative; overflow: hidden; }
+.envelope { width: 100%; max-width: 320px; aspect-ratio: 9/4; background: var(--dw-sand-50); box-shadow: var(--dw-shadow-xl); padding: 24px; position: relative; transform: rotate(-3deg); display: flex; align-items: center; }
+.envelope .wm img { height: 24px; }
+.envelope .ret { position: absolute; top: 16px; left: 24px; right: 24px; display: flex; justify-content: space-between; }
+.envelope .from { font-family: var(--dw-font-mono); font-size: 7px; line-height: 1.5; color: var(--dw-stone-600); letter-spacing: 0.04em; }
+.envelope .stripe { position: absolute; bottom: 0; left: 0; right: 0; height: 8px; background: var(--dw-orange-500); }
+
+/* ── EMAIL SIG ────────────────────────────────── */
+.email-sig { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 48px; }
+.email-frame { background: var(--dw-sand-100); border-radius: var(--dw-radius); padding: 32px; }
+.email-thread { background: white; border-radius: 6px; padding: 28px 32px; box-shadow: var(--dw-shadow-sm); max-width: 640px; margin: 0 auto; }
+.email-thread .e-header { display: flex; align-items: center; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid rgba(31,26,20,0.08); }
+.email-thread .e-header .ava { width: 36px; height: 36px; border-radius: 50%; background: var(--dw-orange-500); color: white; display: flex; align-items: center; justify-content: center; font-family: var(--dw-font-display); font-weight: 600; font-size: 14px; }
+.email-thread .e-header .meta { flex: 1; }
+.email-thread .e-header .from { font-family: var(--dw-font-display); font-weight: 600; font-size: 14px; }
+.email-thread .e-header .to { font-size: 11px; color: var(--dw-stone-500); margin-top: 1px; font-family: var(--dw-font-mono); }
+.email-thread .e-header .time { font-family: var(--dw-font-mono); font-size: 10px; color: var(--dw-stone-500); }
+.email-thread .e-subject { font-family: var(--dw-font-display); font-weight: 500; font-size: 18px; margin: 18px 0 16px; }
+.email-thread .e-body { font-size: 13px; line-height: 1.6; color: var(--dw-ink-800); }
+.email-thread .e-body p { margin: 0 0 10px; }
+.email-thread .e-sig { margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(31,26,20,0.08); display: grid; grid-template-columns: 56px 1fr; gap: 14px; align-items: center; }
+.email-thread .e-sig .wm { width: 56px; height: 56px; background: var(--dw-ink-900); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+.email-thread .e-sig .wm img { width: 36px; }
+.email-thread .e-sig .info .name { font-family: var(--dw-font-display); font-weight: 600; font-size: 14px; color: var(--dw-ink-900); }
+.email-thread .e-sig .info .title { font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dw-orange-700); margin-top: 1px; }
+.email-thread .e-sig .info .lines { font-family: var(--dw-font-mono); font-size: 10px; color: var(--dw-stone-500); margin-top: 6px; }
+.email-thread .e-sig .info .lines a { color: var(--dw-orange-600); text-decoration: none; border-bottom: 1px dotted var(--dw-orange-600); }
+.email-thread .e-sig .info .pitch { font-family: var(--dw-font-display); font-style: italic; font-size: 12px; color: var(--dw-stone-600); margin-top: 6px; }
+
+/* ── HANG TAGS / SHELF ────────────────────────── */
+.tags-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.tag-card { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 36px; min-height: 360px; display: flex; align-items: center; justify-content: center; position: relative; }
+/* Backdrops shifted ONE shade off the tag color so the tag still reads
+ * as a distinct object — pure orange-on-orange / ink-on-ink eliminates
+ * the tag's silhouette. orange-400 sits a half-step lighter than the
+ * orange-500 tag; stone-700 is dark-but-warmer than the ink-900 tag. */
+.tag-card.dark { background: var(--dw-stone-700); }
+.tag-card.orange { background: var(--dw-orange-400); }
+/* Universal tag shadow — heavier with a 1px ring — to keep the tag's
+ * edge crisp on any tonal backdrop. */
+/* Universal tag shadow — heavier with a 1px ring — keeps the tag's
+ * edge crisp on any tonal backdrop (orange-on-orange / ink-on-ink). */
+.htag { width: 160px; aspect-ratio: 3/4; background: var(--dw-sand-50); border-radius: 6px; box-shadow: 0 18px 32px rgba(0,0,0,0.22), 0 0 0 1px rgba(0,0,0,0.06); padding: 14px; position: relative; display: flex; flex-direction: column; }
+.htag .hole { width: 12px; height: 12px; border-radius: 50%; background: var(--dw-ink-900); margin: 0 auto 16px; }
+.htag .wm { display: flex; justify-content: center; margin-bottom: 12px; }
+.htag .wm img { height: 14px; }
+.htag .pitch { font-family: var(--dw-font-display); font-weight: 500; font-size: 16px; line-height: 1.05; color: var(--dw-ink-900); flex: 1; }
+.htag .pitch em { font-style: italic; color: var(--dw-orange-600); }
+.htag .price { font-family: var(--dw-font-mono); font-size: 22px; font-weight: 600; color: var(--dw-orange-600); margin-top: 8px; }
+.htag .price small { display: block; font-size: 8px; color: var(--dw-stone-500); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 2px; }
+.htag .barcode { display: flex; gap: 1px; padding: 6px 0; margin-top: 6px; border-top: 1px solid rgba(31,26,20,0.1); justify-content: center; }
+.htag .barcode span { display: inline-block; width: 1.5px; height: 18px; background: var(--dw-ink-900); }
+.htag .barcode span.tall { height: 22px; }
+.htag .barcode span.thin { width: 0.8px; }
+
+.htag.alt { background: var(--dw-orange-500); color: var(--dw-ink-900); }
+.htag.alt .wm img { filter: brightness(0); }
+.htag.alt .pitch { color: var(--dw-ink-900); }
+.htag.alt .pitch em { color: white; font-style: italic; }
+.htag.alt .price { color: var(--dw-ink-900); }
+.htag.alt .price small { color: rgba(20,17,13,0.6); }
+.htag.alt .barcode { border-top-color: rgba(20,17,13,0.2); }
+
+.htag.dark-bg { background: var(--dw-ink-900); color: var(--dw-sand-50); }
+.htag.dark-bg .hole { background: var(--dw-sand-50); }
+.htag.dark-bg .wm img { filter: brightness(0) invert(1); }
+.htag.dark-bg .pitch { color: var(--dw-sand-50); }
+.htag.dark-bg .pitch em { color: var(--dw-orange-400); }
+.htag.dark-bg .price { color: var(--dw-orange-400); }
+.htag.dark-bg .barcode { border-top-color: rgba(250,246,240,0.15); }
+.htag.dark-bg .barcode span { background: var(--dw-sand-50); }
+
+.tag-meta { padding: 16px 24px; font-family: var(--dw-font-mono); font-size: 11px; color: var(--dw-stone-500); border-top: var(--dw-border-thin); display: flex; justify-content: space-between; }
+
+/* ── RETAIL SIGN / SHELF TALKER ───────────────── */
+.shelf-talker { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); overflow: hidden; }
+.shelf-talker .stage { background: var(--dw-sand-200); padding: 64px 48px; min-height: 420px; display: flex; align-items: center; justify-content: center; gap: 32px; }
+.shelf-talker .talker { width: 280px; background: var(--dw-orange-500); color: var(--dw-ink-900); padding: 28px 24px; box-shadow: var(--dw-shadow-xl); position: relative; aspect-ratio: 5/7; display: flex; flex-direction: column; transform: rotate(-2deg); }
+.shelf-talker .talker .eyebrow { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; }
+.shelf-talker .talker h3 { font-family: var(--dw-font-display); font-weight: 400; font-size: 36px; line-height: 0.95; letter-spacing: -0.025em; margin: 12px 0 12px; }
+.shelf-talker .talker h3 em { font-style: italic; }
+.shelf-talker .talker p { font-size: 12px; line-height: 1.5; flex: 1; }
+.shelf-talker .talker .mark { font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.18em; padding-top: 12px; border-top: 1px solid rgba(20,17,13,0.25); display: flex; justify-content: space-between; }
+.shelf-talker .talker .clip { position: absolute; top: -8px; left: 50%; transform: translateX(-50%); width: 50px; height: 14px; background: var(--dw-stone-500); border-radius: 2px; }
+.shelf-talker .bottle-trio { display: flex; align-items: flex-end; gap: 8px; }
+.shelf-talker .bottle-trio img { display: block; max-height: 280px; filter: drop-shadow(0 14px 28px rgba(31,26,20,0.25)); }
+.shelf-talker .meta { padding: 20px 28px; display: flex; justify-content: space-between; font-family: var(--dw-font-mono); font-size: 11px; color: var(--dw-stone-600); }
+.shelf-talker .meta strong { color: var(--dw-ink-800); }
+
+/* ── DOOR HANGER ──────────────────────────────── */
+.door-hanger-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.dh-stage { background: var(--dw-forest-700); border-radius: var(--dw-radius-lg); padding: 40px; min-height: 460px; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.dh-stage.alt { background: var(--dw-sand-100); }
+.dh { width: 200px; background: var(--dw-sand-50); padding: 60px 22px 24px; box-shadow: var(--dw-shadow-xl); position: relative; aspect-ratio: 4/9; transform: rotate(-3deg); }
+.dh::before { content: ''; position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 50px; height: 50px; border-radius: 50%; background: var(--dw-sand-50); border: 1px solid rgba(31,26,20,0.1); }
+.dh::after { content: ''; position: absolute; top: 14px; left: 50%; transform: translateX(-50%); width: 26px; height: 26px; border-radius: 50%; background: var(--dw-stone-700); margin-top: 12px; }
+.dh .wm { display: flex; justify-content: center; margin-top: 12px; }
+.dh .wm img { height: 16px; }
+.dh .h { font-family: var(--dw-font-display); font-weight: 400; font-size: 28px; line-height: 0.95; letter-spacing: -0.02em; color: var(--dw-ink-900); margin-top: 18px; text-align: center; }
+.dh .h em { font-style: italic; color: var(--dw-orange-600); }
+.dh .body { font-size: 10px; line-height: 1.55; color: var(--dw-stone-600); margin: 14px 0; text-align: center; }
+.dh .cta { background: var(--dw-orange-500); color: var(--dw-ink-900); padding: 8px; font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.16em; text-align: center; text-transform: uppercase; font-weight: 600; }
+.dh .url { font-family: var(--dw-font-mono); font-size: 8px; color: var(--dw-stone-500); text-align: center; margin-top: 10px; letter-spacing: 0.1em; }
+
+.dh.dark { background: var(--dw-ink-900); color: var(--dw-sand-50); }
+.dh.dark::before { background: var(--dw-ink-900); border-color: rgba(250,246,240,0.15); }
+.dh.dark .wm img { filter: brightness(0) invert(1); }
+.dh.dark .h { color: var(--dw-sand-50); }
+.dh.dark .h em { color: var(--dw-orange-400); }
+.dh.dark .body { color: rgba(250,246,240,0.7); }
+.dh.dark .url { color: rgba(250,246,240,0.5); }
+
+/* ── INVOICE / DELIVERY SLIP ───────────────── */
+.invoice { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 48px; }
+.invoice-frame { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+.invoice-doc { background: var(--dw-sand-50); padding: 36px 32px; box-shadow: var(--dw-shadow-md); border-radius: 4px; }
+.invoice-doc .head { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 28px; }
+.invoice-doc .head img { height: 24px; }
+.invoice-doc .head .invno { font-family: var(--dw-font-mono); font-size: 10px; color: var(--dw-stone-600); text-align: right; line-height: 1.55; }
+.invoice-doc .head .invno strong { display: block; font-size: 14px; color: var(--dw-ink-900); letter-spacing: 0.02em; }
+.invoice-doc .who { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+.invoice-doc .who .col h5 { font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dw-stone-500); margin: 0 0 6px; font-weight: 500; }
+.invoice-doc .who .col p { font-size: 11px; line-height: 1.55; color: var(--dw-ink-800); margin: 0; }
+.invoice-doc table { width: 100%; border-collapse: collapse; font-size: 11px; }
+.invoice-doc thead th { text-align: left; font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dw-stone-500); font-weight: 500; padding: 6px 0; border-bottom: 1px solid rgba(31,26,20,0.15); }
+.invoice-doc thead th.r { text-align: right; }
+.invoice-doc tbody td { padding: 8px 0; border-bottom: 1px solid rgba(31,26,20,0.06); }
+.invoice-doc tbody td.r { text-align: right; font-family: var(--dw-font-mono); }
+.invoice-doc tfoot td { padding: 8px 0; font-family: var(--dw-font-mono); }
+.invoice-doc tfoot tr:last-child td { font-weight: 700; font-size: 14px; color: var(--dw-orange-600); border-top: 2px solid var(--dw-ink-900); padding-top: 12px; }
+.invoice-doc tfoot td.r { text-align: right; }
+.invoice-doc .foot-note { margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(31,26,20,0.1); font-family: var(--dw-font-display); font-style: italic; font-size: 12px; color: var(--dw-stone-600); }
+.invoice-side { display: flex; flex-direction: column; gap: 16px; }
+.invoice-side .item { padding: 18px 20px; background: var(--dw-sand-100); border-radius: var(--dw-radius); }
+.invoice-side .item h5 { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--dw-orange-700); margin: 0 0 4px; }
+.invoice-side .item p { font-size: 13px; color: var(--dw-stone-600); margin: 0; line-height: 1.55; }
+
+@media (max-width: 1024px) {
+  .col-hero { grid-template-columns: 1fr; padding: 32px; }
+  .col-hero .copy h2 { font-size: 36px; }
+  .bc-grid { grid-template-columns: 1fr; }
+  .stationery { grid-template-columns: 1fr; }
+  .tags-row { grid-template-columns: 1fr; }
+  .door-hanger-grid { grid-template-columns: 1fr; }
+  .invoice-frame { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="ds-shell">
+  <div id="sidebar"></div>
+  <main class="ds-main">
+
+    <header class="ds-page-header">
+      <div class="ds-page-eyebrow">09 · Templates</div>
+      <h1 class="ds-page-title">Collateral &amp; <em>print.</em></h1>
+      <p class="ds-page-lede">Cards, letterhead, hangtags, shelf talkers, door hangers, invoices. The everyday touchpoints — never accidental, always on system.</p>
+    </header>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">9.1</span>
+        <h2 class="ds-section-title">The kit</h2>
+        <p class="ds-section-desc">A landed brand looks the same on a business card as it does on a 32oz bottle. This page is the proof.</p>
+      </div>
+      <div class="col-hero">
+        <div class="copy">
+          <span class="label">DW-COL · KIT · 2026</span>
+          <h2>Same voice.<br/>Pocket-sized,<br/><em>door-sized,</em><br/>or sealed in an envelope.</h2>
+          <p>Collateral is where the brand earns its keep. The customer sees a hangtag before they ever see a homepage. So it had better land.</p>
+        </div>
+        <div class="stage">
+          <div class="card-1"><img class="wm" src="assets/dw-orange-white.png" alt=""/></div>
+          <div class="card-2">
+            <div class="name">Sam Whitmore</div>
+            <div class="role">Founder · Acreage Co.</div>
+            <span class="url">deerwall.global</span>
+          </div>
+          <div class="tag">
+            <div class="body">
+              <span class="hole"></span>
+              <div class="text">The natural way to keep deer <em>away.</em></div>
+              <span class="price">$24</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">9.2</span>
+        <h2 class="ds-section-title">Business cards</h2>
+        <p class="ds-section-desc">Two-sided. Front in ink, back in orange. The pitch always lives on the back, never the front.</p>
+      </div>
+      <div class="bc-grid">
+        <div class="bc-stage">
+          <div class="bc front">
+            <div class="left">
+              <div class="name">Sam Whitmore</div>
+              <div class="title">Founder · Acreage Co.</div>
+              <div class="rule"></div>
+              <div class="lines"><span>+1 512 555 0124</span><span>sam@deerwall.global</span><span>deerwall.global</span></div>
+            </div>
+            <div class="right">
+              <div class="mark"><img src="assets/dw-s-white.png" alt=""/></div>
+              <div class="est">EST · 25</div>
+            </div>
+          </div>
+        </div>
+        <div class="bc-stage">
+          <div class="bc back">
+            <div class="deer-mark"><img src="assets/dw-s-color.png" alt=""/></div>
+            <div class="pitch">The natural way to keep deer <em>away.</em></div>
+            <span class="corner">DEERWALL · GLOBAL</span>
+          </div>
+        </div>
+      </div>
+      <div class="bc-meta">
+        <div class="item"><strong>Stock</strong>16pt natural uncoated</div>
+        <div class="item"><strong>Print</strong>4/4 + soft-touch coat</div>
+        <div class="item"><strong>Trim</strong>3.5" × 2" rounded 4pt</div>
+        <div class="item"><strong>Edge</strong>Painted orange (optional)</div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">9.3</span>
+        <h2 class="ds-section-title">Letterhead &amp; envelope</h2>
+        <p class="ds-section-desc">A 6-pixel orange spine on the letter. Wordmark top-left. Mono metadata top-right. The design system holds.</p>
+      </div>
+      <div class="stationery">
+        <div class="stat-stage">
+          <div class="letterhead">
+            <div class="accent"></div>
+            <div class="lh-head">
+              <img src="assets/dw-color.png" alt=""/>
+              <div class="meta">DEERWALL, INC.<br/>1124 RIDGE LINE RD<br/>AUSTIN, TX 78704<br/>DEERWALL.GLOBAL</div>
+            </div>
+            <div class="date">04 · 12 · 2026</div>
+            <div class="body">
+              <p>Dear Mrs. Greene,</p>
+              <p>Thank you for trusting us with the back fenceline. As promised, the second case ships Monday — you should see it Wednesday at the latest.</p>
+              <p>One note: the new concentrate jug dilutes 16:1, not 8:1 like the old formula. So you'll need half the product you used to. We made it stronger on purpose; the gardens will thank us.</p>
+              <p>If you have any questions, reply to this letter or just shoot us a note. We answer email same-day.</p>
+              <p class="sig">— Sam</p>
+              <p class="sig-name">SAM WHITMORE · FOUNDER</p>
+            </div>
+            <div class="lh-foot">
+              <span>DEERWALL · INC.</span>
+              <span>EST. 2024</span>
+              <span>PAGE 01 / 01</span>
+            </div>
+          </div>
+        </div>
+        <div class="envelope-stage">
+          <div class="envelope">
+            <div class="ret">
+              <div class="from">DEERWALL, INC.<br/>1124 RIDGE LINE RD<br/>AUSTIN, TX 78704</div>
+              <div class="wm"><img src="assets/dw-color.png" alt=""/></div>
+            </div>
+            <div class="stripe"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">9.4</span>
+        <h2 class="ds-section-title">Email signature</h2>
+        <p class="ds-section-desc">Six lines max. Always with the deer mark in a 56px ink square. Pitch line in italic Newsreader.</p>
+      </div>
+      <div class="email-sig">
+        <div class="email-frame">
+          <div class="email-thread">
+            <div class="e-header">
+              <div class="ava">SW</div>
+              <div class="meta">
+                <div class="from">Sam Whitmore</div>
+                <div class="to">to · maria@nursery.co</div>
+              </div>
+              <span class="time">04 · 12 · 26 · 9:42</span>
+            </div>
+            <div class="e-subject">Re: That second case</div>
+            <div class="e-body">
+              <p>Maria — sounds great. I'll have the warehouse pull the order this afternoon and we'll get tracking out by EOD tomorrow.</p>
+              <p>One thing to flag: the new concentrate is 16:1 not 8:1 like the old formula. Strongest deer repellent we've ever made. Update your back-of-house docs when you get a sec.</p>
+              <p>Talk soon.</p>
+            </div>
+            <div class="e-sig">
+              <div class="wm"><img src="assets/dw-orange-white.png" alt=""/></div>
+              <div class="info">
+                <div class="name">Sam Whitmore</div>
+                <div class="title">Founder · DeerWall</div>
+                <div class="lines">+1 512 555 0124 · <a href="#">deerwall.global</a></div>
+                <div class="pitch">"The natural way to keep deer away."</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">9.5</span>
+        <h2 class="ds-section-title">Hangtags</h2>
+        <p class="ds-section-desc">Three colorways for retail, tied to a bottle by a jute string. Always 3 × 4 inches, always with a hole at the top center.</p>
+      </div>
+      <div class="tags-row">
+        <div class="tag-card">
+          <div class="htag">
+            <span class="hole"></span>
+            <div class="wm"><img src="assets/dw-color.png" alt=""/></div>
+            <div class="pitch">The natural way to keep deer <em>away.</em></div>
+            <div class="price"><small>32 OZ · RTU</small>$24</div>
+            <div class="barcode">
+              <span></span><span class="thin"></span><span class="tall"></span><span></span><span class="thin"></span><span></span><span class="tall"></span><span class="thin"></span><span></span><span></span><span class="thin"></span><span class="tall"></span><span></span><span></span><span class="thin"></span><span class="tall"></span><span></span>
+            </div>
+          </div>
+        </div>
+        <div class="tag-card orange">
+          <div class="htag alt">
+            <span class="hole"></span>
+            <div class="wm"><img src="assets/dw-black-white.png" alt=""/></div>
+            <div class="pitch">One bottle. <em>Thirty days.</em></div>
+            <div class="price"><small>1 GAL · RTU</small>$54</div>
+            <div class="barcode">
+              <span></span><span class="thin"></span><span class="tall"></span><span></span><span class="thin"></span><span></span><span class="tall"></span><span class="thin"></span><span></span><span></span><span class="thin"></span><span class="tall"></span><span></span><span></span><span class="thin"></span><span class="tall"></span><span></span>
+            </div>
+          </div>
+        </div>
+        <div class="tag-card dark">
+          <div class="htag dark-bg">
+            <span class="hole"></span>
+            <div class="wm"><img src="assets/dw-orange-white.png" alt=""/></div>
+            <div class="pitch">Makes <em>16 gallons</em> of repellent.</div>
+            <div class="price"><small>1 GAL · CONC</small>$96</div>
+            <div class="barcode">
+              <span></span><span class="thin"></span><span class="tall"></span><span></span><span class="thin"></span><span></span><span class="tall"></span><span class="thin"></span><span></span><span></span><span class="thin"></span><span class="tall"></span><span></span><span></span><span class="thin"></span><span class="tall"></span><span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">9.6</span>
+        <h2 class="ds-section-title">Retail · shelf talker</h2>
+        <p class="ds-section-desc">A small piece of orange that lives in the channel between the price tag and the bottle. The whole point is wayfinding.</p>
+      </div>
+      <div class="shelf-talker">
+        <div class="stage">
+          <div class="talker">
+            <span class="clip"></span>
+            <span class="eyebrow">NEW · 2026</span>
+            <h3>The natural way<br/>to keep deer<br/><em>away.</em></h3>
+            <p>One application lasts 30 days, rain or shine. Made in Texas from rosemary, garlic, and putrescent eggs.</p>
+            <span class="mark"><span>DEERWALL.GLOBAL</span><span>$24</span></span>
+          </div>
+          <div class="bottle-trio">
+            <img src="assets/bottle-32oz-rtu.png" alt=""/>
+            <img src="assets/bottle-1gal-rtu.png" alt=""/>
+            <img src="assets/bottle-1gal-concentrate.png" alt=""/>
+          </div>
+        </div>
+        <div class="meta">
+          <span><strong>Stock</strong> · 12pt cover · matte UV one side</span>
+          <span><strong>Trim</strong> · 5" × 7" · channel clip</span>
+          <span><strong>Print</strong> · 4/0 spot orange</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">9.7</span>
+        <h2 class="ds-section-title">Door hangers</h2>
+        <p class="ds-section-desc">For the canvasser hitting an HOA newsletter list. One side cream, the other ink. Both work.</p>
+      </div>
+      <div class="door-hanger-grid">
+        <div class="dh-stage alt">
+          <div class="dh">
+            <div class="wm"><img src="assets/dw-color.png" alt=""/></div>
+            <div class="h">Your hostas <em>called.</em></div>
+            <div class="body">They want to know why the deer keep eating them. We made a thing for that. Spray once, wait 30 days, repeat.</div>
+            <div class="cta">Try a 32oz · $24</div>
+            <div class="url">DEERWALL.GLOBAL/HOA</div>
+          </div>
+        </div>
+        <div class="dh-stage">
+          <div class="dh dark">
+            <div class="wm"><img src="assets/dw-orange-white.png" alt=""/></div>
+            <div class="h">30 nights of <em>peace.</em></div>
+            <div class="body">No fence. No netting. No sad little plastic owls. One spray bottle, the smell of rosemary and garlic, and one month of quiet beds.</div>
+            <div class="cta">Order today · $24</div>
+            <div class="url">DEERWALL.GLOBAL/HOA</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">9.8</span>
+        <h2 class="ds-section-title">Invoice &amp; delivery slip</h2>
+        <p class="ds-section-desc">B2B nurseries and landscapers. Newsreader for the body, mono for the numbers, orange for the total.</p>
+      </div>
+      <div class="invoice">
+        <div class="invoice-frame">
+          <div class="invoice-doc">
+            <div class="head">
+              <img src="assets/dw-color.png" alt=""/>
+              <div class="invno">INVOICE<br/><strong>DW-2026-0412</strong>04 · 12 · 2026</div>
+            </div>
+            <div class="who">
+              <div class="col">
+                <h5>Bill to</h5>
+                <p>Greene's Nursery, LLC<br/>2284 Cedar Bend Rd<br/>Round Rock, TX 78664</p>
+              </div>
+              <div class="col">
+                <h5>Ship to</h5>
+                <p>Greene's Nursery, LLC<br/>Receiving · Bay 4<br/>Round Rock, TX 78664</p>
+              </div>
+            </div>
+            <table>
+              <thead><tr><th>Item</th><th class="r">Qty</th><th class="r">Unit</th><th class="r">Total</th></tr></thead>
+              <tbody>
+                <tr><td>32 oz · Ready-to-use</td><td class="r">24</td><td class="r">$14.40</td><td class="r">$345.60</td></tr>
+                <tr><td>1 gal · Ready-to-use</td><td class="r">8</td><td class="r">$32.40</td><td class="r">$259.20</td></tr>
+                <tr><td>1 gal · Concentrate</td><td class="r">4</td><td class="r">$57.60</td><td class="r">$230.40</td></tr>
+                <tr><td>Shelf-talker pack</td><td class="r">1</td><td class="r">$0.00</td><td class="r">$0.00</td></tr>
+              </tbody>
+              <tfoot>
+                <tr><td colspan="3">Subtotal</td><td class="r">$835.20</td></tr>
+                <tr><td colspan="3">Freight (FOB origin)</td><td class="r">$48.00</td></tr>
+                <tr><td colspan="3">Total due · Net 30</td><td class="r">$883.20</td></tr>
+              </tfoot>
+            </table>
+            <div class="foot-note">"The natural way to keep deer away." — Thank you for the order, Maria.</div>
+          </div>
+          <div class="invoice-side">
+            <div class="item">
+              <h5>Pay online</h5>
+              <p>deerwall.global/pay/DW-2026-0412 — credit, ACH, or wire. Net 30, 2/10 net 30 if paid in ten.</p>
+            </div>
+            <div class="item">
+              <h5>Returns</h5>
+              <p>Sealed bottles, original cases. We pay return freight on damaged shipments. Just photograph and reply.</p>
+            </div>
+            <div class="item">
+              <h5>Accounts</h5>
+              <p>accounts@deerwall.global · +1 512 555 0124 · M–F 7a–4p Central</p>
+            </div>
+            <div class="item">
+              <h5>Tax · EIN</h5>
+              <p>87-4521903 · DeerWall, Inc. — A Texas C-corp.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="sidebar.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('sidebar')).render(<DSSidebar current="collateral"/>);
+  ReactDOM.createRoot(document.getElementById('footer')).render(<DSFooter/>);
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+/* DeerWall Design System — Core tokens
+ * Verbatim copy from design_handoff_deerwall_brand/source/tokens.css
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500;1,6..72,600&family=Inter+Tight:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Color: Primary (DeerWall Orange) */
+  --dw-orange-950: #3D1A09;
+  --dw-orange-900: #5C2810;
+  --dw-orange-800: #7E3814;
+  --dw-orange-700: #A64A19;
+  --dw-orange-600: #D55C1F;
+  --dw-orange-500: #EE6B1F;
+  --dw-orange-400: #F18843;
+  --dw-orange-300: #F5AB72;
+  --dw-orange-200: #F8C8A1;
+  --dw-orange-100: #FBE2CD;
+  --dw-orange-50:  #FDF1E6;
+
+  /* Color: Forest (secondary) */
+  --dw-forest-900: #122319;
+  --dw-forest-800: #1B3526;
+  --dw-forest-700: #254834;
+  --dw-forest-600: #2F5C42;
+  --dw-forest-500: #3D7553;
+  --dw-forest-300: #88AE96;
+  --dw-forest-100: #D5E2D9;
+
+  /* Color: Ink */
+  --dw-ink-950: #0B0907;
+  --dw-ink-900: #14110D;
+  --dw-ink-800: #1F1A14;
+  --dw-ink-700: #2A241D;
+  --dw-ink-600: #3D362C;
+  --dw-ink-500: #5A5246;
+
+  /* Color: Sand / Stone */
+  --dw-sand-50:  #FAF6F0;
+  --dw-sand-100: #F2EBDF;
+  --dw-sand-200: #E5DAC5;
+  --dw-sand-300: #D2C4A8;
+  --dw-stone-400: #A89F8C;
+  --dw-stone-500: #7B7363;
+  --dw-stone-600: #564F42;
+  --dw-stone-700: #3A352B;
+
+  /* Semantic */
+  --dw-success: #3D7553;
+  --dw-warning: #D89B30;
+  --dw-danger:  #B53626;
+  --dw-info:    #2F5C42;
+
+  /* Type */
+  --dw-font-display: 'Newsreader', 'Times New Roman', serif;
+  --dw-font-sans:    'Inter Tight', -apple-system, system-ui, sans-serif;
+  --dw-font-mono:    'JetBrains Mono', 'SF Mono', Menlo, monospace;
+
+  --dw-text-xs:   12px;
+  --dw-text-sm:   14px;
+  --dw-text-base: 16px;
+  --dw-text-lg:   18px;
+  --dw-text-xl:   22px;
+  --dw-text-2xl:  28px;
+  --dw-text-3xl:  36px;
+  --dw-text-4xl:  48px;
+  --dw-text-5xl:  64px;
+  --dw-text-6xl:  84px;
+  --dw-text-7xl:  112px;
+
+  /* Spacing */
+  --dw-space-1: 4px;
+  --dw-space-2: 8px;
+  --dw-space-3: 12px;
+  --dw-space-4: 16px;
+  --dw-space-5: 24px;
+  --dw-space-6: 32px;
+  --dw-space-7: 48px;
+  --dw-space-8: 64px;
+  --dw-space-9: 96px;
+  --dw-space-10: 128px;
+
+  /* Radii */
+  --dw-radius-sm: 2px;
+  --dw-radius-md: 4px;
+  --dw-radius-lg: 8px;
+  --dw-radius-xl: 14px;
+  --dw-radius-pill: 999px;
+
+  /* Shadows */
+  --dw-shadow-sm: 0 1px 2px rgba(31, 26, 20, 0.06), 0 1px 1px rgba(31, 26, 20, 0.04);
+  --dw-shadow-md: 0 4px 12px rgba(31, 26, 20, 0.08), 0 2px 4px rgba(31, 26, 20, 0.04);
+  --dw-shadow-lg: 0 18px 40px rgba(31, 26, 20, 0.14), 0 4px 12px rgba(31, 26, 20, 0.06);
+  --dw-shadow-xl: 0 30px 80px rgba(31, 26, 20, 0.18);
+
+  /* Borders */
+  --dw-border-thin:   1px solid rgba(31, 26, 20, 0.10);
+  --dw-border-medium: 1px solid rgba(31, 26, 20, 0.18);
+  --dw-border-strong: 1px solid rgba(31, 26, 20, 0.32);
+
+  /* Motion */
+  --dw-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dw-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --dw-dur-fast: 150ms;
+  --dw-dur-base: 240ms;
+  --dw-dur-slow: 400ms;
+}

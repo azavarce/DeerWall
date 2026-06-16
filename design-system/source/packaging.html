@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DeerWall · Brand Book — Packaging</title>
+<link rel="icon" type="image/png" href="source/fav_icon.png"/>
+<link rel="stylesheet" href="tokens.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<link rel="stylesheet" href="mobile.css"/>
+<style>
+.pkg-hero { background: var(--dw-ink-900); color: var(--dw-sand-50); border-radius: var(--dw-radius-lg); padding: 56px 48px 0 56px; display: grid; grid-template-columns: 0.95fr 1fr; gap: 24px; overflow: hidden; min-height: 460px; position: relative; }
+.pkg-hero::before { content: ''; position: absolute; right: -8%; top: 50%; transform: translateY(-50%); width: 65%; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at center, rgba(238,107,31,0.18) 0%, rgba(238,107,31,0.06) 35%, transparent 65%); pointer-events: none; }
+.pkg-hero > * { position: relative; z-index: 1; }
+.pkg-hero .copy { padding-bottom: 56px; align-self: center; }
+.pkg-hero .label { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dw-orange-400); }
+.pkg-hero h2 { font-family: var(--dw-font-display); font-weight: 400; font-size: 56px; line-height: 1; letter-spacing: -0.025em; margin: 16px 0 16px; }
+.pkg-hero h2 em { font-style: italic; color: var(--dw-orange-300); }
+.pkg-hero p { font-size: 15px; line-height: 1.65; color: rgba(250,246,240,0.85); margin: 0; max-width: 36ch; }
+.pkg-hero .lineup { display: flex; align-items: flex-end; justify-content: center; gap: 12px; padding: 32px 24px 0; position: relative; }
+.pkg-hero .lineup::after { content: ''; position: absolute; left: 4%; right: 4%; bottom: -4px; height: 28px; background: radial-gradient(ellipse at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 40%, transparent 75%); filter: blur(6px); pointer-events: none; z-index: 0; }
+.pkg-hero .lineup img { display: block; height: auto; object-fit: contain; filter: drop-shadow(0 24px 24px rgba(0,0,0,0.55)) drop-shadow(0 6px 8px rgba(0,0,0,0.4)); position: relative; z-index: 1; }
+/* Size by WIDTH so gallons (squat) read bigger than the tall narrow trigger bottle. 1gal ≈ 4× 32oz volume → wider footprint. */
+.pkg-hero .lineup .a { width: 110px; }
+.pkg-hero .lineup .b { width: 170px; }
+.pkg-hero .lineup .c { width: 170px; }
+
+.sku-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.sku { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); overflow: hidden; }
+.sku .ph { background: var(--dw-sand-100); padding: 32px; display: flex; align-items: center; justify-content: center; min-height: 360px; }
+.sku .ph img { max-height: 320px; max-width: 80%; display: block; }
+.sku .meta { padding: 24px 28px 28px; }
+.sku .code { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dw-orange-700); }
+.sku h3 { font-family: var(--dw-font-display); font-weight: 600; font-size: 24px; margin: 6px 0 4px; letter-spacing: -0.01em; }
+.sku .sub { font-size: 13px; color: var(--dw-stone-600); margin: 0 0 20px; line-height: 1.5; }
+.sku .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding-top: 16px; border-top: 1px solid rgba(31,26,20,0.08); }
+.sku .specs .item { padding: 8px 0; font-family: var(--dw-font-mono); font-size: 11px; color: var(--dw-stone-500); }
+.sku .specs .item strong { display: block; color: var(--dw-ink-800); font-size: 13px; margin-bottom: 2px; letter-spacing: 0.02em; }
+
+.anat { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 48px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: center; }
+.anat .stage { position: relative; padding: 24px; display: flex; align-items: center; justify-content: center; }
+.anat .stage .bottle-wrap { position: relative; display: inline-block; }
+.anat .stage img { max-height: 480px; display: block; }
+.anat .stage .pin { position: absolute; display: flex; align-items: center; pointer-events: none; }
+.anat .stage .pin .dot { width: 22px; height: 22px; border-radius: 50%; background: var(--dw-orange-500); color: white; font-family: var(--dw-font-mono); font-size: 10px; font-weight: 700; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 0 4px rgba(238,107,31,0.18); flex-shrink: 0; z-index: 2; }
+.anat .stage .pin .leader { height: 1.5px; background: var(--dw-orange-500); flex-shrink: 0; }
+.anat .stage .pin .lbl { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--dw-ink-800); white-space: nowrap; padding: 4px 8px; background: white; border: 1px solid rgba(217,119,6,0.3); border-radius: 4px; flex-shrink: 0; }
+/* Pins positioned RELATIVE TO THE BOTTLE IMAGE. The bottle PNG ratio is ~0.54:1.
+   Pins point INTO the bottle from outside; .left pins flow leftward, .right flow rightward. */
+.anat .stage .pin.left { flex-direction: row-reverse; }
+.anat .stage .pin.left .leader { width: 36px; }
+.anat .stage .pin.right .leader { width: 36px; }
+/* Y positions hit the actual elements on the 32oz trigger bottle label.
+   Bottle is centered in the image; label occupies bottom ~40% of image. */
+.anat .stage .p1 { top: 62%; left: 35%; transform: translateX(calc(-100% - 2%)); } /* wordmark - left out */
+.anat .stage .p2 { top: 70%; left: 78%; } /* RTU badge - right out */
+.anat .stage .p3 { top: 82%; left: 25%; transform: translateX(calc(-100% - 2%)); } /* deer - left out */
+.anat .stage .p4 { top: 80%; left: 75%; } /* tagline - right out */
+.anat .stage .p5 { top: 91%; left: 35%; transform: translateX(calc(-100% - 2%)); } /* QR - left out */
+.anat .stage .p6 { top: 97%; left: 78%; } /* net content - right out */
+
+.anat h3 { font-family: var(--dw-font-display); font-weight: 500; font-size: 28px; letter-spacing: -0.015em; margin: 0 0 24px; }
+.anat .rule { display: grid; grid-template-columns: 32px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(31,26,20,0.08); }
+.anat .rule:first-of-type { border-top: 0; }
+.anat .rule .pn { font-family: var(--dw-font-mono); font-size: 11px; color: white; background: var(--dw-orange-500); height: 24px; width: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-top: 2px; }
+.anat .rule .desc strong { font-family: var(--dw-font-display); font-weight: 600; font-size: 15px; display: block; margin-bottom: 2px; }
+.anat .rule .desc span { font-size: 13px; color: var(--dw-stone-600); line-height: 1.5; }
+
+.dieline { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 48px; }
+.dieline-frame { background: var(--dw-sand-50); border-radius: var(--dw-radius); padding: 40px; position: relative; aspect-ratio: 5/3; display: flex; align-items: center; justify-content: center; }
+.dieline-frame .label-art { width: 70%; height: 80%; background: linear-gradient(110deg, var(--dw-ink-900) 0% 56%, var(--dw-orange-500) 56% 100%); position: relative; border-radius: 6px; overflow: hidden; box-shadow: var(--dw-shadow-md); }
+.dieline-frame .label-art .wm { position: absolute; top: 14%; left: 8%; right: 8%; }
+.dieline-frame .label-art .wm img { width: 60%; max-width: 280px; }
+.dieline-frame .label-art .deer-silhouette { position: absolute; bottom: 0; left: 6%; width: 50%; height: 60%; background: rgba(0,0,0,0.5); clip-path: polygon(45% 5%, 50% 0, 55% 5%, 60% 0, 65% 8%, 70% 25%, 80% 40%, 75% 60%, 70% 100%, 30% 100%, 25% 60%, 30% 40%, 35% 30%, 30% 18%, 35% 10%, 40% 5%); opacity: 0.6; }
+.dieline-frame .label-art .pitch { position: absolute; bottom: 14%; right: 8%; color: white; font-family: var(--dw-font-display); font-weight: 500; font-size: 18px; line-height: 1.1; max-width: 38%; }
+.dieline-frame .label-art .pitch em { font-style: italic; }
+.dieline-frame .label-art .badge { position: absolute; top: 22%; right: 6%; width: 56px; height: 56px; border-radius: 50%; background: var(--dw-ink-900); color: white; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: var(--dw-font-mono); font-size: 9px; line-height: 1.05; text-align: center; padding: 4px; }
+.dieline-frame .bleed { position: absolute; top: 24px; left: 24px; right: 24px; bottom: 24px; border: 1.5px dashed var(--dw-orange-500); border-radius: 10px; pointer-events: none; opacity: 0.6; }
+.dieline-frame .safe { position: absolute; top: 56px; left: 56px; right: 56px; bottom: 56px; border: 1.5px dashed var(--dw-forest-700); border-radius: 8px; pointer-events: none; opacity: 0.5; }
+.dieline-frame .pin-tag { position: absolute; font-family: var(--dw-font-mono); font-size: 10px; padding: 3px 8px; border-radius: 3px; background: white; }
+.dieline-frame .pt-bleed { top: 12px; left: 24px; color: var(--dw-orange-700); border: 1px solid rgba(217,119,6,0.3); }
+.dieline-frame .pt-safe { top: 12px; right: 24px; color: var(--dw-forest-700); border: 1px solid rgba(37,72,52,0.3); }
+.dieline-meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 24px; padding-top: 20px; border-top: var(--dw-border-thin); }
+.dieline-meta .item { font-family: var(--dw-font-mono); font-size: 11px; color: var(--dw-stone-500); }
+.dieline-meta .item strong { display: block; color: var(--dw-ink-800); font-size: 13px; margin-bottom: 2px; letter-spacing: 0.02em; }
+
+.shelf { background: var(--dw-sand-100); border-radius: var(--dw-radius-lg); padding: 56px 32px 0; position: relative; overflow: hidden; min-height: 380px; display: flex; flex-direction: column; align-items: center; }
+.shelf .row { display: flex; align-items: flex-end; gap: 8px; }
+.shelf .row img { display: block; max-height: 280px; filter: drop-shadow(0 12px 24px rgba(31,26,20,0.18)); }
+.shelf .surface { position: absolute; bottom: 0; left: 0; right: 0; height: 36px; background: var(--dw-stone-700); }
+.shelf .surface::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--dw-stone-600); }
+.shelf .label { position: absolute; bottom: 48px; left: 50%; transform: translateX(-50%); font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: white; padding: 6px 14px; background: var(--dw-orange-500); border-radius: 100px; }
+
+.scenarios { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.scn { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); overflow: hidden; }
+.scn .stage { background: var(--dw-sand-100); padding: 32px; min-height: 280px; display: flex; align-items: center; justify-content: center; gap: 20px; position: relative; }
+.scn .stage.dark { background: var(--dw-ink-900); }
+.scn .stage.orange { background: var(--dw-orange-500); }
+.scn .stage img { max-height: 240px; filter: drop-shadow(0 12px 24px rgba(0,0,0,0.2)); }
+.scn .meta { padding: 20px 24px; }
+.scn .meta .name { font-family: var(--dw-font-display); font-weight: 600; font-size: 16px; }
+.scn .meta .desc { font-size: 13px; color: var(--dw-stone-600); margin-top: 4px; line-height: 1.5; }
+
+.donts { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.dont { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 24px; position: relative; min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+.dont .x { position: absolute; top: 12px; right: 12px; width: 22px; height: 22px; line-height: 22px; text-align: center; background: #B43C28; color: white; border-radius: 50%; font-size: 11px; font-weight: 700; }
+.dont .demo { width: 100%; flex: 1; display: flex; align-items: center; justify-content: center; }
+.dont .demo img { max-height: 140px; }
+.dont .desc { font-size: 12px; color: var(--dw-stone-600); padding-top: 12px; border-top: 1px solid rgba(31,26,20,0.08); width: 100%; text-align: center; }
+.dont .desc strong { display: block; color: var(--dw-ink-800); margin-bottom: 2px; font-family: var(--dw-font-display); font-weight: 600; font-size: 14px; }
+.dont-1 .demo img { transform: scaleX(1.4); }
+.dont-2 .demo { background: linear-gradient(135deg, #00f, #f0f); padding: 20px; border-radius: 6px; }
+.dont-3 .demo img { filter: hue-rotate(120deg) saturate(0.7); }
+
+@media (max-width: 1024px) {
+  .pkg-hero { grid-template-columns: 1fr; padding: 32px; }
+  .pkg-hero h2 { font-size: 36px; }
+  .pkg-hero .lineup img { max-height: 240px; }
+  .sku-row { grid-template-columns: 1fr; }
+  .anat { grid-template-columns: 1fr; padding: 24px; }
+  .scenarios { grid-template-columns: 1fr; }
+  .donts { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="ds-shell">
+  <div id="sidebar"></div>
+  <main class="ds-main">
+
+    <header class="ds-page-header">
+      <div class="ds-page-eyebrow">08 · Templates</div>
+      <h1 class="ds-page-title">Packaging &amp; <em>SKUs.</em></h1>
+      <p class="ds-page-lede">Three bottles, one system. White HDPE, an orange-and-ink wraparound label, the deer photographed against the brand block. Designed to be picked out of a crowded shelf in two seconds.</p>
+    </header>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">8.1</span>
+        <h2 class="ds-section-title">The lineup</h2>
+        <p class="ds-section-desc">A 32oz trigger sprayer, a 1-gallon ready-to-use, and a 1-gallon concentrate. Three sizes, three jobs.</p>
+      </div>
+      <div class="pkg-hero">
+        <div class="copy">
+          <span class="label">DW-PKG · LINEUP · 2026</span>
+          <h2>One bottle.<br/><em>Thirty days.</em></h2>
+          <p>The 32oz handles a perimeter and a few flowerbeds. The gallon RTU covers a property. The concentrate makes 16 gallons for the gardener who's done playing around.</p>
+        </div>
+        <div class="lineup">
+          <img class="a" src="assets/bottle-32oz-rtu.png" alt="32oz trigger"/>
+          <img class="b" src="assets/bottle-1gal-rtu.png" alt="1 gallon RTU"/>
+          <img class="c" src="assets/bottle-1gal-concentrate.png" alt="1 gallon concentrate"/>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">8.2</span>
+        <h2 class="ds-section-title">SKU specifications</h2>
+        <p class="ds-section-desc">The full sheet. Hand to your printer, your warehouse, your retail buyer.</p>
+      </div>
+      <div class="sku-row">
+        <div class="sku">
+          <div class="ph"><img src="assets/bottle-32oz-rtu.png" alt=""/></div>
+          <div class="meta">
+            <span class="code">DW-32-RTU · "THE TRIGGER"</span>
+            <h3>32 oz · Ready-to-use</h3>
+            <p class="sub">Trigger sprayer. The starter bottle for a yard, a few beds, or a curious first-time buyer.</p>
+            <div class="specs">
+              <div class="item"><strong>Volume</strong>946 ml / 32 fl oz</div>
+              <div class="item"><strong>Coverage</strong>1,200 sq ft</div>
+              <div class="item"><strong>Bottle</strong>White HDPE · trigger</div>
+              <div class="item"><strong>Label</strong>4-color · wraparound</div>
+              <div class="item"><strong>MSRP</strong>$24</div>
+              <div class="item"><strong>Master pack</strong>12 / case</div>
+            </div>
+          </div>
+        </div>
+        <div class="sku">
+          <div class="ph"><img src="assets/bottle-1gal-rtu.png" alt=""/></div>
+          <div class="meta">
+            <span class="code">DW-G-RTU · "THE PROPERTY"</span>
+            <h3>1 gal · Ready-to-use</h3>
+            <p class="sub">Refill jug, ready to pour into your trigger. For an acre or more, or for a household that's already a believer.</p>
+            <div class="specs">
+              <div class="item"><strong>Volume</strong>3.78 L / 1 US gal</div>
+              <div class="item"><strong>Coverage</strong>4,800 sq ft</div>
+              <div class="item"><strong>Bottle</strong>White HDPE · handle</div>
+              <div class="item"><strong>Label</strong>4-color · 2-panel</div>
+              <div class="item"><strong>MSRP</strong>$54</div>
+              <div class="item"><strong>Master pack</strong>4 / case</div>
+            </div>
+          </div>
+        </div>
+        <div class="sku">
+          <div class="ph"><img src="assets/bottle-1gal-concentrate.png" alt=""/></div>
+          <div class="meta">
+            <span class="code">DW-G-CON · "THE ACREAGE"</span>
+            <h3>1 gal · Concentrate</h3>
+            <p class="sub">16:1 dilution. Makes 16 gallons of repellent. For estates, orchards, vineyards, and serious gardeners.</p>
+            <div class="specs">
+              <div class="item"><strong>Volume</strong>3.78 L / 1 US gal</div>
+              <div class="item"><strong>Coverage</strong>17,000 sq ft</div>
+              <div class="item"><strong>Bottle</strong>White HDPE · handle</div>
+              <div class="item"><strong>Label</strong>4-color · 2-panel · concentrate flag</div>
+              <div class="item"><strong>MSRP</strong>$96</div>
+              <div class="item"><strong>Master pack</strong>4 / case</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">8.3</span>
+        <h2 class="ds-section-title">Label anatomy</h2>
+        <p class="ds-section-desc">Six fixed elements, in this order. Don't move them. The shelf-recognition test depends on the label being identical across SKUs at a glance.</p>
+      </div>
+      <div class="anat">
+        <div class="stage">
+          <div class="bottle-wrap">
+            <img src="assets/bottle-32oz-rtu.png" alt=""/>
+            <div class="pin p1 left"><div class="dot">1</div><div class="leader"></div><span class="lbl">Wordmark · 28% width</span></div>
+            <div class="pin p2 right"><div class="dot">2</div><div class="leader"></div><span class="lbl">"Ready to use" badge</span></div>
+            <div class="pin p3 left"><div class="dot">3</div><div class="leader"></div><span class="lbl">Hero deer photograph</span></div>
+            <div class="pin p4 right"><div class="dot">4</div><div class="leader"></div><span class="lbl">Tagline · 4 lines max</span></div>
+            <div class="pin p5 left"><div class="dot">5</div><div class="leader"></div><span class="lbl">QR · 100% Natural mark</span></div>
+            <div class="pin p6 right"><div class="dot">6</div><div class="leader"></div><span class="lbl">Net content · URL</span></div>
+          </div>
+        </div>
+        <div>
+          <h3>Six elements. Same order. Every SKU.</h3>
+          <div class="rule"><span class="pn">1</span><div class="desc"><strong>Wordmark, top &amp; centered</strong><span>Sized to roughly 28% of the panel width. Always orange/white. Never reversed to a single color.</span></div></div>
+          <div class="rule"><span class="pn">2</span><div class="desc"><strong>SKU badge</strong><span>"Ready to use" or "Concentrate" — a black circle with white mono type. Top-right of the visible panel.</span></div></div>
+          <div class="rule"><span class="pn">3</span><div class="desc"><strong>Hero deer</strong><span>Whitetail buck against the orange-on-ink color block. Same crop on every SKU; never re-shot per size.</span></div></div>
+          <div class="rule"><span class="pn">4</span><div class="desc"><strong>Tagline</strong><span>"The natural way to keep deer away" — Inter Tight 700, white, four lines max. Right-aligned to the deer.</span></div></div>
+          <div class="rule"><span class="pn">5</span><div class="desc"><strong>Trust marks</strong><span>QR to deerwall.global on the lower-left, 100% Natural leaf mark adjacent. Same scale across SKUs.</span></div></div>
+          <div class="rule"><span class="pn">6</span><div class="desc"><strong>Net content + URL</strong><span>Bottom right. Mono. Net volume above, deerwall.global URL below in orange.</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">8.4</span>
+        <h2 class="ds-section-title">Dieline · 32oz panel</h2>
+        <p class="ds-section-desc">Bleed is 3mm beyond the live area; safe zone holds 5mm in. Type and registration marks live inside the safe.</p>
+      </div>
+      <div class="dieline">
+        <div class="dieline-frame">
+          <div class="label-art">
+            <div class="wm"><img src="assets/dw-orange-white.png" alt=""/></div>
+            <div class="badge">READY<br/>TO<br/>USE</div>
+            <div class="deer-silhouette"></div>
+            <div class="pitch">The natural way to keep deer <em>away.</em></div>
+          </div>
+          <div class="bleed"></div>
+          <div class="safe"></div>
+          <span class="pin-tag pt-bleed">— BLEED · 3 mm</span>
+          <span class="pin-tag pt-safe">— SAFE ZONE · 5 mm</span>
+        </div>
+        <div class="dieline-meta">
+          <div class="item"><strong>Substrate</strong>BOPP white film</div>
+          <div class="item"><strong>Adhesive</strong>Permanent acrylic</div>
+          <div class="item"><strong>Print</strong>4/0 + flood matte varnish</div>
+          <div class="item"><strong>Resolution</strong>300 dpi @ final size</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">8.5</span>
+        <h2 class="ds-section-title">In context</h2>
+        <p class="ds-section-desc">How the lineup sits at retail, on a porch, on a workbench. The orange does the wayfinding.</p>
+      </div>
+      <div class="shelf">
+        <div class="row">
+          <img src="assets/bottle-32oz-rtu.png" alt=""/>
+          <img src="assets/bottle-32oz-rtu.png" alt=""/>
+          <img src="assets/bottle-1gal-rtu.png" alt=""/>
+          <img src="assets/bottle-1gal-concentrate.png" alt=""/>
+          <img src="assets/bottle-1gal-rtu.png" alt=""/>
+          <img src="assets/bottle-32oz-rtu.png" alt=""/>
+        </div>
+        <span class="label">SHELF · GARDEN CENTER · 4 FT FACING</span>
+        <div class="surface"></div>
+      </div>
+      <div class="scenarios" style="margin-top: 16px">
+        <div class="scn">
+          <div class="stage dark"><img src="assets/bottle-32oz-rtu.png" alt=""/></div>
+          <div class="meta"><div class="name">Editorial · campaign</div><div class="desc">Single bottle, dramatic lighting, ink-900 backdrop. For paid social and PR.</div></div>
+        </div>
+        <div class="scn">
+          <div class="stage orange"><img src="assets/bottle-1gal-rtu.png" alt=""/><img src="assets/bottle-1gal-concentrate.png" alt=""/></div>
+          <div class="meta"><div class="name">Brand · loud</div><div class="desc">Two-up against the orange brand block. For trade shows and homepage hero.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">8.6</span>
+        <h2 class="ds-section-title">Don't</h2>
+        <p class="ds-section-desc">Three packaging mistakes that break shelf recognition.</p>
+      </div>
+      <div class="donts">
+        <div class="dont dont-1">
+          <span class="x">✕</span>
+          <div class="demo"><img src="assets/bottle-32oz-rtu.png" alt=""/></div>
+          <div class="desc"><strong>Don't squish the bottle</strong>Aspect ratio is locked across all photography.</div>
+        </div>
+        <div class="dont dont-2">
+          <span class="x">✕</span>
+          <div class="demo" style="background: linear-gradient(135deg, #00f, #f0f); padding: 20px; border-radius: 6px"><img src="assets/bottle-1gal-rtu.png" alt=""/></div>
+          <div class="desc"><strong>Don't add gradients behind</strong>Solid backgrounds only. Sand, ink, or orange.</div>
+        </div>
+        <div class="dont dont-3">
+          <span class="x">✕</span>
+          <div class="demo"><img src="assets/bottle-1gal-concentrate.png" alt="" style="filter: hue-rotate(120deg) saturate(0.7)"/></div>
+          <div class="desc"><strong>Don't recolor the label</strong>Orange/ink is the brand. Never green, blue, red.</div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="sidebar.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('sidebar')).render(<DSSidebar current="packaging"/>);
+  ReactDOM.createRoot(document.getElementById('footer')).render(<DSFooter/>);
+</script>
+</body>
+</html>

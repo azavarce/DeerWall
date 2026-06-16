@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DeerWall · Brand Book — Overview</title>
+<link rel="icon" type="image/png" href="source/fav_icon.png"/>
+<link rel="stylesheet" href="tokens.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<link rel="stylesheet" href="mobile.css"/>
+<style>
+.hero {
+  padding: 96px 80px 72px;
+  background: var(--dw-ink-900);
+  color: var(--dw-sand-100);
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  right: -180px; bottom: -180px;
+  width: 620px; height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--dw-orange-700), transparent 65%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.hero img.deer {
+  position: absolute;
+  right: 0; top: 0;
+  height: 100%;
+  width: 50%;
+  object-fit: cover;
+  opacity: 0.30;
+  mask-image: linear-gradient(to left, black 30%, transparent);
+  -webkit-mask-image: linear-gradient(to left, black 30%, transparent);
+}
+.hero-eyebrow {
+  font-family: var(--dw-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--dw-orange-400);
+  margin-bottom: 24px;
+  display: flex; gap: 16px; align-items: center;
+}
+.hero-eyebrow .vol { color: var(--dw-stone-400); }
+.hero h1 {
+  font-family: var(--dw-font-display);
+  font-weight: 400;
+  font-size: clamp(64px, 8vw, 124px);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  margin: 0 0 28px;
+  color: var(--dw-sand-50);
+  position: relative;
+  z-index: 2;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--dw-orange-400);
+  font-weight: 400;
+}
+.hero p {
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--dw-sand-200);
+  max-width: 560px;
+  margin: 0;
+  position: relative; z-index: 2;
+}
+.hero-meta {
+  display: flex; gap: 64px;
+  margin-top: 56px; padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  max-width: 760px;
+  position: relative; z-index: 2;
+}
+.hero-meta .item .label {
+  font-family: var(--dw-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dw-stone-400);
+  margin-bottom: 8px;
+}
+.hero-meta .item .value {
+  font-size: 17px;
+  color: var(--dw-sand-50);
+  font-family: var(--dw-font-display);
+  font-weight: 400;
+}
+
+/* Pillars */
+.pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+  padding: 64px 80px;
+  background: var(--dw-sand-100);
+  border-bottom: var(--dw-border-thin);
+}
+.pillar {
+  background: white;
+  padding: 32px;
+  border-radius: var(--dw-radius-lg);
+  border: var(--dw-border-thin);
+}
+.pillar .num {
+  font-family: var(--dw-font-mono);
+  font-size: 11px;
+  color: var(--dw-orange-700);
+  letter-spacing: 0.15em;
+  margin-bottom: 16px;
+}
+.pillar h3 {
+  font-family: var(--dw-font-display);
+  font-weight: 500;
+  font-size: 26px;
+  letter-spacing: -0.015em;
+  margin: 0 0 12px;
+  color: var(--dw-ink-800);
+}
+.pillar h3 em { color: var(--dw-orange-600); font-style: italic; }
+.pillar p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--dw-stone-600);
+  margin: 0;
+}
+
+/* Big nav grid */
+.nav-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: var(--dw-border-thin);
+}
+.nav-card {
+  padding: 48px;
+  border-right: var(--dw-border-thin);
+  border-bottom: var(--dw-border-thin);
+  background: var(--dw-sand-50);
+  text-decoration: none;
+  color: inherit;
+  transition: background var(--dw-dur-base) var(--dw-ease);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-height: 280px;
+  position: relative;
+}
+.nav-card:hover { background: white; }
+.nav-card .num {
+  font-family: var(--dw-font-mono);
+  font-size: 11px;
+  color: var(--dw-stone-500);
+  letter-spacing: 0.15em;
+}
+.nav-card h3 {
+  font-family: var(--dw-font-display);
+  font-weight: 400;
+  font-size: 38px;
+  letter-spacing: -0.02em;
+  margin: auto 0 0;
+  color: var(--dw-ink-800);
+}
+.nav-card p {
+  font-size: 14px;
+  color: var(--dw-stone-600);
+  margin: 0;
+  max-width: 360px;
+}
+.nav-card .arrow {
+  position: absolute;
+  top: 48px; right: 48px;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--dw-stone-400);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--dw-stone-600);
+  transition: all var(--dw-dur-base) var(--dw-ease);
+}
+.nav-card:hover .arrow {
+  background: var(--dw-ink-800);
+  border-color: var(--dw-ink-800);
+  color: white;
+}
+.nav-card.dark { background: var(--dw-ink-800); color: var(--dw-sand-100); }
+.nav-card.dark h3 { color: var(--dw-sand-50); }
+.nav-card.dark p { color: var(--dw-sand-200); }
+.nav-card.dark .num { color: var(--dw-orange-400); }
+.nav-card.dark .arrow { border-color: rgba(255,255,255,0.3); color: var(--dw-sand-100); }
+.nav-card.dark:hover { background: var(--dw-ink-900); }
+.nav-card.dark:hover .arrow { background: var(--dw-orange-500); border-color: var(--dw-orange-500); color: white; }
+.nav-card.orange { background: var(--dw-orange-500); color: white; }
+.nav-card.orange h3 { color: white; }
+.nav-card.orange p { color: var(--dw-orange-100); }
+.nav-card.orange .num { color: var(--dw-orange-100); }
+.nav-card.orange .arrow { border-color: rgba(255,255,255,0.4); color: white; }
+.nav-card.orange:hover { background: var(--dw-orange-600); }
+.nav-card.cream { background: var(--dw-orange-100); }
+
+/* Principles */
+.principles {
+  padding: 80px;
+  background: var(--dw-ink-900);
+  color: var(--dw-sand-100);
+}
+.principles h2 {
+  font-family: var(--dw-font-display);
+  font-weight: 400;
+  font-size: 56px;
+  letter-spacing: -0.02em;
+  margin: 0 0 48px;
+  color: var(--dw-sand-50);
+  max-width: 760px;
+}
+.principles h2 em { font-style: italic; color: var(--dw-orange-400); }
+.principle-row {
+  display: grid;
+  grid-template-columns: 80px 240px 1fr;
+  gap: 32px;
+  padding: 28px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  align-items: baseline;
+}
+.principle-row .num {
+  font-family: var(--dw-font-mono);
+  font-size: 12px;
+  color: var(--dw-orange-400);
+  letter-spacing: 0.15em;
+}
+.principle-row h4 {
+  font-family: var(--dw-font-display);
+  font-weight: 500;
+  font-size: 24px;
+  margin: 0;
+  color: var(--dw-sand-50);
+}
+.principle-row p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--dw-sand-200);
+  margin: 0;
+  max-width: 560px;
+}
+
+@media (max-width: 960px) {
+  .hero { padding: 56px 20px 48px; }
+  .hero h1 { font-size: clamp(40px, 11vw, 64px); }
+  .hero img.deer { display: none; }
+  .hero-meta { flex-direction: column; gap: 20px; }
+  .pillars { grid-template-columns: 1fr; padding: 32px 20px; }
+  .nav-grid { grid-template-columns: 1fr; }
+  .nav-card { padding: 28px 20px; min-height: 0; border-right: 0; }
+  .nav-card .arrow { top: 24px; right: 20px; }
+  .principles { padding: 40px 20px; }
+  .principles h2 { font-size: 32px; }
+  .principle-row { grid-template-columns: 1fr; gap: 6px; padding: 18px 0; }
+}
+</style>
+</head>
+<body>
+<div class="ds-shell">
+  <div id="sidebar"></div>
+  <main class="ds-main">
+
+    <section class="hero">
+      <img class="deer" src="assets/img-deer.jpg" alt=""/>
+      <div class="hero-eyebrow">
+        <span>DeerWall · Brand Book</span>
+        <span class="vol">Vol. 01 · 2026</span>
+      </div>
+      <h1>Keep deer out,<br/><em>naturally.</em></h1>
+      <p>The complete brand system for DeerWall — from logo to label, packaging to paid ads, retail to retail-talker. Built so anything we ship looks like it shipped from the same studio.</p>
+      <div class="hero-meta">
+        <div class="item"><div class="label">Audience</div><div class="value">Homeowners with gardens</div></div>
+        <div class="item"><div class="label">Voice</div><div class="value">Confident, plain-spoken</div></div>
+        <div class="item"><div class="label">Edge</div><div class="value">100% natural · pet-safe</div></div>
+      </div>
+    </section>
+
+    <section class="pillars">
+      <div class="pillar">
+        <div class="num">PILLAR / 01</div>
+        <h3>Natural is the <em>proof.</em></h3>
+        <p>Plant oils, minerals, and water — that's it. The brand has to look as honest as the formula. No synthetic shine, no chemistry-set graphics.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">PILLAR / 02</div>
+        <h3>Plain-spoken <em>confidence.</em></h3>
+        <p>We tell the truth in short sentences. No "advanced repellent technology." No "patented blend." Just: it works, here's why, here's how to use it.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">PILLAR / 03</div>
+        <h3>Earn the <em>shelf.</em></h3>
+        <p>The label is our loudest billboard. Every word, photo, and stripe earns its place. A customer should know what's in the bottle from ten feet away.</p>
+      </div>
+    </section>
+
+    <section class="nav-grid">
+      <a class="nav-card dark" href="strategy.html">
+        <div class="num">01 — BRAND</div>
+        <p>Mission, audience, voice, the words we say and the ones we never say. The strategy underneath everything visual.</p>
+        <h3>Strategy &amp; voice</h3>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card orange" href="logo.html">
+        <div class="num">02 — BRAND</div>
+        <p>Master logo, lockups, clear-space, sizing, and misuse — using the existing DeerWall mark in all four color variants.</p>
+        <h3>Logo</h3>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card cream" href="color.html">
+        <div class="num">03 — FOUNDATION</div>
+        <p>Orange-led palette, plus Forest, Ink, and Sand neutrals. Full scales, pairings, and accessibility ratios.</p>
+        <h3>Color</h3>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card" href="typography.html">
+        <div class="num">04 — FOUNDATION</div>
+        <p>Newsreader display + Inter Tight workhorse + JetBrains Mono. An editorial pairing for an honest brand.</p>
+        <h3>Typography</h3>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card" href="iconography.html">
+        <div class="num">05 — FOUNDATION</div>
+        <p>A 30-glyph icon set with construction rules. Linear, rounded joins, sized 16/20/24.</p>
+        <h3>Iconography</h3>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card" href="imagery.html">
+        <div class="num">06 — FOUNDATION</div>
+        <p>House grade for product, deer, garden, and customer photography. Yes/no examples included.</p>
+        <h3>Imagery</h3>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card" href="components.html">
+        <div class="num">07 — COMPONENTS</div>
+        <p>Buttons, forms, badges, cards, navigation. Live, copy-pasteable.</p>
+        <h3>UI Library</h3>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card dark" href="packaging.html">
+        <div class="num">08 — TEMPLATES</div>
+        <p>The full SKU lineup — 32&nbsp;oz spray, 1&nbsp;gallon RTU, 1&nbsp;gallon concentrate — plus label anatomy.</p>
+        <h3>Packaging</h3>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card" href="collateral.html">
+        <div class="num">09 — TEMPLATES</div>
+        <p>Business cards, letterhead, retail shelf-talkers, email signature.</p>
+        <h3>Collateral</h3>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card" href="social.html">
+        <div class="num">10 — TEMPLATES</div>
+        <p>Instagram feed, stories, paid-ad system, and the redesigned website hero — every public-facing surface.</p>
+        <h3>Social &amp; web</h3>
+        <span class="arrow">→</span>
+      </a>
+      <a class="nav-card orange" href="presentation.html" style="grid-column: span 2;">
+        <div class="num">11 — TEMPLATES</div>
+        <p>Investor and retail-buyer presentation deck — title, big-stat, chapter, and chart layouts at 16:9.</p>
+        <h3>Presentation deck</h3>
+        <span class="arrow">→</span>
+      </a>
+    </section>
+
+    <section class="principles">
+      <h2>Six principles that make every decision <em>easier.</em></h2>
+      <div class="principle-row">
+        <div class="num">P / 01</div><h4>Orange is the brand.</h4>
+        <p>One signature color, used with conviction. We don't dilute it with a rainbow of accents — we let it carry the equity.</p>
+      </div>
+      <div class="principle-row">
+        <div class="num">P / 02</div><h4>The deer is the proof.</h4>
+        <p>Real photographic deer — not illustrations, not silhouettes — show that we know our subject. Treat them with respect, never as villains.</p>
+      </div>
+      <div class="principle-row">
+        <div class="num">P / 03</div><h4>Editorial over corporate.</h4>
+        <p>Confident serif, generous whitespace, plain language. Beats clip-art and gradient gloss every time.</p>
+      </div>
+      <div class="principle-row">
+        <div class="num">P / 04</div><h4>Show real customers.</h4>
+        <p>If we have a customer photo, use it. If we don't, mark a placeholder — never fake it with stock smiles.</p>
+      </div>
+      <div class="principle-row">
+        <div class="num">P / 05</div><h4>Less surface, more system.</h4>
+        <p>The same components everywhere — packaging, deck, web, retail. Each surface compounds the equity of the others.</p>
+      </div>
+      <div class="principle-row">
+        <div class="num">P / 06</div><h4>Read it from ten feet.</h4>
+        <p>Every label, ad, and shelf-talker has to communicate at distance. Hierarchy isn't decoration; it's the job.</p>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="sidebar.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('sidebar')).render(<DSSidebar current="index"/>);
+  ReactDOM.createRoot(document.getElementById('footer')).render(<DSFooter/>);
+</script>
+</body>
+</html>

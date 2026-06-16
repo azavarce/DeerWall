@@ -1,0 +1,57 @@
+/* baseline.css — minimal reset and body defaults */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--dw-sand-50);
+  color: var(--dw-ink-800);
+  font-family: var(--dw-font-sans);
+  font-size: var(--dw-text-base);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  /* Also kill the decorative hover/lift transforms — the user opted out of motion. */
+  .btn:hover,
+  .product-card:hover,
+  .product-card.is-popular,
+  .product-card.is-popular:hover,
+  .field-card:hover,
+  .field-card:hover .field-thumb,
+  .field-card:hover .field-play,
+  .video-wrap:hover .video-play,
+  .wa-float:hover {
+    transform: none !important;
+  }
+}
+
+::selection { background: var(--dw-orange-500); color: white; }
+
+img, svg, video { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: 0; background: none; padding: 0; color: inherit; }
+input, textarea, select { font: inherit; }
+
+h1, h2, h3, h4, h5, h6, p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+[hidden] { display: none !important; }
+
+:focus-visible {
+  outline: 2px solid var(--dw-orange-500);
+  outline-offset: 2px;
+  border-radius: var(--dw-radius-sm);
+}

@@ -1,0 +1,581 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DeerWall · Brand Book — Social &amp; web</title>
+<link rel="icon" type="image/png" href="source/fav_icon.png"/>
+<link rel="stylesheet" href="tokens.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<link rel="stylesheet" href="mobile.css"/>
+<style>
+/* ── HERO ─────────────────────────────────── */
+.sw-hero { background: var(--dw-orange-500); border-radius: var(--dw-radius-lg); padding: 56px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: center; min-height: 460px; position: relative; overflow: hidden; color: var(--dw-ink-900); }
+.sw-hero .copy .label { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; }
+.sw-hero .copy h2 { font-family: var(--dw-font-display); font-weight: 400; font-size: 56px; line-height: 1; letter-spacing: -0.025em; margin: 16px 0; }
+.sw-hero .copy h2 em { font-style: italic; }
+.sw-hero .copy p { font-size: 15px; line-height: 1.65; max-width: 36ch; margin: 0; opacity: 0.85; }
+
+.sw-hero .stage { position: relative; height: 100%; min-height: 420px; }
+.sw-hero .stage .phone { position: absolute; top: 0; right: 8%; width: 240px; aspect-ratio: 9/19; background: var(--dw-ink-900); border-radius: 36px; padding: 8px; box-shadow: var(--dw-shadow-xl); transform: rotate(4deg); }
+.sw-hero .stage .phone .screen { width: 100%; height: 100%; background: var(--dw-sand-50); border-radius: 28px; overflow: hidden; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+.sw-hero .stage .phone .post { background: var(--dw-ink-900); aspect-ratio: 1; border-radius: 8px; padding: 12px; color: white; display: flex; flex-direction: column; justify-content: space-between; }
+.sw-hero .stage .phone .post .h { font-family: var(--dw-font-display); font-style: italic; font-size: 18px; line-height: 1; color: var(--dw-orange-300); }
+.sw-hero .stage .phone .post .wm { font-family: var(--dw-font-mono); font-size: 7px; letter-spacing: 0.2em; opacity: 0.6; }
+.sw-hero .stage .phone .row { display: flex; gap: 6px; }
+.sw-hero .stage .phone .row > * { flex: 1; aspect-ratio: 1; border-radius: 6px; }
+.sw-hero .stage .phone .a { background: var(--dw-orange-500); }
+.sw-hero .stage .phone .b { background: url(assets/img-deer.jpg) center/cover; }
+.sw-hero .stage .phone .c { background: var(--dw-forest-700); }
+.sw-hero .stage .phone .d { background: var(--dw-sand-200); }
+.sw-hero .stage .browser { position: absolute; bottom: 0; left: 0; width: 360px; background: white; border-radius: 8px; box-shadow: var(--dw-shadow-xl); transform: rotate(-3deg); overflow: hidden; }
+.sw-hero .stage .browser .bar { background: var(--dw-sand-100); padding: 8px 12px; display: flex; align-items: center; gap: 8px; }
+.sw-hero .stage .browser .bar .dots { display: flex; gap: 4px; }
+.sw-hero .stage .browser .bar .dots span { width: 8px; height: 8px; border-radius: 50%; background: rgba(31,26,20,0.2); }
+.sw-hero .stage .browser .bar .url { background: white; border-radius: 4px; padding: 3px 8px; font-family: var(--dw-font-mono); font-size: 10px; color: var(--dw-stone-500); flex: 1; }
+.sw-hero .stage .browser .canvas { background: var(--dw-ink-900); padding: 16px; height: 110px; display: flex; align-items: center; gap: 12px; color: white; }
+.sw-hero .stage .browser .canvas h4 { font-family: var(--dw-font-display); font-weight: 500; font-size: 18px; line-height: 1.05; margin: 0; flex: 1; }
+.sw-hero .stage .browser .canvas h4 em { font-style: italic; color: var(--dw-orange-400); }
+.sw-hero .stage .browser .canvas img { height: 70px; }
+
+/* ── SECTION HELPERS ───────────────────────── */
+.section-tab { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); overflow: hidden; }
+.section-tab .stage { background: var(--dw-sand-100); padding: 48px; display: flex; align-items: center; justify-content: center; min-height: 480px; gap: 24px; flex-wrap: wrap; }
+.section-tab .meta { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 20px 28px; border-top: var(--dw-border-thin); }
+.section-tab .meta .item { font-family: var(--dw-font-mono); font-size: 11px; color: var(--dw-stone-500); }
+.section-tab .meta .item strong { display: block; color: var(--dw-ink-800); font-size: 13px; margin-bottom: 2px; letter-spacing: 0.02em; }
+
+/* ── SOCIAL POSTS GRID ─────────────────────── */
+.posts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.post { aspect-ratio: 1; border-radius: var(--dw-radius); overflow: hidden; position: relative; box-shadow: var(--dw-shadow-md); }
+.post .corner-mark { position: absolute; bottom: 12px; right: 14px; font-family: var(--dw-font-mono); font-size: 8px; letter-spacing: 0.18em; color: rgba(255,255,255,0.65); }
+.post .corner-mark.dark { color: rgba(20,17,13,0.55); }
+.post .pn { position: absolute; top: 12px; left: 14px; font-family: var(--dw-font-mono); font-size: 8px; letter-spacing: 0.18em; color: rgba(255,255,255,0.55); }
+.post .pn.dark { color: rgba(20,17,13,0.4); }
+
+.post.p1 { background: var(--dw-orange-500); display: flex; align-items: center; justify-content: center; padding: 32px; }
+.post.p1 .h { font-family: var(--dw-font-display); font-weight: 400; font-size: 38px; line-height: 0.95; color: var(--dw-ink-900); letter-spacing: -0.025em; text-align: center; }
+.post.p1 .h em { font-style: italic; }
+
+.post.p2 { background: var(--dw-ink-900); display: flex; flex-direction: column; justify-content: space-between; padding: 28px; color: white; }
+.post.p2 .h { font-family: var(--dw-font-display); font-weight: 400; font-size: 30px; line-height: 1; letter-spacing: -0.02em; }
+.post.p2 .h em { font-style: italic; color: var(--dw-orange-400); }
+.post.p2 .stat { font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.18em; color: var(--dw-orange-400); }
+
+.post.p3 { background: url(assets/img-deer.jpg) center/cover; }
+.post.p3 .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(20,17,13,0.85)); }
+.post.p3 .quote { position: absolute; bottom: 28px; left: 24px; right: 24px; color: white; font-family: var(--dw-font-display); font-style: italic; font-weight: 400; font-size: 18px; line-height: 1.15; }
+
+.post.p4 { background: var(--dw-sand-100); padding: 28px; display: flex; flex-direction: column; justify-content: space-between; }
+.post.p4 .num { font-family: var(--dw-font-display); font-weight: 400; font-size: 84px; line-height: 0.85; color: var(--dw-orange-600); letter-spacing: -0.04em; font-style: italic; }
+.post.p4 .label { font-family: var(--dw-font-display); font-weight: 500; font-size: 18px; line-height: 1.1; color: var(--dw-ink-900); max-width: 16ch; }
+
+.post.p5 { background: var(--dw-forest-700); padding: 24px; display: flex; align-items: flex-end; }
+.post.p5::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle at 20% 80%, rgba(238,107,31,0.3), transparent 50%); }
+.post.p5 .pitch { font-family: var(--dw-font-display); font-weight: 500; font-size: 24px; line-height: 1.05; color: var(--dw-sand-50); position: relative; }
+.post.p5 .pitch em { font-style: italic; color: var(--dw-orange-300); }
+
+.post.p6 { background: var(--dw-orange-500); padding: 0; display: flex; flex-direction: column; }
+.post.p6 .top { background: var(--dw-ink-900); flex: 1; display: flex; align-items: center; justify-content: center; padding: 18px; }
+.post.p6 .top img { max-width: 70%; max-height: 60%; }
+.post.p6 .bot { padding: 16px; color: var(--dw-ink-900); }
+.post.p6 .bot .h { font-family: var(--dw-font-display); font-style: italic; font-weight: 500; font-size: 22px; line-height: 1; }
+.post.p6 .bot .sub { font-family: var(--dw-font-mono); font-size: 8px; letter-spacing: 0.18em; margin-top: 6px; }
+
+/* ── STORY / REELS ─────────────────────────── */
+.stories-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.story { aspect-ratio: 9/16; border-radius: var(--dw-radius); overflow: hidden; position: relative; box-shadow: var(--dw-shadow-md); }
+.story .progress { position: absolute; top: 8px; left: 8px; right: 8px; display: flex; gap: 4px; z-index: 2; }
+.story .progress span { flex: 1; height: 2px; background: rgba(255,255,255,0.3); border-radius: 1px; }
+.story .progress span.on { background: white; }
+.story .progress.dark span { background: rgba(20,17,13,0.2); }
+.story .progress.dark span.on { background: var(--dw-ink-900); }
+.story .handle { position: absolute; top: 22px; left: 14px; right: 14px; display: flex; align-items: center; gap: 8px; z-index: 2; color: white; font-family: var(--dw-font-mono); font-size: 9px; }
+.story .handle.dark { color: var(--dw-ink-900); }
+.story .handle .av { width: 22px; height: 22px; border-radius: 50%; background: var(--dw-orange-500); display: flex; align-items: center; justify-content: center; }
+.story .handle .av img { width: 14px; }
+
+.story.s1 { background: var(--dw-ink-900); display: flex; align-items: center; justify-content: center; padding: 30px; color: white; }
+.story.s1 .h { font-family: var(--dw-font-display); font-weight: 400; font-size: 30px; line-height: 1; letter-spacing: -0.02em; text-align: center; }
+.story.s1 .h em { font-style: italic; color: var(--dw-orange-400); }
+
+.story.s2 { background: var(--dw-orange-500); padding: 60px 22px 30px; display: flex; flex-direction: column; justify-content: space-between; color: var(--dw-ink-900); }
+.story.s2 .num { font-family: var(--dw-font-display); font-weight: 400; font-style: italic; font-size: 72px; line-height: 0.9; letter-spacing: -0.04em; display: block; }
+.story.s2 .lbl { font-family: var(--dw-font-display); font-weight: 500; font-size: 17px; line-height: 1.15; }
+.story.s2 .swipe { font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.16em; text-align: center; margin-top: 12px; opacity: 0.7; }
+
+.story.s3 { background: url(assets/img-deer.jpg) center/cover; }
+.story.s3::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,17,13,0.55) 0%, rgba(20,17,13,0.2) 30%, rgba(20,17,13,0.75) 55%, rgba(20,17,13,0.98) 80%); }
+.story.s3 .copy { position: absolute; bottom: 40px; left: 22px; right: 22px; color: white; z-index: 2; }
+.story.s3 .copy h4 { font-family: var(--dw-font-display); font-weight: 400; font-style: italic; font-size: 26px; line-height: 1.05; margin: 0; }
+.story.s3 .copy h4 em { color: var(--dw-orange-400); font-style: italic; }
+.story.s3 .copy p { font-size: 12px; line-height: 1.5; margin: 12px 0 0; opacity: 0.95; }
+
+.story.s4 { background: var(--dw-sand-50); padding: 60px 22px 30px; display: flex; flex-direction: column; justify-content: space-between; color: var(--dw-ink-900); }
+.story.s4 .top { font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.16em; color: var(--dw-orange-600); }
+.story.s4 .quote { font-family: var(--dw-font-display); font-style: italic; font-weight: 400; font-size: 22px; line-height: 1.15; }
+.story.s4 .source { font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.12em; color: var(--dw-stone-500); }
+
+/* ── WEBSITE ───────────────────────────────── */
+.web-frame { background: var(--dw-sand-100); border-radius: var(--dw-radius-lg); padding: 24px; }
+.web-window { background: white; border-radius: 8px; overflow: hidden; box-shadow: var(--dw-shadow-lg); }
+.web-window .chrome { background: var(--dw-sand-100); padding: 10px 14px; display: flex; align-items: center; gap: 10px; border-bottom: var(--dw-border-thin); }
+.web-window .chrome .dots { display: flex; gap: 6px; }
+.web-window .chrome .dots span { width: 10px; height: 10px; border-radius: 50%; }
+.web-window .chrome .dots span:nth-child(1) { background: #E5715A; }
+.web-window .chrome .dots span:nth-child(2) { background: #E5C45A; }
+.web-window .chrome .dots span:nth-child(3) { background: #6BB970; }
+.web-window .chrome .url { flex: 1; background: white; border-radius: 4px; padding: 4px 12px; font-family: var(--dw-font-mono); font-size: 11px; color: var(--dw-stone-500); }
+.web-window .chrome .url::before { content: '🔒  '; opacity: 0.4; }
+
+.web-nav { background: var(--dw-ink-900); color: var(--dw-sand-50); padding: 14px 32px; display: flex; align-items: center; gap: 32px; }
+.web-nav img { height: 24px; }
+.web-nav .links { display: flex; gap: 28px; flex: 1; font-family: var(--dw-font-sans); font-size: 13px; }
+.web-nav .links a { color: rgba(250,246,240,0.7); text-decoration: none; }
+.web-nav .links a.on { color: var(--dw-orange-400); }
+.web-nav .cart { font-family: var(--dw-font-mono); font-size: 11px; padding: 6px 14px; background: var(--dw-orange-500); color: var(--dw-ink-900); border-radius: 100px; font-weight: 600; letter-spacing: 0.06em; }
+
+.web-hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 380px; }
+.web-hero .copy { padding: 56px; background: var(--dw-sand-50); display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+.web-hero .copy .eb { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dw-orange-700); }
+.web-hero .copy h1 { font-family: var(--dw-font-display); font-weight: 400; font-size: 60px; line-height: 0.95; letter-spacing: -0.03em; margin: 0; color: var(--dw-ink-900); }
+.web-hero .copy h1 em { font-style: italic; color: var(--dw-orange-600); }
+.web-hero .copy p { font-size: 15px; line-height: 1.55; color: var(--dw-stone-600); margin: 0; max-width: 38ch; }
+.web-hero .copy .ctas { display: flex; gap: 12px; }
+.web-hero .copy .ctas a { padding: 12px 22px; border-radius: 100px; font-family: var(--dw-font-sans); font-size: 14px; font-weight: 600; text-decoration: none; }
+.web-hero .copy .ctas .primary { background: var(--dw-orange-500); color: var(--dw-ink-900); }
+.web-hero .copy .ctas .ghost { color: var(--dw-ink-900); border: 1px solid rgba(31,26,20,0.2); }
+.web-hero .copy .trust { display: flex; gap: 24px; font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.14em; color: var(--dw-stone-500); margin-top: 8px; padding-top: 12px; border-top: 1px solid rgba(31,26,20,0.1); }
+.web-hero .copy .trust strong { color: var(--dw-orange-700); display: block; font-size: 14px; }
+.web-hero .deer-stage { background: var(--dw-ink-900); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.web-hero .deer-stage::after { content: ''; position: absolute; bottom: -40%; left: -20%; right: -20%; height: 80%; background: radial-gradient(ellipse, rgba(238,107,31,0.4), transparent 70%); }
+.web-hero .deer-stage img { max-height: 80%; max-width: 90%; position: relative; z-index: 1; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.4)); }
+
+.web-strip { background: var(--dw-ink-900); color: var(--dw-orange-400); padding: 12px; font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; display: flex; gap: 64px; justify-content: center; border-top: 1px solid rgba(250,246,240,0.06); }
+
+.web-products { display: grid; grid-template-columns: repeat(3, 1fr); padding: 48px; gap: 24px; background: var(--dw-sand-50); align-items: start; }
+.web-product { background: white; border-radius: 6px; overflow: hidden; box-shadow: var(--dw-shadow-sm); display: flex; flex-direction: column; }
+.web-product .img { background: var(--dw-sand-100); height: 280px; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.web-product .img img { max-height: 100%; max-width: 100%; object-fit: contain; }
+.web-product.trigger .img img { max-width: 55%; }
+.web-product.gallon .img img { max-width: 75%; }
+.web-product .info { padding: 16px 18px; display: flex; flex-direction: column; gap: 4px; }
+.web-product .info .name { font-family: var(--dw-font-display); font-weight: 600; font-size: 16px; }
+.web-product .info .sub { font-size: 12px; color: var(--dw-stone-500); }
+.web-product .info .row { display: flex; justify-content: space-between; align-items: baseline; margin-top: 8px; }
+.web-product .info .row .price { font-family: var(--dw-font-mono); font-size: 14px; font-weight: 600; }
+.web-product .info .row .add { font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.14em; padding: 6px 12px; background: var(--dw-ink-900); color: white; border-radius: 100px; }
+
+/* ── EMAIL CAMPAIGN ────────────────────────── */
+.email-frame { background: var(--dw-sand-100); border-radius: var(--dw-radius-lg); padding: 40px; display: flex; justify-content: center; }
+.mail { width: 100%; max-width: 480px; background: white; box-shadow: var(--dw-shadow-md); border-radius: 4px; overflow: hidden; }
+.mail .head { background: var(--dw-ink-900); padding: 20px 28px; display: flex; align-items: center; }
+.mail .head img { height: 22px; }
+.mail .img { background: url(assets/img-deer.jpg) center/cover; height: 200px; position: relative; }
+.mail .img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgba(20,17,13,0.7)); }
+.mail .img .h { position: absolute; bottom: 24px; left: 28px; right: 28px; color: white; font-family: var(--dw-font-display); font-style: italic; font-weight: 400; font-size: 28px; line-height: 1; letter-spacing: -0.02em; }
+.mail .img .h em { color: var(--dw-orange-400); }
+.mail .body { padding: 32px 28px; color: var(--dw-ink-800); }
+.mail .body .eb { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dw-orange-700); }
+.mail .body h2 { font-family: var(--dw-font-display); font-weight: 500; font-size: 24px; line-height: 1.1; margin: 8px 0 14px; }
+.mail .body p { font-size: 14px; line-height: 1.55; margin: 0 0 14px; color: var(--dw-stone-600); }
+.mail .body .cta { display: inline-block; background: var(--dw-orange-500); color: var(--dw-ink-900); padding: 12px 26px; border-radius: 100px; font-weight: 600; font-size: 13px; text-decoration: none; margin-top: 12px; }
+.mail .promo { background: var(--dw-orange-500); color: var(--dw-ink-900); padding: 24px 28px; display: flex; gap: 16px; align-items: center; }
+.mail .promo .num { font-family: var(--dw-font-display); font-style: italic; font-size: 56px; line-height: 0.85; letter-spacing: -0.03em; }
+.mail .promo .copy h4 { font-family: var(--dw-font-display); font-weight: 600; font-size: 17px; line-height: 1.1; margin: 0 0 4px; }
+.mail .promo .copy p { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.06em; margin: 0; opacity: 0.8; }
+.mail .foot { padding: 20px 28px; font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.06em; color: var(--dw-stone-500); border-top: 1px solid rgba(31,26,20,0.08); display: flex; justify-content: space-between; }
+
+/* ── BANNERS / DIGITAL OOH ─────────────────── */
+.banners { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; }
+.banner-stage { background: var(--dw-stone-700); border-radius: var(--dw-radius-lg); padding: 40px; min-height: 360px; display: flex; align-items: center; justify-content: center; }
+.banner-stage.alt { background: var(--dw-sand-200); }
+.banner-leaderboard { width: 100%; max-width: 540px; aspect-ratio: 728/90; background: var(--dw-orange-500); color: var(--dw-ink-900); padding: 14px 20px; display: flex; align-items: center; gap: 16px; border-radius: 4px; box-shadow: var(--dw-shadow-lg); }
+.banner-leaderboard .wm img { height: 26px; }
+.banner-leaderboard .copy { flex: 1; font-family: var(--dw-font-display); font-weight: 500; font-size: 18px; line-height: 1; }
+.banner-leaderboard .copy em { font-style: italic; }
+.banner-leaderboard .cta { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.14em; padding: 8px 14px; background: var(--dw-ink-900); color: white; border-radius: 100px; }
+.banner-skyscraper { width: 160px; aspect-ratio: 160/600; background: var(--dw-ink-900); color: var(--dw-sand-50); padding: 24px 16px; display: flex; flex-direction: column; justify-content: space-between; border-radius: 4px; box-shadow: var(--dw-shadow-lg); }
+.banner-skyscraper .top img { height: 18px; }
+.banner-skyscraper .h { font-family: var(--dw-font-display); font-weight: 400; font-size: 30px; line-height: 0.95; letter-spacing: -0.02em; }
+.banner-skyscraper .h em { font-style: italic; color: var(--dw-orange-400); }
+.banner-skyscraper .price { font-family: var(--dw-font-display); font-style: italic; font-size: 36px; color: var(--dw-orange-400); line-height: 1; }
+.banner-skyscraper .price small { display: block; font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.16em; opacity: 0.6; }
+.banner-skyscraper .cta { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.14em; padding: 10px; background: var(--dw-orange-500); color: var(--dw-ink-900); border-radius: 100px; text-align: center; font-weight: 600; }
+
+/* ── PROFILE SET ───────────────────────────── */
+.profile-set { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 40px; }
+.profile-set .row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.profile-set .item { display: flex; flex-direction: column; gap: 10px; }
+.profile-set .item .preview { aspect-ratio: 1; border-radius: 50%; overflow: hidden; box-shadow: var(--dw-shadow-md); display: flex; align-items: center; justify-content: center; }
+.profile-set .item .preview.bg-ink { background: var(--dw-ink-900); }
+.profile-set .item .preview.bg-orange { background: var(--dw-orange-500); }
+.profile-set .item .preview.bg-sand { background: var(--dw-sand-50); }
+.profile-set .item .preview img { width: 56%; }
+.profile-set .item .lbl { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--dw-stone-600); text-align: center; }
+.profile-set .item .lbl strong { display: block; color: var(--dw-ink-800); font-size: 13px; margin-bottom: 2px; }
+
+.profile-banner-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+.linkedin-banner { aspect-ratio: 4/1; border-radius: var(--dw-radius); overflow: hidden; background: var(--dw-orange-500); display: flex; align-items: center; padding: 32px 40px; gap: 24px; color: var(--dw-ink-900); position: relative; }
+.linkedin-banner.dark { background: var(--dw-ink-900); color: var(--dw-sand-50); }
+.linkedin-banner .h { font-family: var(--dw-font-display); font-weight: 400; font-size: 26px; line-height: 1; letter-spacing: -0.02em; flex: 1; }
+.linkedin-banner .h em { font-style: italic; }
+.linkedin-banner.dark .h em { color: var(--dw-orange-400); }
+.linkedin-banner .wm img { height: 28px; }
+.linkedin-banner .lbl { position: absolute; bottom: 12px; left: 16px; font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.18em; opacity: 0.7; }
+
+@media (max-width: 1024px) {
+  .sw-hero { grid-template-columns: 1fr; padding: 32px; }
+  .sw-hero .copy h2 { font-size: 36px; }
+  .posts-grid { grid-template-columns: 1fr 1fr; }
+  .stories-grid { grid-template-columns: 1fr 1fr; }
+  .web-hero { grid-template-columns: 1fr; }
+  .web-products { grid-template-columns: 1fr; }
+  .banners { grid-template-columns: 1fr; }
+  .profile-set .row { grid-template-columns: 1fr 1fr; }
+  .profile-banner-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="ds-shell">
+  <div id="sidebar"></div>
+  <main class="ds-main">
+
+    <header class="ds-page-header">
+      <div class="ds-page-eyebrow">10 · Templates</div>
+      <h1 class="ds-page-title">Social &amp; <em>web.</em></h1>
+      <p class="ds-page-lede">The brand on a feed, the brand on a phone, the brand on a $5 banner ad. Same voice, same orange, same italics — sized for every screen anyone might see us on.</p>
+    </header>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">10.1</span>
+        <h2 class="ds-section-title">The feed</h2>
+        <p class="ds-section-desc">Where most people first meet us. The grid does the heavy lifting — three colors, two layouts, recognizable in a thumb-sized scroll.</p>
+      </div>
+      <div class="sw-hero">
+        <div class="copy">
+          <span class="label">DW-SOC · 2026</span>
+          <h2>Three colors.<br/>One italic.<br/><em>One scroll.</em></h2>
+          <p>The feed isn't a billboard — it's a rhythm. Orange, ink, sand, photograph, type, repeat. Make it impossible to forget who we are by post number five.</p>
+        </div>
+        <div class="stage">
+          <div class="phone">
+            <div class="screen">
+              <div class="post">
+                <span class="h">deer.<br/>away.</span>
+                <span class="wm">@DEERWALL</span>
+              </div>
+              <div class="row"><div class="a"></div><div class="b"></div></div>
+              <div class="row"><div class="c"></div><div class="d"></div></div>
+            </div>
+          </div>
+          <div class="browser">
+            <div class="bar">
+              <div class="dots"><span></span><span></span><span></span></div>
+              <span class="url">deerwall.global</span>
+            </div>
+            <div class="canvas">
+              <h4>The natural way<br/>to keep deer <em>away.</em></h4>
+              <img src="assets/bottle-32oz-rtu.png" alt=""/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">10.2</span>
+        <h2 class="ds-section-title">Square posts · 1:1</h2>
+        <p class="ds-section-desc">Six post archetypes that compose a feed. Cycle through them so the grid breathes — never six oranges in a row.</p>
+      </div>
+      <div class="section-tab">
+        <div class="stage" style="padding: 32px;">
+          <div class="posts-grid" style="width: 100%; max-width: 720px;">
+            <div class="post p1">
+              <span class="pn dark">01 / TYPE</span>
+              <span class="h">The natural<br/>way to keep<br/>deer <em>away.</em></span>
+              <span class="corner-mark dark">@DEERWALL</span>
+            </div>
+            <div class="post p2">
+              <span class="pn">02 / STAT</span>
+              <div class="h">One bottle.<br/><em>30 days.</em></div>
+              <span class="stat">PROVEN · 96% EFFICACY · 2024</span>
+            </div>
+            <div class="post p3">
+              <span class="pn">03 / PHOTO</span>
+              <span class="scrim"></span>
+              <span class="quote">"They came back for the hostas — once."</span>
+              <span class="corner-mark">@DEERWALL</span>
+            </div>
+            <div class="post p4">
+              <span class="pn dark">04 / BIG NUMBER</span>
+              <span class="num">96%</span>
+              <span class="label">of users see fewer deer in week one.</span>
+            </div>
+            <div class="post p5">
+              <span class="pn">05 / FOREST</span>
+              <span class="pitch">Made of <em>rosemary,<br/>garlic,</em> and a<br/>secret weapon.</span>
+            </div>
+            <div class="post p6">
+              <span class="pn">06 / PRODUCT</span>
+              <div class="top"><img src="assets/bottle-32oz-rtu.png" alt=""/></div>
+              <div class="bot">
+                <div class="h">Now in 1-gallon.</div>
+                <div class="sub">DEERWALL.GLOBAL/SHOP</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="meta">
+          <div class="item"><strong>Format</strong>1080 × 1080 px</div>
+          <div class="item"><strong>Safe area</strong>72 px inset</div>
+          <div class="item"><strong>Type min</strong>32 px / 18 pt</div>
+          <div class="item"><strong>Cadence</strong>3 posts / week · alternate types</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">10.3</span>
+        <h2 class="ds-section-title">Stories &amp; reels · 9:16</h2>
+        <p class="ds-section-desc">Vertical, full-bleed, top-anchored. Wordmark and handle live in the top inset; the call to action sits in the bottom 25%.</p>
+      </div>
+      <div class="section-tab">
+        <div class="stage">
+          <div class="stories-grid" style="width: 100%; max-width: 720px;">
+            <div class="story s1">
+              <div class="progress"><span class="on"></span><span></span><span></span><span></span></div>
+              <div class="handle"><span class="av"><img src="assets/dw-s-color.png" alt=""/></span><span>@deerwall</span></div>
+              <div class="h">Hostas<br/>vs. <em>deer.</em><br/>Hostas<br/><em>winning.</em></div>
+            </div>
+            <div class="story s2">
+              <div class="progress dark"><span></span><span class="on"></span><span></span><span></span></div>
+              <div class="handle dark"><span class="av"><img src="assets/dw-s-black-white.png" alt=""/></span><span>@deerwall</span></div>
+              <div>
+                <span class="num">96%</span>
+                <span class="lbl" style="display:block; margin-top:8px;">of users keep <br/>using us after<br/>the first bottle.</span>
+              </div>
+              <span class="swipe">↑ SWIPE TO TRY</span>
+            </div>
+            <div class="story s3">
+              <div class="progress"><span></span><span></span><span class="on"></span><span></span></div>
+              <div class="handle"><span class="av"><img src="assets/dw-s-color.png" alt=""/></span><span>@deerwall</span></div>
+              <div class="copy">
+                <h4>The night<br/>they didn't <em>come.</em></h4>
+                <p>Day one of using DeerWall, told by the security camera footage from a backyard in Austin.</p>
+              </div>
+            </div>
+            <div class="story s4">
+              <div class="progress dark"><span></span><span></span><span></span><span class="on"></span></div>
+              <div class="handle dark"><span class="av"><img src="assets/dw-s-black-white.png" alt=""/></span><span>@deerwall</span></div>
+              <span class="top">★ ★ ★ ★ ★ · 04 · 12 · 26</span>
+              <span class="quote">"It just <em>works.</em> The roses came back. So did the dog. Not the deer."</span>
+              <span class="source">— MARILYN B. · ROUND ROCK, TX</span>
+            </div>
+          </div>
+        </div>
+        <div class="meta">
+          <div class="item"><strong>Format</strong>1080 × 1920 px</div>
+          <div class="item"><strong>Top-safe</strong>250 px (handle/clock)</div>
+          <div class="item"><strong>Bottom-safe</strong>340 px (CTA)</div>
+          <div class="item"><strong>Reel length</strong>≤ 30s · captions burned-in</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">10.4</span>
+        <h2 class="ds-section-title">Profile set</h2>
+        <p class="ds-section-desc">Three avatars, two banners. Pick one across all channels — don't mix-and-match between platforms.</p>
+      </div>
+      <div class="profile-set">
+        <div class="row">
+          <div class="item">
+            <div class="preview bg-ink"><img src="assets/dw-s-orange-white.png" alt=""/></div>
+            <div class="lbl"><strong>@deerwall · primary</strong>Ink + orange S-mark</div>
+          </div>
+          <div class="item">
+            <div class="preview bg-orange"><img src="assets/dw-s-black-white.png" alt=""/></div>
+            <div class="lbl"><strong>@deerwall · alt</strong>Orange + ink S-mark</div>
+          </div>
+          <div class="item">
+            <div class="preview bg-sand"><img src="assets/dw-s-color.png" alt=""/></div>
+            <div class="lbl"><strong>@deerwall · light</strong>Sand + full color S-mark</div>
+          </div>
+          <div class="item">
+            <div class="preview bg-ink"><img src="assets/dw-s-white.png" alt=""/></div>
+            <div class="lbl"><strong>@deerwall · mono</strong>Ink + white S-mark · for x.com</div>
+          </div>
+        </div>
+        <div class="profile-banner-row">
+          <div class="linkedin-banner">
+            <span class="lbl">LINKEDIN · 1584 × 396</span>
+            <div class="h">The natural way<br/>to keep deer <em>away.</em></div>
+            <div class="wm"><img src="assets/dw-black-white.png" alt=""/></div>
+          </div>
+          <div class="linkedin-banner dark">
+            <span class="lbl">X.COM · 1500 × 500</span>
+            <div class="h">Made of rosemary,<br/>garlic, and <em>silence.</em></div>
+            <div class="wm"><img src="assets/dw-orange-white.png" alt=""/></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">10.5</span>
+        <h2 class="ds-section-title">Website · home</h2>
+        <p class="ds-section-desc">A single screen does the work. Pitch in display Newsreader. Bottle photographed on ink. Two CTAs and a trust strip.</p>
+      </div>
+      <div class="web-frame">
+        <div class="web-window">
+          <div class="chrome">
+            <div class="dots"><span></span><span></span><span></span></div>
+            <div class="url">deerwall.global</div>
+          </div>
+          <div class="web-nav">
+            <img src="assets/dw-orange-white.png" alt=""/>
+            <div class="links">
+              <a href="#" class="on">The product</a>
+              <a href="#">How it works</a>
+              <a href="#">Acreage</a>
+              <a href="#">For pros</a>
+              <a href="#">Stories</a>
+            </div>
+            <span class="cart">CART · 1</span>
+          </div>
+          <div class="web-hero">
+            <div class="copy">
+              <span class="eb">PROUDLY MADE IN TEXAS</span>
+              <h1>The natural<br/>way to keep<br/>deer <em>away.</em></h1>
+              <p>Spray once. Wait thirty days. Repeat in the spring. Made from rosemary, garlic, and one ingredient we promised our chemist we wouldn't put in print.</p>
+              <div class="ctas">
+                <a class="primary" href="#">Get a 32oz · $24</a>
+                <a class="ghost" href="#">How it works ↗</a>
+              </div>
+              <div class="trust">
+                <span><strong>96%</strong>EFFICACY</span>
+                <span><strong>30d</strong>BETWEEN APPS</span>
+                <span><strong>4.9★</strong>2,184 REVIEWS</span>
+              </div>
+            </div>
+            <div class="deer-stage">
+              <img src="assets/bottle-1gal-rtu.png" alt=""/>
+            </div>
+          </div>
+          <div class="web-strip">
+            <span>· FORBES ·</span>
+            <span>· GARDEN &amp; GUN ·</span>
+            <span>· FAST CO. ·</span>
+            <span>· TEXAS MONTHLY ·</span>
+            <span>· FINE GARDENING ·</span>
+          </div>
+          <div class="web-products">
+            <div class="web-product trigger">
+              <div class="img"><img src="assets/bottle-32oz-rtu.png" alt=""/></div>
+              <div class="info">
+                <div class="name">32 oz · Ready-to-use</div>
+                <div class="sub">For a yard or a few flower beds</div>
+                <div class="row"><span class="price">$24</span><span class="add">ADD TO CART</span></div>
+              </div>
+            </div>
+            <div class="web-product gallon">
+              <div class="img"><img src="assets/bottle-1gal-rtu.png" alt=""/></div>
+              <div class="info">
+                <div class="name">1 gal · Ready-to-use</div>
+                <div class="sub">For an acre or a small property</div>
+                <div class="row"><span class="price">$54</span><span class="add">ADD TO CART</span></div>
+              </div>
+            </div>
+            <div class="web-product gallon">
+              <div class="img"><img src="assets/bottle-1gal-concentrate.png" alt=""/></div>
+              <div class="info">
+                <div class="name">1 gal · Concentrate</div>
+                <div class="sub">Makes 16 gallons. For real acreage.</div>
+                <div class="row"><span class="price">$96</span><span class="add">ADD TO CART</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">10.6</span>
+        <h2 class="ds-section-title">Email campaigns</h2>
+        <p class="ds-section-desc">A simple template: hero photo, italic display headline, two paragraphs of warm copy, an orange button. Don't reinvent every send.</p>
+      </div>
+      <div class="email-frame">
+        <div class="mail">
+          <div class="head"><img src="assets/dw-orange-white.png" alt=""/></div>
+          <div class="img">
+            <div class="h">The night<br/>they didn't <em>come.</em></div>
+          </div>
+          <div class="body">
+            <span class="eb">SPRING · ISSUE NO. 04</span>
+            <h2>One spray. One month. One garden the deer forgot.</h2>
+            <p>Hi Maria — it's officially the season. The hostas are back, the irises are right behind them, and the deer have noticed. We thought we'd get ahead of it.</p>
+            <p>For the next two weeks, every 32oz bottle ships free. No code, no fine print, just the real season starting and one less thing for you to worry about.</p>
+            <a class="cta" href="#">Get a bottle · $24</a>
+          </div>
+          <div class="promo">
+            <div class="num">$0</div>
+            <div class="copy">
+              <h4>Free shipping · April 1–14</h4>
+              <p>SPRING · 32 OZ · USA · NO MIN.</p>
+            </div>
+          </div>
+          <div class="foot">
+            <span>DEERWALL · INC.</span>
+            <span>UNSUBSCRIBE</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">10.7</span>
+        <h2 class="ds-section-title">Display ads</h2>
+        <p class="ds-section-desc">Leaderboard and skyscraper. The pitch is the ad — never crowded, never with a stock photo of someone hugging a tomato.</p>
+      </div>
+      <div class="banners">
+        <div class="banner-stage alt">
+          <div class="banner-leaderboard">
+            <div class="wm"><img src="assets/dw-black-white.png" alt=""/></div>
+            <div class="copy">The natural way to keep deer <em>away.</em></div>
+            <span class="cta">SHOP $24 →</span>
+          </div>
+        </div>
+        <div class="banner-stage">
+          <div class="banner-skyscraper">
+            <div class="top"><img src="assets/dw-orange-white.png" alt=""/></div>
+            <div class="h">One bottle.<br/><em>Thirty<br/>days.</em></div>
+            <div class="price"><small>STARTS AT</small>$24</div>
+            <div class="cta">SHOP NOW →</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="sidebar.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('sidebar')).render(<DSSidebar current="social"/>);
+  ReactDOM.createRoot(document.getElementById('footer')).render(<DSFooter/>);
+</script>
+</body>
+</html>

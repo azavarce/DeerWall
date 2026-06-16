@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DeerWall · Brand Book — Strategy</title>
+<link rel="icon" type="image/png" href="source/fav_icon.png"/>
+<link rel="stylesheet" href="tokens.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<link rel="stylesheet" href="mobile.css"/>
+<style>
+.audience-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+.audience-card { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 28px; }
+.audience-card .role { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dw-orange-700); }
+.audience-card h3 { font-family: var(--dw-font-display); font-weight: 500; font-size: 24px; letter-spacing: -0.015em; margin: 12px 0 8px; }
+.audience-card .age { font-family: var(--dw-font-mono); font-size: 11px; color: var(--dw-stone-500); margin-bottom: 16px; }
+.audience-card p { font-size: 14px; line-height: 1.6; color: var(--dw-stone-600); margin: 0 0 16px; }
+.audience-card .quote { padding: 14px 16px; background: var(--dw-sand-100); border-left: 3px solid var(--dw-orange-500); font-family: var(--dw-font-display); font-style: italic; font-size: 15px; color: var(--dw-ink-800); border-radius: 4px; }
+
+.voice-table { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); overflow: hidden; }
+.voice-col { padding: 32px; }
+.voice-col.we-do { background: var(--dw-orange-50); border-right: var(--dw-border-thin); }
+.voice-col.we-dont { background: white; }
+.voice-col h4 { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; margin: 0 0 20px; }
+.voice-col.we-do h4 { color: var(--dw-orange-700); }
+.voice-col.we-dont h4 { color: var(--dw-stone-500); }
+.voice-col .item { padding: 10px 0; border-top: 1px solid rgba(31,26,20,0.08); font-size: 15px; line-height: 1.5; }
+.voice-col .item:first-of-type { border-top: 0; padding-top: 0; }
+.voice-col .item strong { font-family: var(--dw-font-display); font-weight: 600; font-size: 16px; display: block; margin-bottom: 2px; }
+.voice-col.we-dont .item { color: var(--dw-stone-500); text-decoration: line-through; text-decoration-color: rgba(180,60,40,0.5); }
+.voice-col.we-dont .item strong { text-decoration: none; color: var(--dw-stone-700); display: block; margin-bottom: 4px; font-style: italic; }
+
+.taglines { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.tagline { background: var(--dw-orange-500); color: white; border-radius: var(--dw-radius-lg); padding: 32px; aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: space-between; }
+.tagline.dark { background: var(--dw-ink-800); }
+.tagline.cream { background: var(--dw-sand-100); color: var(--dw-ink-800); }
+.tagline.forest { background: var(--dw-forest-700); }
+.tagline .num { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.18em; opacity: 0.7; }
+.tagline h3 { font-family: var(--dw-font-display); font-weight: 500; font-size: 32px; line-height: 1.05; letter-spacing: -0.02em; margin: 0; }
+.tagline.cream h3 em { color: var(--dw-orange-600); font-style: italic; }
+.tagline h3 em { font-style: italic; opacity: 0.85; }
+.tagline .meta { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; }
+
+.mission-card { background: var(--dw-ink-900); color: var(--dw-sand-50); padding: 56px; border-radius: var(--dw-radius-lg); }
+.mission-card .label { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dw-orange-400); margin-bottom: 16px; }
+.mission-card .stmt { font-family: var(--dw-font-display); font-weight: 400; font-size: 38px; line-height: 1.1; letter-spacing: -0.02em; margin: 0; }
+.mission-card .stmt em { font-style: italic; color: var(--dw-orange-400); }
+
+@media (max-width: 960px) {
+  .audience-grid, .voice-table, .taglines { grid-template-columns: 1fr; }
+  .voice-col.we-do { border-right: 0; border-bottom: var(--dw-border-thin); }
+  .mission-card { padding: 32px; }
+  .mission-card .stmt { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+<div class="ds-shell">
+  <div id="sidebar"></div>
+  <main class="ds-main">
+
+    <header class="ds-page-header">
+      <div class="ds-page-eyebrow">01 · Brand</div>
+      <h1 class="ds-page-title">Strategy &amp; <em>voice.</em></h1>
+      <p class="ds-page-lede">The strategy underneath every visual decision — who we're for, how we sound, and the words we choose carefully.</p>
+    </header>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">1.1</span>
+        <h2 class="ds-section-title">Mission</h2>
+        <p class="ds-section-desc">One sentence. Pinned to the wall. Used to settle every "should we do this?" debate.</p>
+      </div>
+      <div class="mission-card">
+        <div class="label">Mission</div>
+        <p class="stmt">Help people protect the gardens they love — without poisoning the wildlife <em>they share them with.</em></p>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">1.2</span>
+        <h2 class="ds-section-title">Audience pillars</h2>
+        <p class="ds-section-desc">Three customer archetypes the brand has to land with on contact. Every page, every ad, written for one of them.</p>
+      </div>
+      <div class="audience-grid">
+        <div class="audience-card">
+          <div class="role">PRIMARY · 62%</div>
+          <h3>The Frustrated Gardener</h3>
+          <div class="age">45–68 · Suburban · Female-leaning</div>
+          <p>Has been a gardener for 10+ years. Loves hostas, tulips, hydrangeas. Has watched deer eat all three. Has tried Irish Spring soap, fishing line, motion lights. Is ready for something that actually works.</p>
+          <div class="quote">"I just want my garden back."</div>
+        </div>
+        <div class="audience-card">
+          <div class="role">SECONDARY · 24%</div>
+          <h3>The Property Defender</h3>
+          <div class="age">38–60 · Acreage · Pragmatic</div>
+          <p>Has 1+ acre. Trees, shrubs, a vegetable patch. Sees deer as a property-management problem more than a personal one. Buys gallons, not bottles. Reads spec sheets.</p>
+          <div class="quote">"Show me the coverage and the cost-per-acre."</div>
+        </div>
+        <div class="audience-card">
+          <div class="role">TERTIARY · 14%</div>
+          <h3>The Eco-Conscious Buyer</h3>
+          <div class="age">28–45 · Urban-edge · Values-led</div>
+          <p>Will not use synthetic chemistry near pets, kids, or pollinators. Reads ingredient lists. Pays a premium for natural. Will tell three friends if we deliver.</p>
+          <div class="quote">"Is it really safe? Like, actually safe?"</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">1.3</span>
+        <h2 class="ds-section-title">Voice — we do, we don't</h2>
+        <p class="ds-section-desc">Plain-spoken, confident, never preachy. The single best test: would a real gardener actually say it out loud?</p>
+      </div>
+      <div class="voice-table">
+        <div class="voice-col we-do">
+          <h4>We sound like →</h4>
+          <div class="item"><strong>Confident</strong>"It works. Here's how."</div>
+          <div class="item"><strong>Plain</strong>"Plant oils. Water. That's it."</div>
+          <div class="item"><strong>Specific</strong>"30 days between sprays. 1,200 sq ft per bottle."</div>
+          <div class="item"><strong>Honest</strong>"Smells strong for an hour. Then, nothing."</div>
+          <div class="item"><strong>Warm</strong>"We've got hostas too."</div>
+          <div class="item"><strong>Useful</strong>"Spray a 3-foot perimeter. Reapply after heavy rain."</div>
+        </div>
+        <div class="voice-col we-dont">
+          <h4>Not like ←</h4>
+          <div class="item"><strong>Salesy</strong>"Revolutionary repellent technology!"</div>
+          <div class="item"><strong>Vague</strong>"Premium natural ingredients."</div>
+          <div class="item"><strong>Hand-wavy</strong>"Long-lasting protection guaranteed."</div>
+          <div class="item"><strong>Hiding</strong>"Specially formulated odor profile."</div>
+          <div class="item"><strong>Cold</strong>"Optimal coverage solutions for residential properties."</div>
+          <div class="item"><strong>Empty</strong>"Performance you can trust."</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">1.4</span>
+        <h2 class="ds-section-title">Taglines</h2>
+        <p class="ds-section-desc">One primary, three supporting lines for different surfaces. Use the primary on packaging and the website hero — use the others as section ledes, ad headlines, and subject lines.</p>
+      </div>
+      <div class="taglines">
+        <div class="tagline">
+          <div class="num">PRIMARY</div>
+          <h3>Keep deer out, <em>naturally.</em></h3>
+          <div class="meta">Packaging · Web hero</div>
+        </div>
+        <div class="tagline cream">
+          <div class="num">SUPPORTING · 01</div>
+          <h3>The natural way to <em>keep deer away.</em></h3>
+          <div class="meta">Long-form · Letters</div>
+        </div>
+        <div class="tagline dark">
+          <div class="num">SUPPORTING · 02</div>
+          <h3>Plant oils.<br/>Water. <em>Done.</em></h3>
+          <div class="meta">Ingredients-led ads</div>
+        </div>
+        <div class="tagline forest">
+          <div class="num">SUPPORTING · 03</div>
+          <h3>Built for the gardens you've <em>worked for.</em></h3>
+          <div class="meta">Loyalty · Reorder</div>
+        </div>
+        <div class="tagline cream">
+          <div class="num">SUPPORTING · 04</div>
+          <h3>Safe for everything you <em>actually care about.</em></h3>
+          <div class="meta">Pet-safe / kid-safe</div>
+        </div>
+        <div class="tagline">
+          <div class="num">SUPPORTING · 05</div>
+          <h3>Spray once.<br/>Repels for <em>thirty days.</em></h3>
+          <div class="meta">Performance · Retail</div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="sidebar.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('sidebar')).render(<DSSidebar current="strategy"/>);
+  ReactDOM.createRoot(document.getElementById('footer')).render(<DSFooter/>);
+</script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DeerWall · Brand Book — Logo</title>
+<link rel="icon" type="image/png" href="source/fav_icon.png"/>
+<link rel="stylesheet" href="tokens.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<link rel="stylesheet" href="mobile.css"/>
+<style>
+.logo-hero { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 80px 64px; display: grid; grid-template-columns: 2fr 1fr; gap: 48px; align-items: center; }
+.logo-hero img { width: 100%; max-width: 540px; height: auto; display: block; }
+.logo-hero .meta { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dw-stone-500); }
+.logo-hero h3 { font-family: var(--dw-font-display); font-weight: 500; font-size: 28px; letter-spacing: -0.015em; margin: 12px 0 16px; }
+.logo-hero p { font-size: 14px; line-height: 1.6; color: var(--dw-stone-600); margin: 0; }
+
+.lockup-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 16px; }
+.lockup { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 48px 32px; display: flex; flex-direction: column; min-height: 280px; }
+.lockup-art { flex: 1; display: flex; align-items: center; justify-content: center; padding: 16px; }
+.lockup-art img { max-width: 100%; max-height: 160px; height: auto; display: block; }
+.lockup .label { display: flex; justify-content: space-between; align-items: baseline; margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(31,26,20,0.06); }
+.lockup .name { font-family: var(--dw-font-display); font-weight: 600; font-size: 14px; }
+.lockup .ratio { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.12em; color: var(--dw-stone-500); }
+
+.colorways { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; }
+.colorway { border-radius: var(--dw-radius); aspect-ratio: 1.1/1; padding: 32px; display: flex; flex-direction: column; justify-content: space-between; border: var(--dw-border-thin); position: relative; }
+.colorway img { max-width: 80%; max-height: 60%; display: block; margin: auto; }
+.colorway .tag { position: absolute; top: 12px; left: 12px; font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; padding: 4px 8px; background: rgba(255,255,255,0.92); border-radius: 100px; color: var(--dw-ink-800); }
+.colorway .tag.dark { background: rgba(31,26,20,0.85); color: white; }
+.colorway .name { position: absolute; bottom: 12px; left: 12px; right: 12px; font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dw-ink-800); }
+.colorway.dark .name, .colorway.orange .name, .colorway.forest .name { color: rgba(255,255,255,0.85); }
+
+.cw-white { background: white; }
+.cw-cream { background: var(--dw-sand-100); }
+.cw-orange { background: var(--dw-orange-500); }
+.cw-dark { background: var(--dw-ink-900); }
+.cw-forest { background: var(--dw-forest-700); }
+.cw-photo { background: url('assets/img-deer.jpg') 70% 18%/cover; }
+.cw-photo::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(31,26,20,0.15) 0%, rgba(31,26,20,0.55) 60%, rgba(31,26,20,0.7) 100%); border-radius: inherit; }
+.cw-photo > * { position: relative; z-index: 1; }
+.cw-photo img { margin-top: auto; margin-bottom: 8px; max-width: 70%; max-height: 38%; }
+
+.clearspace { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 64px; display: grid; grid-template-columns: 1.6fr 1fr; gap: 48px; align-items: center; }
+.clearspace .demo { position: relative; padding: 60px; background: repeating-linear-gradient(45deg, rgba(217,119,6,0.06) 0 6px, transparent 6px 12px); border-radius: var(--dw-radius); }
+.clearspace .demo .inner { position: relative; padding: 48px; outline: 1.5px dashed rgba(217,119,6,0.55); outline-offset: 0; }
+.clearspace .demo img { display: block; width: 100%; height: auto; max-width: 320px; margin: auto; }
+.clearspace .demo .x-mark { position: absolute; font-family: var(--dw-font-mono); font-size: 11px; color: var(--dw-orange-700); background: white; padding: 2px 6px; border-radius: 3px; border: 1px solid rgba(217,119,6,0.3); }
+.clearspace .demo .x-top { top: 36px; left: 50%; transform: translateX(-50%); }
+.clearspace .demo .x-bottom { bottom: 36px; left: 50%; transform: translateX(-50%); }
+.clearspace .demo .x-left { left: 36px; top: 50%; transform: translateY(-50%); }
+.clearspace .demo .x-right { right: 36px; top: 50%; transform: translateY(-50%); }
+.clearspace .copy h3 { font-family: var(--dw-font-display); font-weight: 500; font-size: 24px; margin: 0 0 12px; letter-spacing: -0.015em; }
+.clearspace .copy p { font-size: 14px; line-height: 1.6; color: var(--dw-stone-600); margin: 0 0 16px; }
+.clearspace .rule-tile { display: flex; gap: 12px; align-items: baseline; padding: 10px 0; border-top: 1px solid rgba(31,26,20,0.08); font-size: 13px; }
+.clearspace .rule-tile:first-of-type { border-top: 0; }
+.clearspace .rule-tile .x { font-family: var(--dw-font-mono); font-weight: 700; color: var(--dw-orange-700); width: 40px; }
+
+.sizes { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); overflow: hidden; }
+.sizes-row { display: grid; grid-template-columns: 100px 1fr 1fr 1fr 1fr; align-items: center; padding: 24px 32px; border-bottom: 1px solid rgba(31,26,20,0.06); }
+.sizes-row:last-child { border-bottom: 0; }
+.sizes-row.head { background: var(--dw-sand-100); padding: 14px 32px; font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dw-stone-500); }
+.sizes-row .size-cell { display: flex; align-items: center; gap: 12px; }
+.sizes-row .size-cell img { display: block; max-height: 64px; width: auto; }
+.sizes-row .size-cell .px { font-family: var(--dw-font-mono); font-size: 10px; color: var(--dw-stone-500); }
+.sizes-row .ctx { font-size: 13px; color: var(--dw-stone-600); }
+.sizes-row .min { font-family: var(--dw-font-mono); font-weight: 600; font-size: 13px; color: var(--dw-orange-700); }
+
+.donts { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.dont { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); overflow: hidden; }
+.dont-art { background: var(--dw-sand-50); padding: 40px; aspect-ratio: 5/3; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.dont-art img { display: block; max-width: 80%; max-height: 80%; }
+.dont-art::after { content: ''; position: absolute; bottom: 12px; right: 12px; width: 28px; height: 28px; border-radius: 50%; background: #B43C28; }
+.dont-art::before { content: '✕'; position: absolute; bottom: 12px; right: 12px; width: 28px; height: 28px; line-height: 28px; text-align: center; color: white; font-size: 14px; font-weight: 700; z-index: 2; }
+.dont .desc { padding: 16px 20px; }
+.dont .desc strong { font-family: var(--dw-font-display); font-weight: 600; font-size: 14px; display: block; margin-bottom: 2px; }
+.dont .desc span { font-size: 13px; color: var(--dw-stone-600); }
+
+.dont .squish img { transform: scaleX(1.7); }
+.dont .stretch img { transform: scaleY(1.6); }
+.dont .rotate img { transform: rotate(-12deg); }
+.dont .recolor { filter: hue-rotate(180deg) saturate(0.8); }
+.dont .shadow img { filter: drop-shadow(0 8px 0 rgba(0,0,0,0.4)); }
+.dont .outline img { filter: drop-shadow(0 0 0 #000) drop-shadow(2px 0 0 #000) drop-shadow(-2px 0 0 #000) drop-shadow(0 2px 0 #000) drop-shadow(0 -2px 0 #000); }
+
+.symbol-row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 16px; }
+.symbol-card { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 32px; min-height: 240px; display: flex; flex-direction: column; }
+.symbol-card.lead { background: var(--dw-orange-500); color: white; border-color: transparent; }
+.symbol-card.lead .meta, .symbol-card.lead .stmt { color: white; }
+.symbol-card .meta { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dw-stone-500); }
+.symbol-card .art { flex: 1; display: flex; align-items: center; justify-content: center; padding: 16px 0; }
+.symbol-card .art img { max-height: 110px; max-width: 80%; }
+.symbol-card .stmt { font-family: var(--dw-font-display); font-weight: 500; font-size: 18px; margin: 0; line-height: 1.25; letter-spacing: -0.01em; }
+.symbol-card .name { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dw-stone-700); margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(31,26,20,0.08); }
+
+@media (max-width: 1024px) {
+  .logo-hero { grid-template-columns: 1fr; padding: 48px 32px; }
+  .lockup-grid { grid-template-columns: 1fr; }
+  .colorways { grid-template-columns: 1fr 1fr; }
+  .clearspace { grid-template-columns: 1fr; padding: 32px; }
+  .sizes-row { grid-template-columns: 1fr 1fr; gap: 8px; padding: 16px; }
+  .sizes-row.head { display: none; }
+  .donts { grid-template-columns: 1fr; }
+  .symbol-row { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="ds-shell">
+  <div id="sidebar"></div>
+  <main class="ds-main">
+
+    <header class="ds-page-header">
+      <div class="ds-page-eyebrow">02 · Brand</div>
+      <h1 class="ds-page-title">Logo &amp; <em>lockups.</em></h1>
+      <p class="ds-page-lede">A wordmark with antlers and a confident wall — the two ideas in the name, made visible. Use the master lockup wherever it fits; the alternates exist for the spots where it doesn't.</p>
+    </header>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">2.1</span>
+        <h2 class="ds-section-title">Master logo</h2>
+        <p class="ds-section-desc">The horizontal lockup is the default. Use it on packaging, websites, vehicles, and any signage with horizontal real estate.</p>
+      </div>
+      <div class="logo-hero">
+        <img src="assets/dw-color.png" alt="DeerWall master logo"/>
+        <div>
+          <div class="meta">DW-LOGO-01 · MASTER</div>
+          <h3>Horizontal primary</h3>
+          <p>"Deer" in orange Beausite Classique with antler glyphs growing from the two e's. "WALL" reversed out of an orange block — a confident, repellent wall. The two halves butt directly without a gap; never separate them.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">2.2</span>
+        <h2 class="ds-section-title">Lockup family</h2>
+        <p class="ds-section-desc">Three lockups cover every aspect ratio. Pick by space — never re-stack or reflow on the fly.</p>
+      </div>
+      <div class="lockup-grid">
+        <div class="lockup">
+          <div class="lockup-art"><img src="assets/dw-color.png" alt="Horizontal lockup"/></div>
+          <div class="label"><span class="name">Horizontal · primary</span><span class="ratio">≈ 4:1</span></div>
+        </div>
+        <div class="lockup">
+          <div class="lockup-art"><img src="assets/dw-s-color.png" alt="Stacked lockup"/></div>
+          <div class="label"><span class="name">Stacked · square</span><span class="ratio">1:1</span></div>
+        </div>
+        <div class="lockup">
+          <div class="lockup-art"><img src="assets/symbol-color.png" alt="Antler symbol"/></div>
+          <div class="label"><span class="name">Symbol · favicon</span><span class="ratio">1:1</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">2.3</span>
+        <h2 class="ds-section-title">Colorways</h2>
+        <p class="ds-section-desc">Six approved color treatments. The two-color original sits at the top of the hierarchy; the rest exist to keep contrast strong on any background.</p>
+      </div>
+      <div class="colorways">
+        <div class="colorway cw-white">
+          <span class="tag">PRIMARY</span>
+          <img src="assets/dw-color.png" alt="On white"/>
+          <div class="name">Two-color · on white</div>
+        </div>
+        <div class="colorway cw-cream">
+          <span class="tag">PRIMARY</span>
+          <img src="assets/dw-color.png" alt="On cream"/>
+          <div class="name">Two-color · on cream</div>
+        </div>
+        <div class="colorway cw-orange dark">
+          <span class="tag dark">REVERSED</span>
+          <img src="assets/dw-white.png" alt="White on orange"/>
+          <div class="name">White · on orange</div>
+        </div>
+        <div class="colorway cw-dark dark">
+          <span class="tag dark">REVERSED</span>
+          <img src="assets/dw-orange-white.png" alt="Orange + white on ink"/>
+          <div class="name">Orange/white · on ink</div>
+        </div>
+        <div class="colorway cw-forest dark">
+          <span class="tag dark">REVERSED</span>
+          <img src="assets/dw-white.png" alt="White on forest"/>
+          <div class="name">White · on forest</div>
+        </div>
+        <div class="colorway cw-photo dark">
+          <span class="tag dark">PHOTO</span>
+          <img src="assets/dw-white.png" alt="White on photography"/>
+          <div class="name">White · on photo (gradient scrim)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">2.4</span>
+        <h2 class="ds-section-title">Clear space</h2>
+        <p class="ds-section-desc">The minimum breathing room around the logo, defined by the height of the antler — call it <strong>X</strong>. Nothing — no text, no edge, no other mark — enters the cordon.</p>
+      </div>
+      <div class="clearspace">
+        <div class="demo">
+          <div class="inner">
+            <img src="assets/dw-color.png" alt="Logo with clear space cordon"/>
+          </div>
+          <div class="x-mark x-top">X</div>
+          <div class="x-mark x-bottom">X</div>
+          <div class="x-mark x-left">X</div>
+          <div class="x-mark x-right">X</div>
+        </div>
+        <div class="copy">
+          <h3>One antler, all the way around.</h3>
+          <p>Measure the antler height (X). That's the absolute minimum margin on every side of the logo. When in doubt, give it more.</p>
+          <div class="rule-tile"><span class="x">1×</span><span>Minimum on packaging, business cards, small ads</span></div>
+          <div class="rule-tile"><span class="x">1.5×</span><span>Default for most digital and print contexts</span></div>
+          <div class="rule-tile"><span class="x">2×</span><span>Hero placement on web and brand campaigns</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">2.5</span>
+        <h2 class="ds-section-title">Minimum sizes</h2>
+        <p class="ds-section-desc">Below these sizes the antlers blur out and the wordmark loses its kick. Use the symbol instead.</p>
+      </div>
+      <div class="sizes">
+        <div class="sizes-row head">
+          <span>Mark</span><span>Lockup</span><span>Min digital</span><span>Min print</span><span>Use for</span>
+        </div>
+        <div class="sizes-row">
+          <div class="size-cell"><img src="assets/dw-color.png" style="max-height:48px" alt=""/></div>
+          <span class="ctx">Horizontal</span>
+          <span class="min">120 px wide</span>
+          <span class="min">1.0 in / 25 mm</span>
+          <span class="ctx">Web nav, packaging front</span>
+        </div>
+        <div class="sizes-row">
+          <div class="size-cell"><img src="assets/dw-s-color.png" style="max-height:60px" alt=""/></div>
+          <span class="ctx">Stacked</span>
+          <span class="min">80 px wide</span>
+          <span class="min">0.7 in / 18 mm</span>
+          <span class="ctx">Square avatars, stamps</span>
+        </div>
+        <div class="sizes-row">
+          <div class="size-cell"><img src="assets/symbol-color.png" style="max-height:48px" alt=""/></div>
+          <span class="ctx">Symbol only</span>
+          <span class="min">16 px</span>
+          <span class="min">0.25 in / 6 mm</span>
+          <span class="ctx">Favicon, app icon, watermark</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">2.6</span>
+        <h2 class="ds-section-title">Don't</h2>
+        <p class="ds-section-desc">Six common ways to break the logo. Don't.</p>
+      </div>
+      <div class="donts">
+        <div class="dont">
+          <div class="dont-art squish"><img src="assets/dw-color.png" alt=""/></div>
+          <div class="desc"><strong>Don't squish</strong><span>Lock the aspect ratio. Hold Shift.</span></div>
+        </div>
+        <div class="dont">
+          <div class="dont-art stretch"><img src="assets/dw-color.png" alt=""/></div>
+          <div class="desc"><strong>Don't stretch</strong><span>The proportions are tuned. Trust them.</span></div>
+        </div>
+        <div class="dont">
+          <div class="dont-art rotate"><img src="assets/dw-color.png" alt=""/></div>
+          <div class="desc"><strong>Don't rotate</strong><span>The wordmark stays level. Always.</span></div>
+        </div>
+        <div class="dont">
+          <div class="dont-art recolor"><img src="assets/dw-color.png" alt=""/></div>
+          <div class="desc"><strong>Don't recolor</strong><span>Use approved colorways only.</span></div>
+        </div>
+        <div class="dont">
+          <div class="dont-art shadow"><img src="assets/dw-color.png" alt=""/></div>
+          <div class="desc"><strong>Don't add effects</strong><span>No drop shadows, glows, bevels.</span></div>
+        </div>
+        <div class="dont">
+          <div class="dont-art outline"><img src="assets/dw-color.png" alt=""/></div>
+          <div class="desc"><strong>Don't outline</strong><span>The logo is solid. Keep it that way.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">2.7</span>
+        <h2 class="ds-section-title">The antler symbol</h2>
+        <p class="ds-section-desc">Pulled from the wordmark, the antler stands alone where the full lockup can't fit — favicons, app icons, the back of bottles, embroidered hats.</p>
+      </div>
+      <div class="symbol-row">
+        <div class="symbol-card lead">
+          <div class="meta" style="opacity: 0.8">SYMBOL · STANDALONE</div>
+          <div class="art"><img src="assets/symbol-white.png" alt=""/></div>
+          <p class="stmt">The antler reads at any size. From a 16-pixel favicon to a 4-foot embroidery, it stays the antler.</p>
+          <div class="name" style="border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.85)">DW-SYMBOL · 01</div>
+        </div>
+        <div class="symbol-card">
+          <div class="meta">FAVICON</div>
+          <div class="art" style="background: var(--dw-orange-500); border-radius: 8px; padding: 24px; margin: 8px 0"><img src="assets/symbol-white.png" alt=""/></div>
+          <div class="name">16 / 32 / 48 px</div>
+        </div>
+        <div class="symbol-card">
+          <div class="meta">APP ICON</div>
+          <div class="art" style="background: var(--dw-ink-900); border-radius: 22%; padding: 32px; margin: 8px 0; aspect-ratio: 1; max-width: 140px; align-self: center"><img src="assets/symbol-color.png" alt=""/></div>
+          <div class="name">iOS / Android</div>
+        </div>
+        <div class="symbol-card">
+          <div class="meta">EMBROIDERY</div>
+          <div class="art" style="background: var(--dw-sand-100); padding: 24px; border-radius: 8px"><img src="assets/symbol-color.png" alt=""/></div>
+          <div class="name">Caps · polos · totes</div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="sidebar.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('sidebar')).render(<DSSidebar current="logo"/>);
+  ReactDOM.createRoot(document.getElementById('footer')).render(<DSFooter/>);
+</script>
+</body>
+</html>

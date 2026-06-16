@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DeerWall · Brand Book — Iconography</title>
+<link rel="icon" type="image/png" href="source/fav_icon.png"/>
+<link rel="stylesheet" href="tokens.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<link rel="stylesheet" href="mobile.css"/>
+<style>
+.icon { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+.icon-hero { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 64px; display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: center; }
+.icon-hero .feature { display: flex; align-items: center; justify-content: center; aspect-ratio: 1; max-width: 380px; margin: 0 auto; background: var(--dw-orange-50); border-radius: var(--dw-radius-lg); padding: 64px; }
+.icon-hero .feature svg { width: 100%; height: 100%; color: var(--dw-orange-600); stroke-width: 1.25; }
+.icon-hero .label { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dw-orange-700); }
+.icon-hero h2 { font-family: var(--dw-font-display); font-weight: 500; font-size: 36px; letter-spacing: -0.02em; line-height: 1.05; margin: 12px 0 16px; }
+.icon-hero h2 em { font-style: italic; color: var(--dw-orange-600); }
+.icon-hero p { font-size: 15px; line-height: 1.65; color: var(--dw-stone-600); margin: 0 0 24px; }
+.icon-hero .specs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-top: 20px; border-top: 1px solid rgba(31,26,20,0.08); }
+.icon-hero .specs .item { font-family: var(--dw-font-mono); font-size: 11px; color: var(--dw-stone-500); }
+.icon-hero .specs .item strong { display: block; color: var(--dw-ink-800); font-size: 13px; margin-bottom: 2px; letter-spacing: 0.02em; }
+
+.anatomy { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.anatomy .grid-demo { position: relative; aspect-ratio: 1; width: 100%; max-width: 240px; margin: 0 auto; background: var(--dw-sand-50); border-radius: var(--dw-radius); padding: 28px; }
+.anatomy .grid-demo .frame { position: absolute; inset: 28px; background: white; border: 1px solid var(--dw-orange-300); border-radius: 4px; }
+.anatomy .grid-demo .grid-bg { position: absolute; inset: 28px; background-image:
+  linear-gradient(to right, rgba(217,119,6,0.18) 1px, transparent 1px),
+  linear-gradient(to bottom, rgba(217,119,6,0.18) 1px, transparent 1px);
+  background-size: calc(100%/24) calc(100%/24); }
+.anatomy .grid-demo .live { position: absolute; inset: calc(28px + (100% - 56px) * 0.0833); border: 1px dashed var(--dw-orange-500); border-radius: 2px; opacity: 0.55; }
+.anatomy .grid-demo .glyph { position: absolute; inset: calc(28px + (100% - 56px) * 0.0833); display: flex; align-items: center; justify-content: center; color: var(--dw-ink-900); }
+.anatomy .grid-demo .glyph svg { width: 100%; height: 100%; }
+.anatomy .grid-demo .annotate { position: absolute; font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.08em; color: var(--dw-orange-700); white-space: nowrap; text-transform: uppercase; }
+.anatomy .grid-demo .a-top { top: 10px; left: 50%; transform: translateX(-50%); }
+.anatomy .grid-demo .a-left { left: 10px; top: 50%; transform: translate(-50%, -50%) rotate(-90deg); transform-origin: center; }
+.anatomy .grid-demo .a-bot { bottom: 10px; left: 50%; transform: translateX(-50%); }
+.anatomy .grid-demo .a-right { right: 10px; top: 50%; transform: translate(50%, -50%) rotate(90deg); transform-origin: center; }
+.anatomy h3 { font-family: var(--dw-font-display); font-weight: 500; font-size: 28px; letter-spacing: -0.015em; margin: 0 0 12px; }
+.anatomy .rules { padding-top: 8px; }
+.anatomy .rule { display: grid; grid-template-columns: 60px 1fr; gap: 16px; padding: 14px 0; border-top: 1px solid rgba(31,26,20,0.08); }
+.anatomy .rule:first-child { border-top: 0; }
+.anatomy .rule .num { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--dw-orange-700); }
+.anatomy .rule .desc strong { font-family: var(--dw-font-display); font-weight: 600; font-size: 15px; display: block; margin-bottom: 2px; }
+.anatomy .rule .desc span { font-size: 13px; color: var(--dw-stone-600); line-height: 1.5; }
+
+.icon-grid { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); overflow: hidden; }
+.icon-cat { padding: 20px 32px 16px; background: var(--dw-sand-100); border-bottom: var(--dw-border-thin); border-top: 1px solid rgba(31,26,20,0.06); display: flex; justify-content: space-between; align-items: baseline; }
+.icon-cat:first-child { border-top: 0; }
+.icon-cat h3 { font-family: var(--dw-font-display); font-weight: 600; font-size: 16px; margin: 0; letter-spacing: -0.005em; }
+.icon-cat .count { font-family: var(--dw-font-mono); font-size: 11px; color: var(--dw-stone-500); letter-spacing: 0.08em; }
+.icon-cells { display: grid; grid-template-columns: repeat(8, 1fr); }
+.icon-cell { aspect-ratio: 1; padding: 24px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; border-right: 1px solid rgba(31,26,20,0.06); border-bottom: 1px solid rgba(31,26,20,0.06); color: var(--dw-ink-800); transition: background var(--dw-dur-fast) var(--dw-ease); }
+.icon-cell:hover { background: var(--dw-orange-50); color: var(--dw-orange-700); }
+.icon-cell svg { width: 36px; height: 36px; }
+.icon-cell .name { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.04em; color: var(--dw-stone-500); text-align: center; }
+.icon-cell:hover .name { color: var(--dw-orange-700); }
+.icon-cells > .icon-cell:nth-child(8n) { border-right: 0; }
+
+.size-row { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 16px; }
+.size-tile { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 32px 24px; text-align: center; }
+.size-tile .canvas { display: flex; align-items: flex-end; justify-content: center; height: 84px; margin-bottom: 16px; color: var(--dw-ink-800); }
+.size-tile .px { font-family: var(--dw-font-mono); font-size: 12px; font-weight: 600; color: var(--dw-orange-700); }
+.size-tile .ctx { font-size: 11px; color: var(--dw-stone-600); margin-top: 4px; }
+
+.usage-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.usage-card { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 32px; }
+.usage-card .demo { background: var(--dw-sand-50); border-radius: var(--dw-radius); padding: 32px; min-height: 160px; display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.usage-card.dark .demo { background: var(--dw-ink-900); color: white; }
+.usage-card.orange .demo { background: var(--dw-orange-500); color: white; }
+.usage-card .demo svg { width: 48px; height: 48px; flex-shrink: 0; color: currentColor; }
+.usage-card.orange .demo svg, .usage-card.dark .demo svg { color: white; }
+.usage-card.dark .demo svg { color: var(--dw-orange-400); }
+.usage-card .demo h4 { font-family: var(--dw-font-display); font-weight: 500; font-size: 22px; line-height: 1.15; margin: 0 0 4px; letter-spacing: -0.01em; }
+.usage-card .demo p { font-size: 13px; margin: 0; opacity: 0.75; line-height: 1.5; }
+.usage-card .label { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dw-stone-500); }
+.usage-card .desc { font-size: 13px; color: var(--dw-stone-600); margin-top: 6px; line-height: 1.5; }
+
+.donts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.dont { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 24px; position: relative; min-height: 180px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center; }
+.dont .x { position: absolute; top: 10px; right: 10px; width: 22px; height: 22px; line-height: 22px; text-align: center; background: #B43C28; color: white; border-radius: 50%; font-size: 11px; font-weight: 700; }
+.dont .ic { width: 56px; height: 56px; color: var(--dw-ink-800); }
+.dont .desc { font-size: 12px; color: var(--dw-stone-600); padding-top: 12px; border-top: 1px solid rgba(31,26,20,0.08); width: 100%; }
+.dont .desc strong { display: block; color: var(--dw-ink-800); margin-bottom: 2px; }
+.dont-fill svg { fill: var(--dw-orange-500); stroke: none; }
+.dont-thick svg { stroke-width: 4; }
+.dont-thin svg { stroke-width: 0.5; }
+.dont-mix svg { stroke-width: 1.5; fill: var(--dw-forest-100); }
+
+@media (max-width: 1024px) {
+  .icon-hero { grid-template-columns: 1fr; padding: 32px; }
+  .icon-cells { grid-template-columns: repeat(4, 1fr); }
+  .icon-cells > .icon-cell:nth-child(8n) { border-right: 1px solid rgba(31,26,20,0.06); }
+  .icon-cells > .icon-cell:nth-child(4n) { border-right: 0; }
+  .size-row, .usage-row, .donts { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="ds-shell">
+  <div id="sidebar"></div>
+  <main class="ds-main">
+
+    <header class="ds-page-header">
+      <div class="ds-page-eyebrow">05 · Foundations</div>
+      <h1 class="ds-page-title">Iconography &amp; <em>marks.</em></h1>
+      <p class="ds-page-lede">Twenty-eight icons hand-tuned to the brand: a confident 1.5px line, drawn on a 24-grid, weighted toward the natural and the practical. The system favors clarity over cleverness.</p>
+    </header>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">5.1</span>
+        <h2 class="ds-section-title">The signature</h2>
+        <p class="ds-section-desc">If only one icon ever ships, it's this one — the antler at the heart of the wordmark.</p>
+      </div>
+      <div class="icon-hero">
+        <div class="feature">
+          <svg viewBox="0 0 64 64" class="icon">
+            <path d="M32 56 V40 M32 40 V28 C32 22 28 18 22 16 C18 14.5 14 14 11 11 M32 40 V28 C32 22 36 18 42 16 C46 14.5 50 14 53 11 M22 16 C22 12 19 9 16 8 M22 16 C25 13 26 9 26 6 M42 16 C42 12 45 9 48 8 M42 16 C39 13 38 9 38 6"/>
+          </svg>
+        </div>
+        <div>
+          <span class="label">DW-ICON · 01 · ANTLER</span>
+          <h2>The antler. <em>Always level.</em></h2>
+          <p>Pulled directly from the wordmark, drawn on the same grid, set in the same weight. Every other icon in the set takes its cues from it — line weight, terminal style, geometric balance.</p>
+          <div class="specs">
+            <div class="item"><strong>Grid</strong>24 × 24</div>
+            <div class="item"><strong>Stroke</strong>1.5px (at 24)</div>
+            <div class="item"><strong>Caps</strong>Round</div>
+            <div class="item"><strong>Joins</strong>Round</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">5.2</span>
+        <h2 class="ds-section-title">Construction grid</h2>
+        <p class="ds-section-desc">Every icon is drawn inside an 24×24 frame with a 2px live area and 1.5px stroke. Round caps, round joins, no fills.</p>
+      </div>
+      <div class="anatomy">
+        <div class="grid-demo">
+          <div class="frame"></div>
+          <div class="grid-bg"></div>
+          <div class="live"></div>
+          <div class="glyph">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <!-- Leaf — same icon as in 5.3 library; single weight, round terminals -->
+              <path d="M5 19 C5 11 11 5 19 5 C19 13 13 19 5 19 Z"/>
+              <path d="M5 19 L19 5"/>
+            </svg>
+          </div>
+          <span class="annotate a-top">24 px frame</span>
+          <span class="annotate a-left">2 px live area</span>
+          <span class="annotate a-bot">1.5 px stroke</span>
+          <span class="annotate a-right">round caps &amp; joins</span>
+        </div>
+        <div>
+          <h3>Drawn the same way, every time.</h3>
+          <div class="rules">
+            <div class="rule"><span class="num">RULE 01</span><div class="desc"><strong>24 × 24 frame</strong><span>Native grid. Scale to any size in 4px increments.</span></div></div>
+            <div class="rule"><span class="num">RULE 02</span><div class="desc"><strong>2px live-area padding</strong><span>Glyph never touches the frame. Optical balance over math.</span></div></div>
+            <div class="rule"><span class="num">RULE 03</span><div class="desc"><strong>1.5px stroke</strong><span>Single weight across the entire system. No mixed weights inside an icon.</span></div></div>
+            <div class="rule"><span class="num">RULE 04</span><div class="desc"><strong>Round caps &amp; joins</strong><span>Soft terminals match Newsreader's italic terminals. No miter, no bevel.</span></div></div>
+            <div class="rule"><span class="num">RULE 05</span><div class="desc"><strong>Outline only</strong><span>No fills. Color is set on stroke only. Use currentColor.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">5.3</span>
+        <h2 class="ds-section-title">Library</h2>
+        <p class="ds-section-desc">Twenty-eight icons across four categories. Use these first; only commission new ones for genuinely missing concepts.</p>
+      </div>
+      <div class="icon-grid">
+
+        <div class="icon-cat"><h3>Nature &amp; garden</h3><span class="count">08 ICONS</span></div>
+        <div class="icon-cells">
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M12 22 V12 M12 12 V8 C12 5 10 3 7 2 M12 12 V8 C12 5 14 3 17 2 M7 2 C7 5 9 7 12 8 M17 2 C17 5 15 7 12 8"/></svg><span class="name">antler</span></div>
+            <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M12 22 V14 M12 14 C7 14 4 11 4 6 C9 6 12 9 12 14 M12 14 C17 14 20 11 20 6 C15 6 12 9 12 14"/></svg><span class="name">leaf</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><circle cx="12" cy="10" r="3"/><path d="M12 13 V21 M12 7 C12 4 10 2 7 2 C7 5 9 7 12 7 M12 7 C12 4 14 2 17 2 C17 5 15 7 12 7 M9 10 C7 10 4 9 3 7 C5 6 7 7 9 9 M15 10 C17 10 20 9 21 7 C19 6 17 7 15 9"/></svg><span class="name">flower</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M3 18 C5 12 8 8 12 6 C16 8 19 12 21 18 M3 18 H21 M12 6 V3"/></svg><span class="name">tree</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M3 14 H21 M3 18 H21 M5 14 C5 9 8 6 12 6 C16 6 19 9 19 14 M9 14 C9 11 10 9 12 9 C14 9 15 11 15 14"/></svg><span class="name">grass</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M12 22 V14 M12 14 C9 11 6 11 4 13 M12 14 C15 11 18 11 20 13 M12 14 C10 12 9 9 10 6 M12 14 C14 12 15 9 14 6"/></svg><span class="name">shrub</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M5 21 V12 C5 8 8 5 12 5 C16 5 19 8 19 12 V21 M5 21 H19 M9 21 V14 H15 V21 M9 14 H15"/></svg><span class="name">greenhouse</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><circle cx="12" cy="12" r="3"/><path d="M12 2 V5 M12 19 V22 M2 12 H5 M19 12 H22 M5 5 L7 7 M17 17 L19 19 M5 19 L7 17 M17 7 L19 5"/></svg><span class="name">sun</span></div>
+        </div>
+
+        <div class="icon-cat"><h3>Product &amp; performance</h3><span class="count">08 ICONS</span></div>
+        <div class="icon-cells">
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M9 8 V4 H15 V8 M8 8 H16 L17 22 H7 Z M11 12 H13 M11 15 H13 M11 18 H13"/></svg><span class="name">bottle</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M14 4 H8 V8 H14 Z M11 4 V2 M11 8 V12 M3 16 L6 12 H16 L19 16 V20 H3 Z M3 16 H19"/></svg><span class="name">spray</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M12 3 C8 8 4 12 4 16 A8 8 0 0 0 20 16 C20 12 16 8 12 3 Z"/></svg><span class="name">drop</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><circle cx="12" cy="12" r="9"/><path d="M12 7 V12 L15 14 M12 3 V5 M12 19 V21"/></svg><span class="name">30 days</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M12 3 L20 7 V13 C20 17 16 20 12 22 C8 20 4 17 4 13 V7 Z M9 12 L11 14 L15 10"/></svg><span class="name">shield</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M5 13 L6 19 H18 L19 13 M3 13 H21 M3 13 V11 H21 V13 M8 8 C8 6 10 5 12 5 C14 5 16 6 16 8 V11"/></svg><span class="name">basket</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M3 12 H21 M12 3 V21 M5 8 L8 5 M19 8 L16 5 M5 16 L8 19 M19 16 L16 19"/></svg><span class="name">coverage</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M5 7 H19 L17 21 H7 Z M9 7 V4 H15 V7 M10 11 V17 M14 11 V17"/></svg><span class="name">jug</span></div>
+        </div>
+
+        <div class="icon-cat"><h3>Safety &amp; trust</h3><span class="count">06 ICONS</span></div>
+        <div class="icon-cells">
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M5 16 V11 C5 8 8 6 11 6 C13 4 17 5 18 8 C20 8 21 10 20 12 C21 13 21 15 19 16 M5 16 H19 M9 19 C9 20 10 21 11 21 C12 21 12 20 12 19 M14 19 C14 20 15 21 16 21 C17 21 17 20 17 19 M7 12 C7 11 8 10 9 11"/></svg><span class="name">pet-safe</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><circle cx="12" cy="8" r="3"/><path d="M6 21 V18 C6 15 8 13 12 13 C16 13 18 15 18 18 V21 M9 21 V18 H15 V21"/></svg><span class="name">kid-safe</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M12 2 L20 6 V12 C20 17 16 21 12 22 C8 21 4 17 4 12 V6 Z"/></svg><span class="name">protect</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M12 2 L14 8 L20 8 L15 12 L17 19 L12 15 L7 19 L9 12 L4 8 L10 8 Z"/></svg><span class="name">awarded</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><circle cx="12" cy="12" r="9"/><path d="M8 12 L11 15 L16 9"/></svg><span class="name">verified</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M12 2 C8 2 5 5 5 9 C5 13 9 16 12 22 C15 16 19 13 19 9 C19 5 16 2 12 2 Z"/><path d="M9 9 C9 7 11 6 12 7 C13 6 15 7 15 9 C15 11 12 13 12 13 C12 13 9 11 9 9 Z"/></svg><span class="name">made-with-care</span></div>
+        </div>
+
+        <div class="icon-cat"><h3>UI &amp; navigation</h3><span class="count">06 ICONS</span></div>
+        <div class="icon-cells">
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><circle cx="11" cy="11" r="6"/><path d="M16 16 L21 21"/></svg><span class="name">search</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M4 6 H20 M4 12 H20 M4 18 H20"/></svg><span class="name">menu</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M9 5 L17 12 L9 19"/></svg><span class="name">arrow</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M5 5 L19 19 M19 5 L5 19"/></svg><span class="name">close</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><path d="M12 5 V19 M5 12 H19"/></svg><span class="name">add</span></div>
+          <div class="icon-cell"><svg viewBox="0 0 24 24" class="icon"><circle cx="12" cy="12" r="9"/><path d="M12 8 V12 M12 16 V16.01"/></svg><span class="name">info</span></div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">5.4</span>
+        <h2 class="ds-section-title">Sizes</h2>
+        <p class="ds-section-desc">Native at 24px. Scale in 4px increments. Below 16px the 1.5px stroke gets crunchy — switch to a heavier set or use the symbol mark instead.</p>
+      </div>
+      <div class="size-row">
+        <div class="size-tile"><div class="canvas"><svg viewBox="0 0 24 24" class="icon" style="width:16px;height:16px"><path d="M3 12 H21 M12 3 V21 M5 8 L8 5 M19 8 L16 5 M5 16 L8 19 M19 16 L16 19"/></svg></div><span class="px">16 PX</span><div class="ctx">Inline · captions</div></div>
+        <div class="size-tile"><div class="canvas"><svg viewBox="0 0 24 24" class="icon" style="width:24px;height:24px"><path d="M3 12 H21 M12 3 V21 M5 8 L8 5 M19 8 L16 5 M5 16 L8 19 M19 16 L16 19"/></svg></div><span class="px">24 PX</span><div class="ctx">Default · UI</div></div>
+        <div class="size-tile"><div class="canvas"><svg viewBox="0 0 24 24" class="icon" style="width:32px;height:32px"><path d="M3 12 H21 M12 3 V21 M5 8 L8 5 M19 8 L16 5 M5 16 L8 19 M19 16 L16 19"/></svg></div><span class="px">32 PX</span><div class="ctx">Card heads</div></div>
+        <div class="size-tile"><div class="canvas"><svg viewBox="0 0 24 24" class="icon" style="width:48px;height:48px"><path d="M3 12 H21 M12 3 V21 M5 8 L8 5 M19 8 L16 5 M5 16 L8 19 M19 16 L16 19"/></svg></div><span class="px">48 PX</span><div class="ctx">Feature blocks</div></div>
+        <div class="size-tile"><div class="canvas"><svg viewBox="0 0 24 24" class="icon" style="width:80px;height:80px; stroke-width:1"><path d="M3 12 H21 M12 3 V21 M5 8 L8 5 M19 8 L16 5 M5 16 L8 19 M19 16 L16 19"/></svg></div><span class="px">80 PX +</span><div class="ctx">Hero · packaging</div></div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">5.5</span>
+        <h2 class="ds-section-title">In context</h2>
+        <p class="ds-section-desc">Three sample placements — light, dark, and orange. The icon takes the surface color, set on stroke.</p>
+      </div>
+      <div class="usage-row">
+        <div class="usage-card">
+          <div class="demo">
+            <svg viewBox="0 0 24 24" class="icon"><path d="M12 3 L20 7 V13 C20 17 16 20 12 22 C8 20 4 17 4 13 V7 Z M9 12 L11 14 L15 10"/></svg>
+            <div>
+              <h4>Pet-safe formula</h4>
+              <p>EPA 25(b) exempt · Plant oils, water</p>
+            </div>
+          </div>
+          <span class="label">LIGHT · INK ON SAND</span>
+          <p class="desc">Default UI placement. Icon takes ink-800.</p>
+        </div>
+        <div class="usage-card dark">
+          <div class="demo">
+            <svg viewBox="0 0 24 24" class="icon"><circle cx="12" cy="12" r="9"/><path d="M12 7 V12 L15 14 M12 3 V5 M12 19 V21"/></svg>
+            <div>
+              <h4>30 days, one bottle</h4>
+              <p>Reapply after heavy rain</p>
+            </div>
+          </div>
+          <span class="label">DARK · ORANGE ON INK</span>
+          <p class="desc">Hero / campaign placement. Orange-400 stroke.</p>
+        </div>
+        <div class="usage-card orange">
+          <div class="demo">
+            <svg viewBox="0 0 24 24" class="icon"><path d="M14 4 H8 V8 H14 Z M11 4 V2 M11 8 V12 M3 16 L6 12 H16 L19 16 V20 H3 Z M3 16 H19"/></svg>
+            <div>
+              <h4>Spray. Done.</h4>
+              <p>Rain-fast in 20 minutes</p>
+            </div>
+          </div>
+          <span class="label">LOUD · WHITE ON ORANGE</span>
+          <p class="desc">Packaging / shelf. White stroke on the brand block.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">5.6</span>
+        <h2 class="ds-section-title">Don't</h2>
+        <p class="ds-section-desc">Four common mistakes. The icons are quiet on purpose.</p>
+      </div>
+      <div class="donts">
+        <div class="dont">
+          <span class="x">✕</span>
+          <div class="dont-fill"><svg viewBox="0 0 24 24" class="ic icon" style="fill:var(--dw-orange-500); stroke:none"><path d="M12 22 V14 M12 14 C7 14 4 11 4 6 C9 6 12 9 12 14 M12 14 C17 14 20 11 20 6 C15 6 12 9 12 14"/></svg></div>
+          <div class="desc"><strong>Don't fill</strong>Outline only. Stroke takes the color.</div>
+        </div>
+        <div class="dont">
+          <span class="x">✕</span>
+          <div class="dont-thick"><svg viewBox="0 0 24 24" class="ic icon" style="stroke-width:4"><path d="M3 18 C5 12 8 8 12 6 C16 8 19 12 21 18 M3 18 H21 M12 6 V3"/></svg></div>
+          <div class="desc"><strong>Don't thicken</strong>Single weight across the system.</div>
+        </div>
+        <div class="dont">
+          <span class="x">✕</span>
+          <div class="dont-thin"><svg viewBox="0 0 24 24" class="ic icon" style="stroke-width:0.5"><path d="M3 18 C5 12 8 8 12 6 C16 8 19 12 21 18 M3 18 H21 M12 6 V3"/></svg></div>
+          <div class="desc"><strong>Don't thin out</strong>1.5px is the floor. Anything less disappears.</div>
+        </div>
+        <div class="dont">
+          <span class="x">✕</span>
+          <div class="dont-mix"><svg viewBox="0 0 24 24" class="ic icon" style="fill:var(--dw-forest-100); stroke-width:1.5"><path d="M3 18 C5 12 8 8 12 6 C16 8 19 12 21 18 M3 18 H21 M12 6 V3"/></svg></div>
+          <div class="desc"><strong>Don't mix fill + line</strong>Pick one system per icon.</div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="sidebar.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('sidebar')).render(<DSSidebar current="iconography"/>);
+  ReactDOM.createRoot(document.getElementById('footer')).render(<DSFooter/>);
+</script>
+</body>
+</html>

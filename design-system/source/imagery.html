@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DeerWall · Brand Book — Imagery</title>
+<link rel="icon" type="image/png" href="source/fav_icon.png"/>
+<link rel="stylesheet" href="tokens.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<link rel="stylesheet" href="mobile.css"/>
+<style>
+.img-hero { position: relative; border-radius: var(--dw-radius-lg); overflow: hidden; aspect-ratio: 21/9; background: var(--dw-ink-900); }
+.img-hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.img-hero .scrim { position: absolute; inset: 0; background: linear-gradient(to right, rgba(20,17,13,0.85) 0%, rgba(20,17,13,0.6) 40%, transparent 70%); }
+.img-hero .copy { position: absolute; inset: 0; padding: 56px 64px; display: flex; flex-direction: column; justify-content: flex-end; color: white; }
+.img-hero .label { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dw-orange-400); }
+.img-hero h2 { font-family: var(--dw-font-display); font-weight: 400; font-size: 56px; line-height: 1; letter-spacing: -0.025em; margin: 12px 0 0; max-width: 16ch; }
+.img-hero h2 em { font-style: italic; color: var(--dw-orange-300); }
+
+.pillars { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.pillar { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); overflow: hidden; }
+.pillar .ph { aspect-ratio: 4/3; position: relative; overflow: hidden; }
+.pillar .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pillar .ph img.focus-right { object-position: right center; }
+.pillar .ph .tag { position: absolute; top: 16px; left: 16px; font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; padding: 6px 10px; background: white; border-radius: 100px; color: var(--dw-ink-800); }
+.pillar .meta { padding: 24px 28px; }
+.pillar .name { font-family: var(--dw-font-display); font-weight: 600; font-size: 20px; letter-spacing: -0.01em; }
+.pillar .desc { font-size: 13px; color: var(--dw-stone-600); line-height: 1.55; margin-top: 8px; }
+
+.crop-grid { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 32px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; }
+.crop-tile { position: relative; border-radius: var(--dw-radius); overflow: hidden; }
+.crop-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.crop-tile img.focus-right { object-position: 78% center; }
+.crop-16x9 { aspect-ratio: 16/9; }
+.crop-1x1 { aspect-ratio: 1; }
+.crop-3x4 { aspect-ratio: 3/4; }
+.crop-tile .ratio { position: absolute; bottom: 12px; left: 12px; font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.1em; padding: 4px 8px; background: rgba(255,255,255,0.95); border-radius: 4px; color: var(--dw-ink-800); }
+
+.treatment-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.treatment { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); overflow: hidden; }
+.treatment .demo { aspect-ratio: 4/3; position: relative; overflow: hidden; }
+.treatment .demo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.treatment .meta { padding: 20px 24px; }
+.treatment .meta .name { font-family: var(--dw-font-display); font-weight: 600; font-size: 16px; }
+.treatment .meta .desc { font-size: 12px; color: var(--dw-stone-600); margin-top: 4px; line-height: 1.5; }
+
+.tr-natural .demo img { filter: none; }
+.tr-orange .demo::after { content: ''; position: absolute; inset: 0; background: var(--dw-orange-500); mix-blend-mode: multiply; opacity: 0.65; }
+.tr-orange .demo::before { content: ''; position: absolute; inset: 0; background: var(--dw-orange-500); mix-blend-mode: screen; opacity: 0.15; z-index: 1; }
+.tr-orange .demo img { filter: grayscale(0.4) contrast(1.1); }
+.tr-mono .demo img { filter: grayscale(1) contrast(1.05); }
+.tr-mono .demo::after { content: ''; position: absolute; inset: 0; background: var(--dw-ink-900); mix-blend-mode: multiply; opacity: 0.15; }
+.treatment .demo img.focus-right { object-position: right center; }
+
+.scrim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.scrim-tile { position: relative; aspect-ratio: 16/9; border-radius: var(--dw-radius-lg); overflow: hidden; background: var(--dw-ink-900); }
+.scrim-2 { background: url('assets/img-field.jpg') 25% center / 150% no-repeat; }
+.scrim-tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.scrim-tile img.focus-right { object-position: 78% center; }
+.scrim-tile img.focus-left { object-position: 22% center; }
+.scrim-tile .scr { position: absolute; inset: 0; }
+.scrim-tile .copy { position: absolute; inset: 0; padding: 36px 40px; display: flex; flex-direction: column; justify-content: flex-end; color: white; }
+.scrim-tile .copy .lab { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.85; }
+.scrim-tile .copy h4 { font-family: var(--dw-font-display); font-weight: 500; font-size: 30px; line-height: 1.05; letter-spacing: -0.02em; margin: 8px 0 0; }
+.scrim-tile .copy h4 em { font-style: italic; color: var(--dw-orange-300); }
+.scrim-1 .scr { background: linear-gradient(180deg, transparent 30%, rgba(20,17,13,0.85) 100%); }
+.scrim-2 .scr { background: linear-gradient(135deg, transparent 0%, transparent 40%, rgba(20,17,13,0.55) 70%, rgba(20,17,13,0.9) 100%); }
+.scrim-3 .scr { background: rgba(238,107,31,0.7); }
+.scrim-4 .scr { background: rgba(20,17,13,0.5); }
+
+.donts { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 12px; }
+.dont { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); overflow: hidden; }
+.dont .demo { aspect-ratio: 4/3; position: relative; overflow: hidden; }
+.dont .demo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.dont .demo::after { content: '✕'; position: absolute; bottom: 10px; right: 10px; width: 24px; height: 24px; line-height: 24px; text-align: center; background: #B43C28; color: white; border-radius: 50%; font-size: 11px; font-weight: 700; }
+.dont .meta { padding: 12px 16px; font-size: 12px; color: var(--dw-stone-600); }
+.dont .meta strong { display: block; color: var(--dw-ink-800); font-family: var(--dw-font-display); font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+.dont-1 .demo img { filter: saturate(2.4) contrast(1.4); }
+.dont-2 .demo img { filter: blur(4px); }
+.dont-3 .demo::before { content: ''; position: absolute; inset: 0; background: linear-gradient(45deg, #00f, #f0f); mix-blend-mode: screen; opacity: 0.7; z-index: 1; }
+.dont-4 .demo img { filter: sepia(0.6) saturate(0.6); }
+
+@media (max-width: 1024px) {
+  .img-hero { aspect-ratio: 4/3; }
+  .img-hero h2 { font-size: 36px; }
+  .img-hero .copy { padding: 32px; }
+  .pillars, .treatment-grid { grid-template-columns: 1fr; }
+  .crop-grid { grid-template-columns: 1fr; }
+  .scrim-grid, .donts { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="ds-shell">
+  <div id="sidebar"></div>
+  <main class="ds-main">
+
+    <header class="ds-page-header">
+      <div class="ds-page-eyebrow">06 · Foundations</div>
+      <h1 class="ds-page-title">Imagery &amp; <em>photography.</em></h1>
+      <p class="ds-page-lede">Three subjects, lit naturally, photographed close. Real gardens, real animals, real people. The imagery does the emotional work the copy can't.</p>
+    </header>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">6.1</span>
+        <h2 class="ds-section-title">Hero specimen</h2>
+        <p class="ds-section-desc">The signature DeerWall image — a buck silhouette against the brand orange. Used sparingly, on the largest surfaces. Print, hero, campaign.</p>
+      </div>
+      <div class="img-hero">
+        <img src="assets/img-deer.jpg" alt="Deer in orange light"/>
+        <div class="scrim"></div>
+        <div class="copy">
+          <span class="label">DW-IMG-01 · HERO · BRAND PORTRAIT</span>
+          <h2>The animal you <em>respect.</em><br/>The garden you <em>protect.</em></h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">6.2</span>
+        <h2 class="ds-section-title">Three subject pillars</h2>
+        <p class="ds-section-desc">Every brand image falls into one of three buckets. Mix them across a campaign — never lean on one alone.</p>
+      </div>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="ph"><img src="assets/img-deer.jpg" alt=""/><span class="tag">PILLAR 01</span></div>
+          <div class="meta">
+            <div class="name">The animal</div>
+            <p class="desc">Whitetail deer photographed with respect. Treated in brand orange for hero use, untreated for editorial. Never aggressive, never threatening.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="ph"><img src="assets/img-gardener.jpg" class="focus-right" alt=""/><span class="tag">PILLAR 02</span></div>
+          <div class="meta">
+            <div class="name">The gardener</div>
+            <p class="desc">Real people in the work — hands on plants, low golden-hour light, real expressions. No staged grins, no lifestyle stock clichés.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="ph"><img src="assets/img-bg-3.jpg" alt=""/><span class="tag">PILLAR 03</span></div>
+          <div class="meta">
+            <div class="name">The garden</div>
+            <p class="desc">Hostas, hydrangeas, tomatoes, tulips — what the customer is actually trying to protect. Tight, painterly crops that feel held by hand.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">6.3</span>
+        <h2 class="ds-section-title">Crop ratios</h2>
+        <p class="ds-section-desc">Three core ratios cover most needs. Plan for negative space on the side opposite the subject.</p>
+      </div>
+      <div class="crop-grid">
+        <div class="crop-tile crop-16x9"><img src="assets/img-field.jpg" alt=""/><span class="ratio">16:9 · WEB · BANNER</span></div>
+        <div class="crop-tile crop-1x1"><img src="assets/img-gardener.jpg" class="focus-right" alt=""/><span class="ratio">1:1 · SOCIAL</span></div>
+        <div class="crop-tile crop-3x4"><img src="assets/img-bg-3.jpg" alt=""/><span class="ratio">3:4 · PRINT</span></div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">6.4</span>
+        <h2 class="ds-section-title">Treatments</h2>
+        <p class="ds-section-desc">Three treatment recipes. Pick by hierarchy: natural for editorial, orange for hero/campaign, mono for moments where the headline needs to win.</p>
+      </div>
+      <div class="treatment-grid">
+        <div class="treatment tr-natural">
+          <div class="demo"><img src="assets/img-gardener.jpg" class="focus-right" alt=""/></div>
+          <div class="meta"><div class="name">01 · Natural</div><div class="desc">Untreated. Slight warmth +5, lift shadows. Default for editorial &amp; product.</div></div>
+        </div>
+        <div class="treatment tr-orange">
+          <div class="demo"><img src="assets/img-deer.jpg" alt=""/></div>
+          <div class="meta"><div class="name">02 · Brand orange</div><div class="desc">Multiply Orange-500 at 65%. Hero only. The DeerWall signature.</div></div>
+        </div>
+        <div class="treatment tr-mono">
+          <div class="demo"><img src="assets/img-field.jpg" alt=""/></div>
+          <div class="meta"><div class="name">03 · Mono</div><div class="desc">Desaturate fully. 15% ink wash. For long-form &amp; press placements.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">6.5</span>
+        <h2 class="ds-section-title">Scrims for type</h2>
+        <p class="ds-section-desc">Four scrim recipes that keep type readable on photography without flattening the image.</p>
+      </div>
+      <div class="scrim-grid">
+        <div class="scrim-tile scrim-1">
+          <img src="assets/img-bg-3.jpg" alt=""/><div class="scr"></div>
+          <div class="copy"><span class="lab">SCRIM 01 · BOTTOM GRADIENT</span><h4>Gardens worth <em>protecting.</em></h4></div>
+        </div>
+        <div class="scrim-tile scrim-2">
+          <div class="scr"></div>
+          <div class="copy" style="align-items:flex-end; text-align:right"><span class="lab">SCRIM 02 · CORNER GRADIENT</span><h4>Built for the <em>real ones.</em></h4></div>
+        </div>
+        <div class="scrim-tile scrim-3">
+          <img src="assets/img-deer.jpg" alt=""/><div class="scr"></div>
+          <div class="copy"><span class="lab">SCRIM 03 · ORANGE FLOOD</span><h4>Keep deer out, <em>naturally.</em></h4></div>
+        </div>
+        <div class="scrim-tile scrim-4">
+          <img src="assets/img-gardener.jpg" class="focus-right" alt=""/><div class="scr"></div>
+          <div class="copy"><span class="lab">SCRIM 04 · INK WASH 50%</span><h4>One bottle. <em>Thirty days.</em></h4></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">6.6</span>
+        <h2 class="ds-section-title">Don't</h2>
+        <p class="ds-section-desc">Four image traps. The aesthetic is honest, slightly warm, never digital-feeling.</p>
+      </div>
+      <div class="donts">
+        <div class="dont dont-1"><div class="demo"><img src="assets/img-bg-3.jpg" alt=""/></div><div class="meta"><strong>Don't oversaturate</strong>Plants are green. Keep them green.</div></div>
+        <div class="dont dont-2"><div class="demo"><img src="assets/img-gardener.jpg" class="focus-right" alt=""/></div><div class="meta"><strong>Don't blur subjects</strong>Bokeh in the back, sharp on the hands.</div></div>
+        <div class="dont dont-3"><div class="demo"><img src="assets/img-deer.jpg" alt=""/></div><div class="meta"><strong>Don't recolor wild</strong>Orange treatment only. No purple, blue, etc.</div></div>
+        <div class="dont dont-4"><div class="demo"><img src="assets/img-field.jpg" alt=""/></div><div class="meta"><strong>Don't sepia</strong>We're modern, not nostalgic. Avoid stock-photo filters.</div></div>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="sidebar.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('sidebar')).render(<DSSidebar current="imagery"/>);
+  ReactDOM.createRoot(document.getElementById('footer')).render(<DSFooter/>);
+</script>
+</body>
+</html>

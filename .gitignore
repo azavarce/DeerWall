@@ -1,0 +1,30 @@
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Claude Code local overrides (per-user, not committed)
+.claude/settings.local.json
+.claude/logs/
+
+# Node / build artifacts (in case anything is added later)
+node_modules/
+dist/
+build/
+*.log
+
+# Environment files (just in case)
+.env
+.env.local
+.env.*.local
+
+# Large legacy Photoshop source (>100MB, exceeds GitHub limit)
+DeerWall pics/Copy of DeerWall_Web_Page.psd

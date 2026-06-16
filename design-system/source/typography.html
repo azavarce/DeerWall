@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DeerWall · Brand Book — Typography</title>
+<link rel="icon" type="image/png" href="source/fav_icon.png"/>
+<link rel="stylesheet" href="tokens.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<link rel="stylesheet" href="mobile.css"/>
+<style>
+.type-hero { background: var(--dw-sand-100); border-radius: var(--dw-radius-lg); padding: 80px 64px; }
+.type-hero .label { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dw-orange-700); }
+.type-hero h2 { font-family: var(--dw-font-display); font-weight: 400; font-size: 144px; line-height: 0.92; letter-spacing: -0.04em; margin: 16px 0 0; color: var(--dw-ink-800); }
+.type-hero h2 em { font-style: italic; color: var(--dw-orange-600); }
+.type-hero .meta-row { display: flex; gap: 32px; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(31,26,20,0.12); }
+.type-hero .meta-row .item { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.08em; color: var(--dw-stone-600); }
+.type-hero .meta-row .item strong { color: var(--dw-ink-800); display: block; font-size: 13px; margin-bottom: 2px; letter-spacing: 0.02em; }
+
+.face-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.face { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 32px; min-height: 360px; display: flex; flex-direction: column; }
+.face .role { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dw-orange-700); }
+.face .name { font-family: var(--dw-font-display); font-weight: 500; font-size: 28px; letter-spacing: -0.015em; margin: 12px 0 4px; }
+.face .alt { font-family: var(--dw-font-mono); font-size: 11px; color: var(--dw-stone-500); margin-bottom: 24px; }
+.face .specimen { flex: 1; display: flex; align-items: center; }
+.face .meta-grid { padding-top: 16px; border-top: 1px solid rgba(31,26,20,0.06); display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-family: var(--dw-font-mono); font-size: 10px; color: var(--dw-stone-500); }
+.face .meta-grid strong { color: var(--dw-ink-800); display: block; }
+
+.spec-display { font-family: var(--dw-font-display); font-weight: 400; font-size: 96px; line-height: 0.95; letter-spacing: -0.03em; }
+.spec-display em { font-style: italic; color: var(--dw-orange-600); }
+.spec-sans { font-family: var(--dw-font-sans); font-weight: 600; font-size: 56px; letter-spacing: -0.02em; line-height: 0.95; }
+.spec-mono { font-family: var(--dw-font-mono); font-weight: 500; font-size: 22px; letter-spacing: 0.02em; line-height: 1.35; }
+
+.scale-table { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); overflow: hidden; }
+.scale-row { display: grid; grid-template-columns: 100px 1fr 100px 100px 1fr; align-items: baseline; padding: 24px 32px; border-top: var(--dw-border-thin); }
+.scale-row.head { background: var(--dw-sand-100); padding: 14px 32px; font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dw-stone-500); border-top: 0; }
+.scale-row .token { font-family: var(--dw-font-mono); font-size: 12px; color: var(--dw-stone-700); font-weight: 600; }
+.scale-row .sample { color: var(--dw-ink-800); }
+.scale-row .px { font-family: var(--dw-font-mono); font-size: 12px; color: var(--dw-stone-500); }
+.scale-row .lh { font-family: var(--dw-font-mono); font-size: 12px; color: var(--dw-stone-500); }
+.scale-row .use { font-size: 13px; color: var(--dw-stone-600); }
+
+.spec-h1 { font-family: var(--dw-font-display); font-weight: 400; font-size: 84px; line-height: 0.95; letter-spacing: -0.03em; }
+.spec-h2 { font-family: var(--dw-font-display); font-weight: 400; font-size: 64px; line-height: 1; letter-spacing: -0.025em; }
+.spec-h3 { font-family: var(--dw-font-display); font-weight: 500; font-size: 48px; line-height: 1.05; letter-spacing: -0.02em; }
+.spec-h4 { font-family: var(--dw-font-display); font-weight: 500; font-size: 36px; line-height: 1.1; letter-spacing: -0.018em; }
+.spec-h5 { font-family: var(--dw-font-display); font-weight: 500; font-size: 28px; line-height: 1.15; letter-spacing: -0.015em; }
+.spec-h6 { font-family: var(--dw-font-sans); font-weight: 600; font-size: 22px; line-height: 1.25; letter-spacing: -0.01em; }
+.spec-eyebrow { font-family: var(--dw-font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dw-orange-700); font-weight: 600; }
+.spec-body { font-family: var(--dw-font-sans); font-weight: 400; font-size: 18px; line-height: 1.6; color: var(--dw-ink-800); }
+.spec-small { font-family: var(--dw-font-sans); font-weight: 400; font-size: 14px; line-height: 1.5; color: var(--dw-stone-600); }
+.spec-mono-row { font-family: var(--dw-font-mono); font-size: 13px; letter-spacing: 0.08em; color: var(--dw-stone-700); }
+
+.editorial { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 56px; }
+.editorial .lede-block .eyebrow { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dw-orange-700); }
+.editorial .lede-block .title { font-family: var(--dw-font-display); font-weight: 400; font-size: 72px; line-height: 0.98; letter-spacing: -0.025em; margin: 16px 0 24px; color: var(--dw-ink-800); }
+.editorial .lede-block .title em { font-style: italic; color: var(--dw-orange-600); }
+.editorial .lede-block .lede { font-family: var(--dw-font-display); font-weight: 400; font-style: italic; font-size: 24px; line-height: 1.4; color: var(--dw-stone-700); margin: 0; max-width: 30ch; }
+.editorial .body-block .col { font-family: var(--dw-font-sans); font-size: 16px; line-height: 1.7; color: var(--dw-stone-700); column-count: 1; }
+.editorial .body-block .col p { margin: 0 0 14px; }
+.editorial .body-block .pull-quote { font-family: var(--dw-font-display); font-weight: 400; font-style: italic; font-size: 28px; line-height: 1.3; color: var(--dw-ink-800); padding: 16px 0; border-top: 2px solid var(--dw-orange-500); border-bottom: 1px solid rgba(31,26,20,0.12); margin: 24px 0; }
+
+.combos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.combo { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 40px; }
+.combo .label { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dw-stone-500); margin-bottom: 16px; display: block; }
+.combo.dark { background: var(--dw-ink-900); color: var(--dw-sand-50); border-color: transparent; }
+.combo.dark .label { color: rgba(250,246,240,0.6); }
+.combo.dark .spec-body { color: rgba(250,246,240,0.85); }
+.combo.dark .spec-h3 em { color: var(--dw-orange-400); }
+.combo.orange { background: var(--dw-orange-500); color: white; border-color: transparent; }
+.combo.orange .label { color: rgba(255,255,255,0.75); }
+
+.donts { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.dont { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 28px; position: relative; min-height: 160px; display: flex; flex-direction: column; justify-content: space-between; }
+.dont .x { position: absolute; top: 12px; right: 12px; width: 24px; height: 24px; line-height: 24px; text-align: center; background: #B43C28; color: white; border-radius: 50%; font-size: 12px; font-weight: 700; }
+.dont .sample { font-family: var(--dw-font-display); font-size: 28px; line-height: 1.1; color: var(--dw-ink-800); margin-bottom: 16px; }
+.dont .desc { font-size: 12px; color: var(--dw-stone-600); padding-top: 12px; border-top: 1px solid rgba(31,26,20,0.08); }
+.dont .desc strong { display: block; color: var(--dw-ink-800); margin-bottom: 2px; }
+
+.dont-1 .sample { font-family: 'Times New Roman', serif; font-style: italic; transform: skewX(-8deg); }
+.dont-2 .sample { font-family: 'Comic Sans MS', cursive; }
+.dont-3 .sample { letter-spacing: 0.3em; text-transform: uppercase; font-size: 18px; }
+.dont-4 .sample { background: linear-gradient(90deg, #EE6B1F, #B43C28); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.dont-5 .sample { color: var(--dw-stone-400); }
+.dont-6 .sample { font-family: var(--dw-font-sans); font-weight: 800; font-size: 36px; }
+
+@media (max-width: 1024px) {
+  .type-hero { padding: 40px 28px; }
+  .type-hero h2 { font-size: 72px; }
+  .face-grid { grid-template-columns: 1fr; }
+  .scale-row { grid-template-columns: 1fr; gap: 8px; }
+  .scale-row.head { display: none; }
+  .editorial { grid-template-columns: 1fr; padding: 32px; gap: 32px; }
+  .editorial .lede-block .title { font-size: 44px; }
+  .combos { grid-template-columns: 1fr; }
+  .donts { grid-template-columns: 1fr; }
+  .spec-h1 { font-size: 48px; }
+  .spec-h2 { font-size: 40px; }
+  .spec-display { font-size: 56px; }
+  .spec-sans { font-size: 36px; }
+}
+</style>
+</head>
+<body>
+<div class="ds-shell">
+  <div id="sidebar"></div>
+  <main class="ds-main">
+
+    <header class="ds-page-header">
+      <div class="ds-page-eyebrow">04 · Foundations</div>
+      <h1 class="ds-page-title">Typography &amp; <em>type system.</em></h1>
+      <p class="ds-page-lede">A modern serif for the sentences that matter, a sturdy sans for everything around them, and mono for the small print. Three faces. One voice.</p>
+    </header>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">4.1</span>
+        <h2 class="ds-section-title">Display specimen</h2>
+        <p class="ds-section-desc">Newsreader Italic in Orange 600 is the brand's signature move. Use it for the one phrase you most want remembered.</p>
+      </div>
+      <div class="type-hero">
+        <span class="label">DISPLAY · NEWSREADER 400 + ITALIC</span>
+        <h2>Keep deer<br/>out, <em>naturally.</em></h2>
+        <div class="meta-row">
+          <div class="item"><strong>Family</strong>Newsreader</div>
+          <div class="item"><strong>Weight</strong>400 / 500 italic</div>
+          <div class="item"><strong>Size</strong>144px / 9rem</div>
+          <div class="item"><strong>Tracking</strong>−0.04em</div>
+          <div class="item"><strong>Leading</strong>0.92</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">4.2</span>
+        <h2 class="ds-section-title">Type stack</h2>
+        <p class="ds-section-desc">Three families, used for distinct jobs. Don't substitute one for another.</p>
+      </div>
+      <div class="face-grid">
+        <div class="face">
+          <span class="role">DISPLAY · EDITORIAL</span>
+          <div class="name">Newsreader</div>
+          <div class="alt">Open source · Google Fonts</div>
+          <div class="specimen"><div class="spec-display">Aa<em>Aa</em></div></div>
+          <div class="meta-grid">
+            <div><strong>Weights</strong>300 · 400 · 500 · 600 · 700</div>
+            <div><strong>Italics</strong>400 · 500 · 600</div>
+            <div><strong>Use for</strong>Headlines, taglines, lede paragraphs</div>
+            <div><strong>Don't use for</strong>Body copy, UI labels, captions</div>
+          </div>
+        </div>
+        <div class="face">
+          <span class="role">UI · WORKHORSE</span>
+          <div class="name">Inter Tight</div>
+          <div class="alt">Open source · Google Fonts</div>
+          <div class="specimen"><div class="spec-sans">Aa<br/>Bb Cc</div></div>
+          <div class="meta-grid">
+            <div><strong>Weights</strong>300 · 400 · 500 · 600 · 700 · 800</div>
+            <div><strong>Italics</strong>—</div>
+            <div><strong>Use for</strong>Body, UI, navigation, buttons, forms</div>
+            <div><strong>Don't use for</strong>Hero headlines or pull quotes</div>
+          </div>
+        </div>
+        <div class="face">
+          <span class="role">UTILITY · ACCENT</span>
+          <div class="name">JetBrains Mono</div>
+          <div class="alt">Open source · Google Fonts</div>
+          <div class="specimen"><div class="spec-mono">DW-001<br/>NATURAL_<br/>0123456</div></div>
+          <div class="meta-grid">
+            <div><strong>Weights</strong>400 · 500 · 600</div>
+            <div><strong>Italics</strong>—</div>
+            <div><strong>Use for</strong>Labels, eyebrows, codes, lot numbers</div>
+            <div><strong>Don't use for</strong>Anything longer than a phrase</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">4.3</span>
+        <h2 class="ds-section-title">Type scale</h2>
+        <p class="ds-section-desc">A modular scale rooted at 16px body, climbing to 84px for hero. Mono and the eyebrow break out of the rhythm on purpose.</p>
+      </div>
+      <div class="scale-table">
+        <div class="scale-row head">
+          <span>Token</span><span>Specimen</span><span>Size</span><span>Leading</span><span>Use for</span>
+        </div>
+        <div class="scale-row">
+          <span class="token">display / 7xl</span>
+          <span class="sample spec-h1">Naturally</span>
+          <span class="px">84px / 5.25rem</span>
+          <span class="lh">0.95 · −0.03</span>
+          <span class="use">Page hero, packaging hero</span>
+        </div>
+        <div class="scale-row">
+          <span class="token">h1 / 5xl</span>
+          <span class="sample spec-h2">Section headline</span>
+          <span class="px">64px / 4rem</span>
+          <span class="lh">1.0 · −0.025</span>
+          <span class="use">Section headers, deck titles</span>
+        </div>
+        <div class="scale-row">
+          <span class="token">h2 / 4xl</span>
+          <span class="sample spec-h3">Subsection title</span>
+          <span class="px">48px / 3rem</span>
+          <span class="lh">1.05 · −0.02</span>
+          <span class="use">Subsections, hero leads</span>
+        </div>
+        <div class="scale-row">
+          <span class="token">h3 / 3xl</span>
+          <span class="sample spec-h4">Card title</span>
+          <span class="px">36px / 2.25rem</span>
+          <span class="lh">1.1 · −0.018</span>
+          <span class="use">Article cards, hero alt</span>
+        </div>
+        <div class="scale-row">
+          <span class="token">h4 / 2xl</span>
+          <span class="sample spec-h5">Block heading</span>
+          <span class="px">28px / 1.75rem</span>
+          <span class="lh">1.15 · −0.015</span>
+          <span class="use">Card headings, list titles</span>
+        </div>
+        <div class="scale-row">
+          <span class="token">h5 / xl</span>
+          <span class="sample spec-h6">UI heading</span>
+          <span class="px">22px / 1.375rem</span>
+          <span class="lh">1.25 · −0.01</span>
+          <span class="use">Form sections, panels</span>
+        </div>
+        <div class="scale-row">
+          <span class="token">eyebrow</span>
+          <span class="sample spec-eyebrow">SECTION · 04 · TYPOGRAPHY</span>
+          <span class="px">12px</span>
+          <span class="lh">1.0 · 0.18</span>
+          <span class="use">Section markers, tags</span>
+        </div>
+        <div class="scale-row">
+          <span class="token">body / lg</span>
+          <span class="sample spec-body">DeerWall is plant oils, water, and a confident wall around the garden you've spent years on.</span>
+          <span class="px">18px</span>
+          <span class="lh">1.6</span>
+          <span class="use">Lede paragraphs, hero copy</span>
+        </div>
+        <div class="scale-row">
+          <span class="token">body / base</span>
+          <span class="sample" style="font-family:var(--dw-font-sans); font-size:16px; line-height:1.6">Standard body copy. Set for long-form reading at a comfortable length.</span>
+          <span class="px">16px</span>
+          <span class="lh">1.6</span>
+          <span class="use">Default body, articles</span>
+        </div>
+        <div class="scale-row">
+          <span class="token">small</span>
+          <span class="sample spec-small">Captions, helper text, footnotes set in stone-600.</span>
+          <span class="px">14px</span>
+          <span class="lh">1.5</span>
+          <span class="use">Captions, secondary UI</span>
+        </div>
+        <div class="scale-row">
+          <span class="token">mono / sm</span>
+          <span class="sample spec-mono-row">DW-1655 · LOT 0426 · 32oz</span>
+          <span class="px">13px</span>
+          <span class="lh">1.4 · 0.08</span>
+          <span class="use">Codes, metadata, ledger</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">4.4</span>
+        <h2 class="ds-section-title">Editorial composition</h2>
+        <p class="ds-section-desc">An applied example combining all three faces. Eyebrow, italic display, sans body, mono caption — each doing one job.</p>
+      </div>
+      <div class="editorial">
+        <div class="lede-block">
+          <span class="eyebrow">FIELD NOTES · ISSUE 04</span>
+          <h3 class="title">Why deer leave the <em>hostas alone.</em></h3>
+          <p class="lede">After fifteen years of testing, three plant oils that the trigeminal nerve simply refuses to ignore.</p>
+        </div>
+        <div class="body-block">
+          <div class="col">
+            <p>Deer don't read warning labels. They navigate the world by smell, and their olfactory bulb is roughly four times the size of ours. So you can't argue them out of your tulips. You have to make the air around them genuinely unpleasant.</p>
+            <div class="pull-quote">"Three oils. One smells like rotting fruit to a deer. The others reinforce it."</div>
+            <p>That's the whole game. We blend them at concentrations that read 'predator' to a whitetail and 'damp herb' to a human nose, and we keep the carrier completely inert. Spray it once. The garden smells faintly of rosemary for an hour. The deer remember it for thirty days.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">4.5</span>
+        <h2 class="ds-section-title">Heading + body pairings</h2>
+        <p class="ds-section-desc">Four sanctioned pairings. Newsreader for the headline, Inter Tight for the support — never the other way around.</p>
+      </div>
+      <div class="combos">
+        <div class="combo">
+          <span class="label">01 · DEFAULT</span>
+          <h3 class="spec-h3">Built for gardens that <em style="color:var(--dw-orange-600); font-style:italic">refuse to be eaten.</em></h3>
+          <p class="spec-body" style="margin-top: 16px">Plant oils, water, and a stubborn refusal to use anything we wouldn't spray near our own kids and dogs.</p>
+        </div>
+        <div class="combo dark">
+          <span class="label">02 · NIGHT</span>
+          <h3 class="spec-h3">A wall of <em style="color: var(--dw-orange-400); font-style:italic">scent.</em></h3>
+          <p class="spec-body" style="margin-top: 16px; color: rgba(250,246,240,0.85)">Three plant oils tuned to the trigeminal nerve. They don't poison. They politely insist.</p>
+        </div>
+        <div class="combo">
+          <span class="label">03 · EDITORIAL</span>
+          <span class="spec-eyebrow">ON THE SHELF</span>
+          <h3 class="spec-h3" style="margin: 8px 0 12px">32 ounce, ready-to-use.</h3>
+          <p class="spec-body">Spray a 3-foot perimeter. Reapply every 30 days, or after heavy rain. That's it. That's the whole label.</p>
+        </div>
+        <div class="combo orange">
+          <span class="label">04 · LOUD</span>
+          <h3 class="spec-h3" style="color: white">One bottle. <em style="font-style:italic">Thirty days.</em></h3>
+          <p class="spec-body" style="color: rgba(255,255,255,0.92); margin-top: 16px">1,200 square feet of coverage. Rain-fast in 20 minutes. Pet-safe, kid-safe, pollinator-safe.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">4.6</span>
+        <h2 class="ds-section-title">Don't</h2>
+        <p class="ds-section-desc">Six type sins to avoid. The system has range; use it.</p>
+      </div>
+      <div class="donts">
+        <div class="dont dont-1">
+          <span class="x">✕</span>
+          <div class="sample">Faux italics</div>
+          <div class="desc"><strong>Don't fake italics</strong>Use the real italic cuts shipped with the family.</div>
+        </div>
+        <div class="dont dont-2">
+          <span class="x">✕</span>
+          <div class="sample">Off-brand typeface</div>
+          <div class="desc"><strong>Don't substitute fonts</strong>Newsreader, Inter Tight, JetBrains Mono. Period.</div>
+        </div>
+        <div class="dont dont-3">
+          <span class="x">✕</span>
+          <div class="sample">L O O S E &nbsp; T R A C K I N G</div>
+          <div class="desc"><strong>Don't track headlines wide</strong>Display sizes go tighter, not looser.</div>
+        </div>
+        <div class="dont dont-4">
+          <span class="x">✕</span>
+          <div class="sample">Gradient text</div>
+          <div class="desc"><strong>Don't gradient text</strong>Solid colors only. Trust the orange.</div>
+        </div>
+        <div class="dont dont-5">
+          <span class="x">✕</span>
+          <div class="sample">Low-contrast copy</div>
+          <div class="desc"><strong>Don't go below AA</strong>Stone-400 on Sand-50 is unreadable.</div>
+        </div>
+        <div class="dont dont-6">
+          <span class="x">✕</span>
+          <div class="sample">SHOUTY HEADLINES</div>
+          <div class="desc"><strong>Don't all-caps headlines</strong>Reserve uppercase for short eyebrows in mono.</div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="sidebar.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('sidebar')).render(<DSSidebar current="typography"/>);
+  ReactDOM.createRoot(document.getElementById('footer')).render(<DSFooter/>);
+</script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DeerWall · Brand Book — Color</title>
+<link rel="icon" type="image/png" href="source/fav_icon.png"/>
+<link rel="stylesheet" href="tokens.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<link rel="stylesheet" href="mobile.css"/>
+<style>
+.hero-color { background: var(--dw-orange-500); color: white; border-radius: var(--dw-radius-lg); padding: 64px; display: grid; grid-template-columns: 2fr 1fr; gap: 40px; align-items: end; min-height: 360px; }
+.hero-color h2 { font-family: var(--dw-font-display); font-weight: 400; font-size: 64px; line-height: 1; letter-spacing: -0.025em; margin: 0; }
+.hero-color h2 em { font-style: italic; opacity: 0.85; }
+.hero-color .swatch-info { font-family: var(--dw-font-mono); font-size: 11px; line-height: 1.9; letter-spacing: 0.06em; }
+.hero-color .swatch-info .row { display: flex; justify-content: space-between; padding: 4px 0; border-top: 1px solid rgba(255,255,255,0.18); }
+.hero-color .swatch-info .row:first-child { border-top: 0; }
+.hero-color .label { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.85; margin-bottom: 16px; }
+
+.scale-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+.scale-block { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); overflow: hidden; }
+.scale-head { padding: 24px 32px; display: flex; justify-content: space-between; align-items: baseline; border-bottom: var(--dw-border-thin); }
+.scale-head h3 { font-family: var(--dw-font-display); font-weight: 500; font-size: 22px; letter-spacing: -0.01em; margin: 0; }
+.scale-head .meta { font-family: var(--dw-font-mono); font-size: 11px; color: var(--dw-stone-500); letter-spacing: 0.08em; }
+.scale-row { display: grid; grid-template-columns: repeat(11, 1fr); height: 110px; }
+.scale-row.short { grid-template-columns: repeat(7, 1fr); }
+.scale-cell { display: flex; flex-direction: column; justify-content: space-between; padding: 12px 14px; font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.05em; }
+.scale-cell .step { font-weight: 600; }
+.scale-cell .hex { opacity: 0.85; }
+.scale-cell.dark { color: rgba(255,255,255,0.92); }
+.scale-cell.light { color: rgba(31,26,20,0.85); }
+.scale-cell.primary-marker { position: relative; }
+.scale-cell.primary-marker::after { content: 'PRIMARY'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: var(--dw-font-mono); font-size: 9px; letter-spacing: 0.15em; padding: 3px 8px; border: 1px solid currentColor; border-radius: 100px; }
+
+.pairings { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+.pair { border-radius: var(--dw-radius-lg); padding: 32px; aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: space-between; border: var(--dw-border-thin); }
+.pair .stmt { font-family: var(--dw-font-display); font-weight: 500; font-size: 24px; line-height: 1.15; letter-spacing: -0.015em; margin: 0; }
+.pair .stmt em { font-style: italic; }
+.pair .meta { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; }
+.pair-1 { background: white; color: var(--dw-ink-800); }
+.pair-1 em { color: var(--dw-orange-600); }
+.pair-2 { background: var(--dw-ink-900); color: var(--dw-sand-50); border-color: transparent; }
+.pair-2 em { color: var(--dw-orange-400); }
+.pair-3 { background: var(--dw-orange-500); color: white; border-color: transparent; }
+.pair-4 { background: var(--dw-sand-100); color: var(--dw-ink-800); }
+.pair-4 em { color: var(--dw-forest-700); }
+.pair-5 { background: var(--dw-forest-700); color: var(--dw-sand-50); border-color: transparent; }
+.pair-5 em { color: var(--dw-orange-300); }
+.pair-6 { background: var(--dw-orange-50); color: var(--dw-orange-900); }
+.pair-6 em { color: var(--dw-orange-600); }
+
+.usage-bar { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 32px; }
+.usage-track { display: flex; height: 56px; border-radius: var(--dw-radius); overflow: hidden; margin-bottom: 16px; }
+.usage-seg { display: flex; align-items: center; padding: 0 16px; font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.1em; }
+.usage-legend { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; padding-top: 16px; border-top: var(--dw-border-thin); }
+.usage-legend .item { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.usage-legend .dot { width: 14px; height: 14px; border-radius: 4px; flex-shrink: 0; }
+.usage-legend .pct { font-family: var(--dw-font-mono); color: var(--dw-stone-500); margin-left: auto; }
+
+.ax-table { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); overflow: hidden; }
+.ax-row { display: grid; grid-template-columns: 80px 1.4fr 100px 100px 1fr; align-items: center; padding: 18px 28px; border-top: var(--dw-border-thin); }
+.ax-row.head { background: var(--dw-sand-100); font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dw-stone-500); padding: 14px 28px; border-top: 0; }
+.ax-row .swatch-pair { display: flex; gap: 0; border-radius: 4px; overflow: hidden; width: 56px; height: 32px; border: 1px solid rgba(31,26,20,0.06); }
+.ax-row .swatch-pair span { flex: 1; }
+.ax-row .combo { font-family: var(--dw-font-mono); font-size: 12px; }
+.ax-row .ratio { font-family: var(--dw-font-mono); font-weight: 600; font-size: 14px; color: var(--dw-ink-800); }
+.ax-row .badge { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.1em; padding: 4px 8px; border-radius: 100px; display: inline-block; font-weight: 600; }
+.ax-row .badge.aaa { background: var(--dw-forest-700); color: white; }
+.ax-row .badge.aa { background: var(--dw-orange-600); color: white; }
+.ax-row .badge.fail { background: var(--dw-stone-400); color: white; }
+.ax-row .use { font-size: 13px; color: var(--dw-stone-600); }
+
+@media (max-width: 1024px) {
+  .hero-color { grid-template-columns: 1fr; padding: 40px 32px; }
+  .hero-color h2 { font-size: 44px; }
+  .scale-row, .scale-row.short { grid-template-columns: repeat(4, 1fr); height: auto; }
+  .scale-cell { min-height: 70px; }
+  .pairings { grid-template-columns: 1fr; }
+  .usage-legend { grid-template-columns: 1fr 1fr; }
+  .ax-row { grid-template-columns: 1fr 1fr; gap: 12px; padding: 16px; }
+  .ax-row.head { display: none; }
+}
+</style>
+</head>
+<body>
+<div class="ds-shell">
+  <div id="sidebar"></div>
+  <main class="ds-main">
+
+    <header class="ds-page-header">
+      <div class="ds-page-eyebrow">03 · Foundations</div>
+      <h1 class="ds-page-title">Color &amp; <em>palette.</em></h1>
+      <p class="ds-page-lede">Orange does the heavy lifting. Forest grounds it. Sand and ink make the page feel like paper. Three ramps, six pairings, every contrast checked.</p>
+    </header>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">3.1</span>
+        <h2 class="ds-section-title">Primary — DeerWall Orange</h2>
+        <p class="ds-section-desc">A confident terracotta-leaning orange. Warm, plant-derived, not a screaming neon. The single color that has to land on contact.</p>
+      </div>
+      <div class="hero-color">
+        <div>
+          <div class="label">DW-ORANGE / 500 · Primary</div>
+          <h2>Keep deer out, <em>naturally.</em></h2>
+        </div>
+        <div class="swatch-info">
+          <div class="row"><span>HEX</span><span>#EE6B1F</span></div>
+          <div class="row"><span>RGB</span><span>238 · 107 · 31</span></div>
+          <div class="row"><span>CMYK</span><span>0 · 65 · 90 · 0</span></div>
+          <div class="row"><span>PMS</span><span>1655 C</span></div>
+          <div class="row"><span>HSL</span><span>22° · 86% · 53%</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">3.2</span>
+        <h2 class="ds-section-title">Full color scales</h2>
+        <p class="ds-section-desc">Eleven steps for orange and ink, seven for forest and sand. Use the 500-step as the canonical brand value; everything else is for hover, hierarchy, surfaces, and edges.</p>
+      </div>
+      <div class="scale-grid">
+        <div class="scale-block">
+          <div class="scale-head"><h3>Orange — primary</h3><span class="meta">DW-ORANGE / 50–950</span></div>
+          <div class="scale-row">
+            <div class="scale-cell light" style="background:#FDF1E6"><span class="step">50</span><span class="hex">#FDF1E6</span></div>
+            <div class="scale-cell light" style="background:#FBE2CD"><span class="step">100</span><span class="hex">#FBE2CD</span></div>
+            <div class="scale-cell light" style="background:#F8C8A1"><span class="step">200</span><span class="hex">#F8C8A1</span></div>
+            <div class="scale-cell light" style="background:#F5AB72"><span class="step">300</span><span class="hex">#F5AB72</span></div>
+            <div class="scale-cell light" style="background:#F18843"><span class="step">400</span><span class="hex">#F18843</span></div>
+            <div class="scale-cell dark primary-marker" style="background:#EE6B1F"><span class="step">500</span><span class="hex">#EE6B1F</span></div>
+            <div class="scale-cell dark" style="background:#D55C1F"><span class="step">600</span><span class="hex">#D55C1F</span></div>
+            <div class="scale-cell dark" style="background:#A64A19"><span class="step">700</span><span class="hex">#A64A19</span></div>
+            <div class="scale-cell dark" style="background:#7E3814"><span class="step">800</span><span class="hex">#7E3814</span></div>
+            <div class="scale-cell dark" style="background:#5C2810"><span class="step">900</span><span class="hex">#5C2810</span></div>
+            <div class="scale-cell dark" style="background:#3D1A09"><span class="step">950</span><span class="hex">#3D1A09</span></div>
+          </div>
+        </div>
+
+        <div class="scale-block">
+          <div class="scale-head"><h3>Forest — secondary</h3><span class="meta">DW-FOREST / 100–900</span></div>
+          <div class="scale-row short">
+            <div class="scale-cell light" style="background:#D5E2D9"><span class="step">100</span><span class="hex">#D5E2D9</span></div>
+            <div class="scale-cell light" style="background:#88AE96"><span class="step">300</span><span class="hex">#88AE96</span></div>
+            <div class="scale-cell dark" style="background:#3D7553"><span class="step">500</span><span class="hex">#3D7553</span></div>
+            <div class="scale-cell dark" style="background:#2F5C42"><span class="step">600</span><span class="hex">#2F5C42</span></div>
+            <div class="scale-cell dark" style="background:#254834"><span class="step">700</span><span class="hex">#254834</span></div>
+            <div class="scale-cell dark" style="background:#1B3526"><span class="step">800</span><span class="hex">#1B3526</span></div>
+            <div class="scale-cell dark" style="background:#122319"><span class="step">900</span><span class="hex">#122319</span></div>
+          </div>
+        </div>
+
+        <div class="scale-block">
+          <div class="scale-head"><h3>Ink — text &amp; UI</h3><span class="meta">DW-INK / 500–950</span></div>
+          <div class="scale-row short">
+            <div class="scale-cell light" style="background:#5A5246"><span class="step">500</span><span class="hex">#5A5246</span></div>
+            <div class="scale-cell dark" style="background:#3D362C"><span class="step">600</span><span class="hex">#3D362C</span></div>
+            <div class="scale-cell dark" style="background:#2A241D"><span class="step">700</span><span class="hex">#2A241D</span></div>
+            <div class="scale-cell dark" style="background:#1F1A14"><span class="step">800</span><span class="hex">#1F1A14</span></div>
+            <div class="scale-cell dark" style="background:#14110D"><span class="step">900</span><span class="hex">#14110D</span></div>
+            <div class="scale-cell dark" style="background:#0B0907"><span class="step">950</span><span class="hex">#0B0907</span></div>
+          </div>
+        </div>
+
+        <div class="scale-block">
+          <div class="scale-head"><h3>Sand — paper neutrals</h3><span class="meta">DW-SAND / 50–300 + STONE</span></div>
+          <div class="scale-row short">
+            <div class="scale-cell light" style="background:#FAF6F0"><span class="step">SAND-50</span><span class="hex">#FAF6F0</span></div>
+            <div class="scale-cell light" style="background:#F2EBDF"><span class="step">SAND-100</span><span class="hex">#F2EBDF</span></div>
+            <div class="scale-cell light" style="background:#E5DAC5"><span class="step">SAND-200</span><span class="hex">#E5DAC5</span></div>
+            <div class="scale-cell light" style="background:#D2C4A8"><span class="step">SAND-300</span><span class="hex">#D2C4A8</span></div>
+            <div class="scale-cell dark" style="background:#A89F8C"><span class="step">STONE-400</span><span class="hex">#A89F8C</span></div>
+            <div class="scale-cell dark" style="background:#7B7363"><span class="step">STONE-500</span><span class="hex">#7B7363</span></div>
+            <div class="scale-cell dark" style="background:#564F42"><span class="step">STONE-600</span><span class="hex">#564F42</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">3.3</span>
+        <h2 class="ds-section-title">Approved pairings</h2>
+        <p class="ds-section-desc">Six combinations that consistently work. If you find yourself reaching for something else, talk to brand first.</p>
+      </div>
+      <div class="pairings">
+        <div class="pair pair-1">
+          <span class="meta">01 · DEFAULT</span>
+          <p class="stmt">Ink on white with <em>orange accents.</em></p>
+          <span class="meta">For long-form &amp; product</span>
+        </div>
+        <div class="pair pair-2">
+          <span class="meta">02 · NIGHT</span>
+          <p class="stmt">Sand on ink, <em>orange highlights.</em></p>
+          <span class="meta">For hero &amp; campaign</span>
+        </div>
+        <div class="pair pair-3">
+          <span class="meta">03 · LOUD</span>
+          <p class="stmt">White on orange.<br/>Confident.</p>
+          <span class="meta">For packaging &amp; shelf</span>
+        </div>
+        <div class="pair pair-4">
+          <span class="meta">04 · WARM</span>
+          <p class="stmt">Ink on sand with <em>forest accents.</em></p>
+          <span class="meta">For editorial &amp; print</span>
+        </div>
+        <div class="pair pair-5">
+          <span class="meta">05 · GROVE</span>
+          <p class="stmt">Sand on forest, <em>peach details.</em></p>
+          <span class="meta">For ingredient &amp; story</span>
+        </div>
+        <div class="pair pair-6">
+          <span class="meta">06 · SOFT</span>
+          <p class="stmt">Burgundy on peach, <em>quiet warmth.</em></p>
+          <span class="meta">For email &amp; social</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">3.4</span>
+        <h2 class="ds-section-title">Usage proportions</h2>
+        <p class="ds-section-desc">A rough rule for any composition: 60% paper, 20% ink, 15% orange, 5% forest. Orange is the spice — never the meal.</p>
+      </div>
+      <div class="usage-bar">
+        <div class="usage-track">
+          <div class="usage-seg" style="flex: 60; background: var(--dw-sand-50); color: var(--dw-stone-500)">60% &nbsp;Sand 50</div>
+          <div class="usage-seg" style="flex: 20; background: var(--dw-ink-900); color: white">20% &nbsp;Ink 900</div>
+          <div class="usage-seg" style="flex: 15; background: var(--dw-orange-500); color: white">15% &nbsp;Orange 500</div>
+          <div class="usage-seg" style="flex: 5; background: var(--dw-forest-700); color: white">5%</div>
+        </div>
+        <div class="usage-legend">
+          <div class="item"><span class="dot" style="background:var(--dw-sand-50); border:1px solid rgba(31,26,20,0.1)"></span>Sand · paper<span class="pct">60%</span></div>
+          <div class="item"><span class="dot" style="background:var(--dw-ink-900)"></span>Ink · text<span class="pct">20%</span></div>
+          <div class="item"><span class="dot" style="background:var(--dw-orange-500)"></span>Orange · brand<span class="pct">15%</span></div>
+          <div class="item"><span class="dot" style="background:var(--dw-forest-700)"></span>Forest · accent<span class="pct">5%</span></div>
+          <div class="item"><span class="dot" style="background:white; border:1px solid rgba(31,26,20,0.1)"></span>White · cards<span class="pct">as-needed</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">3.5</span>
+        <h2 class="ds-section-title">Accessibility · contrast</h2>
+        <p class="ds-section-desc">Every color combination we ship should clear WCAG AA at 4.5:1 for body text and 3:1 for large text and non-text UI. Combinations that fail are listed too — for awareness.</p>
+      </div>
+      <div class="ax-table">
+        <div class="ax-row head">
+          <span>Pair</span><span>Combination</span><span>Ratio</span><span>Grade</span><span>Use for</span>
+        </div>
+        <div class="ax-row">
+          <div class="swatch-pair"><span style="background:#1F1A14"></span><span style="background:#FAF6F0"></span></div>
+          <span class="combo">Ink 800 / Sand 50</span>
+          <span class="ratio">14.8 : 1</span>
+          <span><span class="badge aaa">AAA</span></span>
+          <span class="use">Body copy, headlines, default page</span>
+        </div>
+        <div class="ax-row">
+          <div class="swatch-pair"><span style="background:#FAF6F0"></span><span style="background:#1F1A14"></span></div>
+          <span class="combo">Sand 50 / Ink 800</span>
+          <span class="ratio">14.8 : 1</span>
+          <span><span class="badge aaa">AAA</span></span>
+          <span class="use">Reversed hero copy, dark cards</span>
+        </div>
+        <div class="ax-row">
+          <div class="swatch-pair"><span style="background:#FFFFFF"></span><span style="background:#EE6B1F"></span></div>
+          <span class="combo">White / Orange 500</span>
+          <span class="ratio">3.4 : 1</span>
+          <span><span class="badge aa">AA · LARGE</span></span>
+          <span class="use">Buttons, headlines &gt; 24px, packaging</span>
+        </div>
+        <div class="ax-row">
+          <div class="swatch-pair"><span style="background:#FFFFFF"></span><span style="background:#A64A19"></span></div>
+          <span class="combo">White / Orange 700</span>
+          <span class="ratio">5.9 : 1</span>
+          <span><span class="badge aaa">AAA</span></span>
+          <span class="use">Body text on orange surfaces</span>
+        </div>
+        <div class="ax-row">
+          <div class="swatch-pair"><span style="background:#A64A19"></span><span style="background:#FAF6F0"></span></div>
+          <span class="combo">Orange 700 / Sand 50</span>
+          <span class="ratio">5.9 : 1</span>
+          <span><span class="badge aaa">AAA</span></span>
+          <span class="use">Brand body copy, accent text</span>
+        </div>
+        <div class="ax-row">
+          <div class="swatch-pair"><span style="background:#FAF6F0"></span><span style="background:#254834"></span></div>
+          <span class="combo">Sand 50 / Forest 700</span>
+          <span class="ratio">9.2 : 1</span>
+          <span><span class="badge aaa">AAA</span></span>
+          <span class="use">Long-form on forest surfaces</span>
+        </div>
+        <div class="ax-row">
+          <div class="swatch-pair"><span style="background:#7B7363"></span><span style="background:#FAF6F0"></span></div>
+          <span class="combo">Stone 500 / Sand 50</span>
+          <span class="ratio">4.7 : 1</span>
+          <span><span class="badge aa">AA</span></span>
+          <span class="use">Secondary text, captions</span>
+        </div>
+        <div class="ax-row">
+          <div class="swatch-pair"><span style="background:#EE6B1F"></span><span style="background:#FAF6F0"></span></div>
+          <span class="combo">Orange 500 / Sand 50 — body</span>
+          <span class="ratio">3.4 : 1</span>
+          <span><span class="badge fail">FAIL · BODY</span></span>
+          <span class="use">Avoid for body text. Headlines only.</span>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="sidebar.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('sidebar')).render(<DSSidebar current="color"/>);
+  ReactDOM.createRoot(document.getElementById('footer')).render(<DSFooter/>);
+</script>
+</body>
+</html>

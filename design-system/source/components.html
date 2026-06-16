@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>DeerWall · Brand Book — UI Library</title>
+<link rel="icon" type="image/png" href="source/fav_icon.png"/>
+<link rel="stylesheet" href="tokens.css"/>
+<link rel="stylesheet" href="shared.css"/>
+<link rel="stylesheet" href="mobile.css"/>
+<style>
+.ui-card { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); padding: 40px; }
+.ui-card.dark { background: var(--dw-ink-900); color: var(--dw-sand-50); border-color: transparent; }
+.ui-card .label { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dw-stone-500); margin-bottom: 24px; display: block; }
+.ui-card.dark .label { color: rgba(250,246,240,0.55); }
+
+.row-stack { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.col-stack { display: flex; flex-direction: column; gap: 12px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 100px; font-family: var(--dw-font-sans); font-weight: 600; font-size: 14px; letter-spacing: 0.01em; border: 1.5px solid transparent; cursor: pointer; transition: all var(--dw-dur-fast) var(--dw-ease); text-decoration: none; }
+.btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.btn-primary { background: var(--dw-orange-500); color: white; }
+.btn-primary:hover { background: var(--dw-orange-600); }
+.btn-secondary { background: var(--dw-ink-800); color: white; }
+.btn-secondary:hover { background: var(--dw-ink-700); }
+.btn-outline { background: transparent; color: var(--dw-ink-800); border-color: var(--dw-ink-800); }
+.btn-outline:hover { background: var(--dw-ink-800); color: white; }
+.btn-ghost { background: transparent; color: var(--dw-ink-800); }
+.btn-ghost:hover { background: rgba(31,26,20,0.06); }
+.btn-link { background: transparent; color: var(--dw-orange-700); padding: 0; border-radius: 0; border-bottom: 1.5px solid currentColor; padding-bottom: 2px; }
+.btn-sm { padding: 8px 14px; font-size: 13px; }
+.btn-lg { padding: 16px 28px; font-size: 16px; }
+.btn-disabled { background: var(--dw-stone-400); color: white; cursor: not-allowed; }
+.dark .btn-outline { color: white; border-color: rgba(255,255,255,0.4); }
+.dark .btn-ghost { color: white; }
+
+/* Form */
+.fld { display: flex; flex-direction: column; gap: 6px; }
+.fld label { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--dw-stone-600); font-weight: 600; }
+.fld input, .fld textarea, .fld select { font-family: var(--dw-font-sans); font-size: 15px; padding: 12px 14px; border: 1.5px solid rgba(31,26,20,0.18); border-radius: var(--dw-radius); background: white; color: var(--dw-ink-800); transition: border-color var(--dw-dur-fast) var(--dw-ease); }
+.fld input:focus, .fld textarea:focus, .fld select:focus { outline: none; border-color: var(--dw-orange-500); }
+.fld input.error { border-color: var(--dw-danger); }
+.fld .help { font-size: 12px; color: var(--dw-stone-500); }
+.fld .err { font-size: 12px; color: var(--dw-danger); }
+
+.check-row { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+.check { width: 18px; height: 18px; border: 1.5px solid var(--dw-stone-500); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.check.on { background: var(--dw-orange-500); border-color: var(--dw-orange-500); }
+.check.on::after { content: ''; width: 5px; height: 9px; border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg) translate(-1px, -1px); }
+.radio { width: 18px; height: 18px; border: 1.5px solid var(--dw-stone-500); border-radius: 50%; flex-shrink: 0; position: relative; }
+.radio.on { border-color: var(--dw-orange-500); }
+.radio.on::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: var(--dw-orange-500); }
+
+.toggle { width: 40px; height: 22px; border-radius: 100px; background: var(--dw-stone-400); position: relative; cursor: pointer; transition: background var(--dw-dur-fast) var(--dw-ease); }
+.toggle::after { content: ''; position: absolute; top: 2px; left: 2px; width: 18px; height: 18px; border-radius: 50%; background: white; transition: left var(--dw-dur-fast) var(--dw-ease); }
+.toggle.on { background: var(--dw-orange-500); }
+.toggle.on::after { left: 20px; }
+
+/* Badges */
+.badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; font-family: var(--dw-font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.06em; border-radius: 100px; }
+.badge-primary { background: var(--dw-orange-500); color: white; }
+.badge-soft { background: var(--dw-orange-100); color: var(--dw-orange-800); }
+.badge-success { background: var(--dw-forest-100); color: var(--dw-forest-800); }
+.badge-warning { background: #FBE9C2; color: #6B4818; }
+.badge-danger { background: #F8D9D5; color: #7E1F15; }
+.badge-neutral { background: var(--dw-sand-200); color: var(--dw-stone-700); }
+.badge-outline { border: 1.5px solid var(--dw-ink-800); color: var(--dw-ink-800); background: transparent; }
+
+/* Pills */
+.pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border: 1px solid rgba(31,26,20,0.18); border-radius: 100px; font-size: 13px; cursor: pointer; transition: all var(--dw-dur-fast) var(--dw-ease); background: white; }
+.pill:hover { border-color: var(--dw-ink-800); }
+.pill.on { background: var(--dw-ink-800); color: white; border-color: var(--dw-ink-800); }
+
+/* Cards */
+.card-product { background: white; border: var(--dw-border-thin); border-radius: var(--dw-radius-lg); overflow: hidden; }
+.card-product .ph { aspect-ratio: 4/3; background: var(--dw-sand-100); display: flex; align-items: center; justify-content: center; padding: 24px; }
+.card-product .ph img { max-height: 100%; max-width: 100%; object-fit: contain; }
+.card-product .meta { padding: 20px 24px 24px; }
+.card-product .tag { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dw-orange-700); }
+.card-product h4 { font-family: var(--dw-font-display); font-weight: 600; font-size: 20px; margin: 6px 0 6px; letter-spacing: -0.01em; }
+.card-product .desc { font-size: 13px; color: var(--dw-stone-600); line-height: 1.5; margin: 0 0 16px; }
+.card-product .foot { display: flex; justify-content: space-between; align-items: center; }
+.card-product .price { font-family: var(--dw-font-display); font-weight: 600; font-size: 18px; }
+
+.card-stat { background: var(--dw-orange-50); border-radius: var(--dw-radius-lg); padding: 32px; }
+.card-stat .num { font-family: var(--dw-font-display); font-weight: 400; font-size: 64px; line-height: 1; letter-spacing: -0.025em; color: var(--dw-orange-700); }
+.card-stat .num em { font-style: italic; }
+.card-stat .lbl { font-family: var(--dw-font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--dw-stone-700); margin-top: 12px; }
+.card-stat .desc { font-size: 13px; color: var(--dw-stone-600); margin-top: 8px; line-height: 1.5; }
+
+.card-callout { background: var(--dw-ink-900); color: var(--dw-sand-50); border-radius: var(--dw-radius-lg); padding: 32px; }
+.card-callout .eyebrow { font-family: var(--dw-font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--dw-orange-400); }
+.card-callout h4 { font-family: var(--dw-font-display); font-weight: 500; font-size: 24px; line-height: 1.15; margin: 12px 0 12px; letter-spacing: -0.015em; }
+.card-callout h4 em { font-style: italic; color: var(--dw-orange-300); }
+.card-callout .desc { font-size: 14px; line-height: 1.6; opacity: 0.85; margin: 0 0 16px; }
+
+/* Alert */
+.alert { display: flex; gap: 14px; padding: 16px 20px; border-radius: var(--dw-radius); border-left: 3px solid; align-items: flex-start; }
+.alert .ic { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; }
+.alert .ic svg { width: 100%; height: 100%; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+.alert .body strong { font-family: var(--dw-font-display); font-weight: 600; font-size: 15px; display: block; margin-bottom: 2px; }
+.alert .body span { font-size: 13px; color: var(--dw-stone-700); }
+.alert-info { background: var(--dw-forest-100); color: var(--dw-forest-800); border-color: var(--dw-forest-700); }
+.alert-info .body span { color: var(--dw-forest-800); opacity: 0.85; }
+.alert-success { background: #DBEDDD; color: #1B3F26; border-color: var(--dw-success); }
+.alert-warning { background: #FBE9C2; color: #6B4818; border-color: var(--dw-warning); }
+.alert-danger { background: #F8D9D5; color: #7E1F15; border-color: var(--dw-danger); }
+
+/* Tabs */
+.tabs { display: flex; gap: 0; border-bottom: var(--dw-border-thin); }
+.tab { padding: 14px 20px; font-family: var(--dw-font-sans); font-size: 14px; font-weight: 500; color: var(--dw-stone-500); border-bottom: 2px solid transparent; cursor: pointer; margin-bottom: -1px; }
+.tab.on { color: var(--dw-ink-800); border-bottom-color: var(--dw-orange-500); font-weight: 600; }
+
+/* Steps */
+.steps { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0; }
+.step { display: flex; flex-direction: column; gap: 8px; padding: 16px; position: relative; }
+.step .num { width: 28px; height: 28px; border-radius: 50%; background: var(--dw-sand-200); color: var(--dw-stone-600); font-family: var(--dw-font-mono); font-size: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+.step.on .num { background: var(--dw-orange-500); color: white; }
+.step.done .num { background: var(--dw-forest-700); color: white; }
+.step .lbl { font-family: var(--dw-font-display); font-weight: 600; font-size: 14px; }
+.step .desc { font-size: 12px; color: var(--dw-stone-500); }
+.step::before { content: ''; position: absolute; top: 30px; left: 60px; right: -16px; height: 1.5px; background: rgba(31,26,20,0.12); }
+.step:last-child::before { display: none; }
+
+/* Tag input */
+.tag-input { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px 14px; border: 1.5px solid rgba(31,26,20,0.18); border-radius: var(--dw-radius); background: white; min-height: 48px; }
+.tag-chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 8px 4px 10px; background: var(--dw-orange-100); color: var(--dw-orange-800); font-size: 12px; font-weight: 600; border-radius: 4px; }
+.tag-chip button { background: transparent; border: 0; cursor: pointer; color: inherit; opacity: 0.6; line-height: 1; }
+.tag-input input { flex: 1; border: 0; outline: 0; font-size: 14px; min-width: 60px; padding: 4px; background: transparent; }
+
+/* Avatars */
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--dw-orange-500); color: white; font-family: var(--dw-font-display); font-weight: 600; font-size: 16px; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.avatar.lg { width: 56px; height: 56px; font-size: 22px; }
+.avatar.sm { width: 28px; height: 28px; font-size: 12px; }
+.avatar-stack { display: inline-flex; }
+.avatar-stack .avatar { border: 2px solid white; margin-left: -10px; }
+.avatar-stack .avatar:first-child { margin-left: 0; }
+.avatar-c2 { background: var(--dw-forest-700); }
+.avatar-c3 { background: var(--dw-ink-800); }
+.avatar-c4 { background: var(--dw-orange-700); }
+
+@media (max-width: 1024px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="ds-shell">
+  <div id="sidebar"></div>
+  <main class="ds-main">
+
+    <header class="ds-page-header">
+      <div class="ds-page-eyebrow">07 · Components</div>
+      <h1 class="ds-page-title">UI library &amp; <em>components.</em></h1>
+      <p class="ds-page-lede">Buttons, forms, cards, alerts. The set of components every web and product surface is built from. Pill-shaped buttons, generous padding, mono labels.</p>
+    </header>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">7.1</span>
+        <h2 class="ds-section-title">Buttons</h2>
+        <p class="ds-section-desc">Five variants, three sizes. Pill radius is the brand signature — never square corners on a button.</p>
+      </div>
+      <div class="grid-2">
+        <div class="ui-card">
+          <span class="label">VARIANTS</span>
+          <div class="col-stack">
+            <div class="row-stack">
+              <button class="btn btn-primary">Buy a bottle</button>
+              <button class="btn btn-secondary">Learn more</button>
+              <button class="btn btn-outline">Add to cart</button>
+              <button class="btn btn-ghost">Cancel</button>
+            </div>
+            <div class="row-stack">
+              <button class="btn btn-primary">Buy a bottle <svg viewBox="0 0 24 24"><path d="M5 12 H19 M13 6 L19 12 L13 18"/></svg></button>
+              <button class="btn btn-secondary"><svg viewBox="0 0 24 24"><path d="M5 13 L6 19 H18 L19 13 M3 13 H21 M3 13 V11 H21 V13"/></svg> Add to cart</button>
+              <a class="btn btn-link">Read the science →</a>
+            </div>
+          </div>
+        </div>
+        <div class="ui-card">
+          <span class="label">SIZES &amp; STATES</span>
+          <div class="col-stack">
+            <div class="row-stack">
+              <button class="btn btn-primary btn-sm">Small</button>
+              <button class="btn btn-primary">Default</button>
+              <button class="btn btn-primary btn-lg">Large</button>
+            </div>
+            <div class="row-stack">
+              <button class="btn btn-primary">Default</button>
+              <button class="btn btn-primary" style="background: var(--dw-orange-600)">Hover</button>
+              <button class="btn btn-primary" style="background: var(--dw-orange-700)">Pressed</button>
+              <button class="btn btn-disabled">Disabled</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">7.2</span>
+        <h2 class="ds-section-title">Form fields</h2>
+        <p class="ds-section-desc">Mono labels, generous fields, clear focus state. Errors surfaced inline, never as modal nags.</p>
+      </div>
+      <div class="grid-2">
+        <div class="ui-card">
+          <span class="label">INPUTS</span>
+          <div class="col-stack" style="gap: 16px">
+            <div class="fld">
+              <label>Email address</label>
+              <input type="email" placeholder="you@garden.com" value="anna@beechgrove.farm"/>
+              <span class="help">We'll send order confirmation here.</span>
+            </div>
+            <div class="fld">
+              <label>Coverage area</label>
+              <select><option>1,200 sq ft · 32oz bottle</option><option>4,800 sq ft · 1 gal RTU</option><option>17,000 sq ft · 1 gal concentrate</option></select>
+            </div>
+            <div class="fld">
+              <label>Notes for delivery</label>
+              <textarea rows="3" placeholder="Leave on the back porch."></textarea>
+            </div>
+            <div class="fld">
+              <label>ZIP code</label>
+              <input type="text" class="error" value="0000"/>
+              <span class="err">Please enter a valid 5-digit ZIP.</span>
+            </div>
+          </div>
+        </div>
+        <div class="ui-card">
+          <span class="label">CHOICES</span>
+          <div class="col-stack" style="gap: 18px">
+            <div>
+              <label class="check-row" style="margin-bottom: 8px"><span class="check on"></span>Email me when it's back in stock</label>
+              <label class="check-row" style="margin-bottom: 8px"><span class="check"></span>Subscribe &amp; save 15%</label>
+              <label class="check-row"><span class="check on"></span>I have read the application notes</label>
+            </div>
+            <div>
+              <div style="font-family:var(--dw-font-mono); font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--dw-stone-600); font-weight:600; margin-bottom: 10px">SHIPPING</div>
+              <label class="check-row" style="margin-bottom: 8px"><span class="radio on"></span>Standard · 5–7 days · free</label>
+              <label class="check-row" style="margin-bottom: 8px"><span class="radio"></span>Expedited · 2–3 days · $9</label>
+              <label class="check-row"><span class="radio"></span>Overnight · $24</label>
+            </div>
+            <div class="row-stack" style="justify-content: space-between">
+              <span style="font-size:14px">Email me a reminder in 30 days</span>
+              <span class="toggle on"></span>
+            </div>
+            <div class="row-stack" style="justify-content: space-between">
+              <span style="font-size:14px">Auto-reorder</span>
+              <span class="toggle"></span>
+            </div>
+            <div class="tag-input">
+              <span class="tag-chip">hostas <button>×</button></span>
+              <span class="tag-chip">hydrangeas <button>×</button></span>
+              <span class="tag-chip">tomatoes <button>×</button></span>
+              <input type="text" placeholder="add a plant…"/>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">7.3</span>
+        <h2 class="ds-section-title">Badges, pills &amp; tags</h2>
+        <p class="ds-section-desc">Mono type, tight tracking, soft fills. Use sparingly — a badge means something.</p>
+      </div>
+      <div class="grid-2">
+        <div class="ui-card">
+          <span class="label">BADGES</span>
+          <div class="row-stack">
+            <span class="badge badge-primary">NEW</span>
+            <span class="badge badge-soft">PET-SAFE</span>
+            <span class="badge badge-success">IN STOCK</span>
+            <span class="badge badge-warning">LOW STOCK</span>
+            <span class="badge badge-danger">SOLD OUT</span>
+            <span class="badge badge-neutral">EPA 25(b)</span>
+            <span class="badge badge-outline">BEST SELLER</span>
+          </div>
+        </div>
+        <div class="ui-card">
+          <span class="label">FILTER PILLS</span>
+          <div class="row-stack">
+            <span class="pill on">All</span>
+            <span class="pill">32 oz</span>
+            <span class="pill">1 gal RTU</span>
+            <span class="pill">Concentrate</span>
+            <span class="pill">Subscribe</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">7.4</span>
+        <h2 class="ds-section-title">Cards</h2>
+        <p class="ds-section-desc">Three patterns: product, stat, and callout. Combine to build the homepage and the product detail page.</p>
+      </div>
+      <div class="grid-3">
+        <div class="card-product">
+          <div class="ph"><img src="assets/bottle-32oz-rtu.png" alt=""/></div>
+          <div class="meta">
+            <span class="tag">READY-TO-USE · 32 OZ</span>
+            <h4>The Trigger</h4>
+            <p class="desc">1,200 sq ft of coverage. Perimeter spray, garden beds, hostas. The starter bottle.</p>
+            <div class="foot"><span class="price">$24</span><button class="btn btn-primary btn-sm">Add</button></div>
+          </div>
+        </div>
+        <div class="card-stat">
+          <div class="num"><em>30</em></div>
+          <div class="lbl">DAYS BETWEEN APPLICATIONS</div>
+          <p class="desc">One spray, repellent for a month — even after rain, once it's dried.</p>
+        </div>
+        <div class="card-callout">
+          <span class="eyebrow">FOR REAL GARDENERS</span>
+          <h4>Subscribe &amp; <em>save 15%</em></h4>
+          <p class="desc">A bottle every 30 days, for the season you've spent years building. Skip, swap, or pause anytime.</p>
+          <button class="btn btn-primary btn-sm">Get the plan</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">7.5</span>
+        <h2 class="ds-section-title">Alerts</h2>
+        <p class="ds-section-desc">Four severity levels. Inline, never modal. Always actionable.</p>
+      </div>
+      <div class="ui-card">
+        <span class="label">INLINE NOTIFICATIONS</span>
+        <div class="col-stack">
+          <div class="alert alert-info">
+            <span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8 V12 M12 16 V16.01"/></svg></span>
+            <div class="body"><strong>Reapply after heavy rain</strong><span>If you got more than ½" of rain in 24 hours, give the perimeter another quick pass.</span></div>
+          </div>
+          <div class="alert alert-success">
+            <span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12 L11 15 L16 9"/></svg></span>
+            <div class="body"><strong>Order confirmed</strong><span>Two bottles of The Trigger ship Thursday. Tracking sent to your email.</span></div>
+          </div>
+          <div class="alert alert-warning">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3 L22 20 H2 Z M12 10 V14 M12 17 V17.01"/></svg></span>
+            <div class="body"><strong>Low stock</strong><span>Only 12 bottles of the gallon concentrate left in your region.</span></div>
+          </div>
+          <div class="alert alert-danger">
+            <span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8 V13 M12 16 V16.01"/></svg></span>
+            <div class="body"><strong>We couldn't process your card</strong><span>Update your payment method to keep your subscription active.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">7.6</span>
+        <h2 class="ds-section-title">Navigation</h2>
+        <p class="ds-section-desc">Tabs, steps, breadcrumbs — the minimum viable kit. Active state is always orange.</p>
+      </div>
+      <div class="grid-2">
+        <div class="ui-card">
+          <span class="label">TABS</span>
+          <div class="tabs">
+            <span class="tab on">Overview</span>
+            <span class="tab">How to apply</span>
+            <span class="tab">Ingredients</span>
+            <span class="tab">Reviews</span>
+          </div>
+        </div>
+        <div class="ui-card">
+          <span class="label">BREADCRUMB</span>
+          <div class="row-stack" style="font-family:var(--dw-font-mono); font-size:12px; letter-spacing:0.06em">
+            <span style="color: var(--dw-stone-500)">SHOP</span>
+            <span style="color: var(--dw-stone-400)">/</span>
+            <span style="color: var(--dw-stone-500)">REPELLENTS</span>
+            <span style="color: var(--dw-stone-400)">/</span>
+            <span style="color: var(--dw-ink-800); font-weight: 600">THE TRIGGER · 32OZ</span>
+          </div>
+        </div>
+      </div>
+      <div class="ui-card" style="margin-top:16px">
+        <span class="label">CHECKOUT STEPS</span>
+        <div class="steps">
+          <div class="step done"><span class="num">✓</span><span class="lbl">Cart</span><span class="desc">Two items · $48</span></div>
+          <div class="step done"><span class="num">✓</span><span class="lbl">Address</span><span class="desc">Beechgrove Farm</span></div>
+          <div class="step on"><span class="num">3</span><span class="lbl">Payment</span><span class="desc">Card on file</span></div>
+          <div class="step"><span class="num">4</span><span class="lbl">Confirm</span><span class="desc">Review order</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-section">
+      <div class="ds-section-head">
+        <span class="ds-section-num">7.7</span>
+        <h2 class="ds-section-title">Avatars</h2>
+        <p class="ds-section-desc">Display-face initials on a brand swatch. For reviews, account chrome, customer stories.</p>
+      </div>
+      <div class="ui-card">
+        <span class="label">AVATARS &amp; STACKS</span>
+        <div class="row-stack" style="gap: 24px">
+          <span class="avatar">AB</span>
+          <span class="avatar avatar-c2">JS</span>
+          <span class="avatar avatar-c3">MT</span>
+          <span class="avatar avatar-c4">RK</span>
+          <span class="avatar lg">AB</span>
+          <span class="avatar sm">AB</span>
+          <div class="avatar-stack">
+            <span class="avatar">AB</span>
+            <span class="avatar avatar-c2">JS</span>
+            <span class="avatar avatar-c3">MT</span>
+            <span class="avatar avatar-c4">+4</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer"></div>
+  </main>
+</div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="sidebar.jsx"></script>
+<script type="text/babel">
+  ReactDOM.createRoot(document.getElementById('sidebar')).render(<DSSidebar current="components"/>);
+  ReactDOM.createRoot(document.getElementById('footer')).render(<DSFooter/>);
+</script>
+</body>
+</html>
